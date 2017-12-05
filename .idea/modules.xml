@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://C:\App-3vikna\hreysti_app\Hreysti_App.iml" filepath="C:\App-3vikna\hreysti_app\Hreysti_App.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\App-3vikna\hreysti_app\app\app.iml" filepath="C:\App-3vikna\hreysti_app\app\app.iml" />
+=======
+      <module fileurl="file://C:\Users\magnu\Desktop\meatPieGuys\hreysti_app\Hreysti_App.iml" filepath="C:\Users\magnu\Desktop\meatPieGuys\hreysti_app\Hreysti_App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\magnu\Desktop\meatPieGuys\hreysti_app\app\app.iml" filepath="C:\Users\magnu\Desktop\meatPieGuys\hreysti_app\app\app.iml" />
+>>>>>>> 1966e6b5a053dcfb2fd15d555a9cce803fce1584
       <module fileurl="file://$PROJECT_DIR$/hreysti_app.iml" filepath="$PROJECT_DIR$/hreysti_app.iml" />
     </modules>
   </component>
