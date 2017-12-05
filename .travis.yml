@@ -1,7 +1,7 @@
 language: android
 
 before_install:
- - chmod +x gradlew
+gradle -b wrapper.gradle wrapper
 
 script:
  - chmod +x ./gradlew build connectedCheck
