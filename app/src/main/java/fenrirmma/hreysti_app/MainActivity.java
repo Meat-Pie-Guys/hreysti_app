@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signUp(View view){
-        Intent intent = Intent(MainActivity.this, newSignUp.class);
+        Intent intent = new Intent(MainActivity.this, newSignUp.class);
+        startActivity(intent);
     }
     private void validateSignIn(String username, String pw){
         if(Objects.equals(username, "Cock") && Objects.equals(pw, "1234")){
