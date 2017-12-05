@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.Objects;
+import java.util.Observable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(Objects.equals(username, "BiggerCock") && Objects.equals(pw, "1234")){
             Intent intent = new Intent(MainActivity.this, thjalfariActivity.class);
+            startActivity(intent);
+        }
+        else if(Objects.equals(username, "BiggestCock") && Objects.equals(pw, "1234")){
+            Intent intent = new Intent(MainActivity.this, adminActivity.class);
             startActivity(intent);
         }
         else{

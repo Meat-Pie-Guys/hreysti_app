@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".idkandiActivity" />
         <activity android:name=".thjalfariActivity" />
-        <activity android:name=".newSignUp"></activity>
+        <activity android:name=".newSignUp" />
+        <activity android:name=".adminActivity"></activity>
     </application>
 
 </manifest>
