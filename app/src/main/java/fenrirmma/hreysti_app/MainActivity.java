@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
     public void validate(View view){
         validateSignIn(name.getText().toString(), password.getText().toString());
     }
+
+    public void signUp(View view){
+        Intent intent = Intent(MainActivity.this, newSignUp.class);
+    }
     private void validateSignIn(String username, String pw){
         if(Objects.equals(username, "Cock") && Objects.equals(pw, "1234")){
             Intent intent = new Intent(MainActivity.this, idkandiActivity.class);
