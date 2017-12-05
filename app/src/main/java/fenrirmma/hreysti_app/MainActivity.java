@@ -15,8 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText name;
     private EditText password;
-    private Button signin;
-    private Button signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
         name = findViewById(R.id.et_username);
         password = findViewById(R.id.et_password);
-        signin = findViewById(R.id.btn_signin);
-        signup = findViewById(R.id.btn_signup);
     }
     public void validate(View view){
         validateSignIn(name.getText().toString(), password.getText().toString());
