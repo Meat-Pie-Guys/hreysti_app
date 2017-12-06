@@ -17,4 +17,9 @@ public class thjalfariActivity extends AppCompatActivity {
         Intent intent = new Intent(thjalfariActivity.this, exerciseOfTheDay.class);
         startActivity(intent);
     }
+
+    public void MakeWorkout(View view) {
+        Intent intent = new Intent(thjalfariActivity.this, WorkoutActivity.class);
+        startActivity(intent);
+    }
 }
