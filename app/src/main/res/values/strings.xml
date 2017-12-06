@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Hreysti_App</string>
+    <string name="make_a_workout">Make a Workout</string>
+    <string name="add_excercises">Add Excercises</string>
+    <string name="set_workout_type">Set Workout Type</string>
+    <string name="selected_excercises_for_workout">selected excercises for workout</string>
 </resources>
