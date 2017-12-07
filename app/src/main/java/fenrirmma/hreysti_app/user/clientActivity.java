@@ -1,11 +1,14 @@
-package fenrirmma.hreysti_app;
+package fenrirmma.hreysti_app.user;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class idkandiActivity extends AppCompatActivity {
+import fenrirmma.hreysti_app.R;
+import fenrirmma.hreysti_app.workout.exerciseOfTheDay;
+
+public class clientActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,7 +17,7 @@ public class idkandiActivity extends AppCompatActivity {
     }
 
     public void exerciseOfTheDay(View view){
-        Intent intent = new Intent(idkandiActivity.this, exerciseOfTheDay.class);
+        Intent intent = new Intent(clientActivity.this, exerciseOfTheDay.class);
         startActivity(intent);
     }
 }

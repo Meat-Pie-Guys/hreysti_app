@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fenrirmma.hreysti_app.thjalfariActivity">
+    tools:context="fenrirmma.hreysti_app.user.coachActivity">
 
     <Button
         android:id="@+id/btn_exercise"
