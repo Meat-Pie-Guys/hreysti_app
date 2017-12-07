@@ -1,11 +1,14 @@
 package fenrirmma.hreysti_app.login;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.gson.JsonObject;
@@ -19,11 +22,13 @@ public class MainActivity extends AppCompatActivity {
     private TokenAccess ta;
     private EditText username;
     private EditText password;
+    private RelativeLayout load;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         username = findViewById(R.id.et_username);
         password = findViewById(R.id.et_password);
@@ -32,20 +37,27 @@ public class MainActivity extends AppCompatActivity {
         if(ta.hasToken()) proceed();
 
     }
+
     public void signIn(View view){
+        load = findViewById(R.id.loadingPanel);
+        load.setVisibility(View.VISIBLE);
         String un = username.getText().toString();
         String pw = password.getText().toString();
         getToken(un, pw);
+
+        //load.setVisibility(View.GONE);
     }
 
-
     public void signUp(View view){
+        load = findViewById(R.id.loadingPanel);
+        load.setVisibility(View.VISIBLE);
         String un = username.getText().toString();
         String pw = password.getText().toString();
         createUser(un,pw);
+
+        //load.setVisibility(View.GONE);
     }
-
-
+    
     private void createUser(String username, String pw){
         JsonObject json = new JsonObject();
         json.addProperty("name", username);
@@ -54,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 .load("POST", "http://10.0.2.2:5000/user")
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "application/json")
+                .setTimeout(1000)
                 .setJsonObjectBody(json)
                 .asJsonObject()
                 .setCallback((e, result) -> {
@@ -61,35 +74,35 @@ public class MainActivity extends AppCompatActivity {
                         toast(e.getMessage());
                     } else if(!"success".equals(result.get("message").getAsString())){
                         toast(result.get("message").getAsString());
+                        load.setVisibility(View.GONE);
                     } else{
-                        toast("getting token");
+                        //toast("getting token");
                         getToken(username, pw);
                     }
                 });
     }
 
-    private void getToken(String username, String pw) {
 
+    private void getToken(String username, String pw) {
         String credentials = new String(Base64.encode(String.format("%s:%s", username, pw).getBytes(), Base64.DEFAULT));
         Ion.with(this)
                 .load("GET", "http://10.0.2.2:5000/login")
                 .addHeader("Authorization", String.format("Basic %s", credentials))
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "application/json")
+                .setTimeout(1000)
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null) {
                         toast(e.getMessage());
                     }else if(result.get("message") != null){
                         toast(result.get("message").getAsString());
+                        load.setVisibility(View.GONE);
                     } else{
-                        ta.setToken(result.get("token").getAsString());
+                        //ta.setToken(result.get("token").getAsString());
                         proceed();
                     }
                 });
-
-
-
     }
 
     private void proceed() {
@@ -97,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
         finish();
 
     }
-
 
     private void toast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
