@@ -24,7 +24,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:text="@string/set_workout_type"/>
+            android:text="@string/set_workout_type"
+            android:backgroundTint="@android:color/black"
+            android:textColor="@android:color/white"
+            android:background="@android:drawable/dialog_holo_light_frame" />
 
         <TextView
             android:id="@+id/set_type_text"
@@ -42,7 +45,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:layout_marginTop="20dp"
-        android:text="@string/add_excercises"/>
+        android:text="@string/add_excercises"
+        android:backgroundTint="@android:color/black"
+        android:textColor="@android:color/white"
+        android:background="@android:drawable/dialog_holo_light_frame" />
 
     <TextView
         android:layout_width="wrap_content"

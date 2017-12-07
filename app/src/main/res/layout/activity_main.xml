@@ -53,7 +53,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.306" />
+        app:layout_constraintVertical_bias="0.306"
+        android:backgroundTint="@android:color/black"
+        android:textColor="@android:color/white"
+        android:background="@android:drawable/dialog_holo_light_frame"    />
 
     <Button
         android:id="@+id/btn_signup"
@@ -69,7 +72,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_signin"
-        app:layout_constraintVertical_bias="0.039" />
+        app:layout_constraintVertical_bias="0.039"
+        android:backgroundTint="@android:color/black"
+        android:textColor="@android:color/white"
+        android:background="@android:drawable/dialog_holo_light_frame"/>
+
 
         <RelativeLayout
             android:id="@+id/loadingPanel"
