@@ -1,7 +1,9 @@
-package fenrirmma.hreysti_app;
+package fenrirmma.hreysti_app.workout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import fenrirmma.hreysti_app.R;
 
 public class exerciseOfTheDay extends AppCompatActivity {
 

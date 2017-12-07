@@ -1,9 +1,11 @@
-package fenrirmma.hreysti_app;
+package fenrirmma.hreysti_app.workout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class WorkoutActivity extends AppCompatActivity {
+import fenrirmma.hreysti_app.R;
+
+public class createWorkoutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

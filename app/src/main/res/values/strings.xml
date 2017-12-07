@@ -4,4 +4,8 @@
     <string name="add_excercises">Add Excercises</string>
     <string name="set_workout_type">Set Workout Type</string>
     <string name="selected_excercises_for_workout">selected excercises for workout</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 </resources>
