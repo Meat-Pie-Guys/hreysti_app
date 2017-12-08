@@ -4,123 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fenrirmma.hreysti_app.user.adminActivity">
+    tools:context="fenrirmma.hreysti_app.user.Admin.adminActivity">
 
-    <EditText
-        android:id="@+id/textView4"
+
+    <Button
+        android:id="@+id/assign_coach_btn"
         android:layout_width="288dp"
         android:layout_height="47dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:hint="Search for user"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:backgroundTint="@android:color/black"
+        android:text="@string/assign_workout_to_coach"
+        android:onClick="assignCoach"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="270dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="User"
-        android:textSize="23dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.025" />
-
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Coach"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.231"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.042" />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="8dp"
-        android:text="Peasant"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radioButton"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.078" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="288dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Confirm Change"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@android:color/black"
-        android:textColor="@android:color/white"
-        android:background="@android:drawable/dialog_holo_light_frame" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="288dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Delete User"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.065"
-        android:backgroundTint="@android:color/black"
-        android:textColor="@android:color/white"
-        android:background="@android:drawable/dialog_holo_light_frame" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="288dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Assign Workout to coach"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
-        app:layout_constraintVertical_bias="0.078"
-        android:backgroundTint="@android:color/black"
-        android:textColor="@android:color/white"
-        android:background="@android:drawable/dialog_holo_light_frame" />
-
-    <Button
-        android:id="@+id/signOut"
+        android:id="@+id/admin_sign_out"
         android:layout_width="221dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -128,11 +35,26 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:onClick="signOut"
-        android:text="Sign out"
+        android:text="@string/sign_out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_exercise"
-        app:layout_constraintVertical_bias="0.553" />
+        app:layout_constraintTop_toBottomOf="@+id/get_user_list" />
+
+
+    <Button
+        android:id="@+id/get_user_list"
+        android:layout_width="288dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="96dp"
+        android:onClick="getAllUsers"
+        android:text="@string/list_of_users_in_database"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assign_coach_btn" />
 </android.support.constraint.ConstraintLayout>

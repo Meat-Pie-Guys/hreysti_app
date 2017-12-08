@@ -16,12 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".workout.createWorkoutActivity"></activity>
+        <activity android:name=".workout.createWorkoutActivity" />
         <activity android:name=".user.clientActivity" />
         <activity android:name=".user.coachActivity" />
         <activity android:name=".login.newSignUp" />
-        <activity android:name=".user.adminActivity" />
-        <activity android:name=".workout.exerciseOfTheDay"></activity>
+        <activity android:name=".user.Admin.adminActivity" />
+        <activity android:name=".workout.exerciseOfTheDay" />
+        <activity android:name=".user.Admin.allUsersAdminActivity" />
+        <activity android:name=".user.Admin.userInfoAdminActivity"></activity>
     </application>
 
 </manifest>
