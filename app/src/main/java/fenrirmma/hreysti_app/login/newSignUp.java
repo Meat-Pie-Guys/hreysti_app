@@ -39,10 +39,10 @@ public class newSignUp extends AppCompatActivity {
     }
 
     public void menu(View view) {
-        String name = name.getText().toString();
-        String ssn = ssn.getText().toString();
-        String pw = password.getText().toString();
-        setInfo(name, ssn, pw);
+        String _name = name.getText().toString();
+        String _ssn = ssn.getText().toString();
+        String _pw = password.getText().toString();
+        setInfo(_name, _ssn, _pw);
     }
 
     private void setInfo(String name, String ssn, String pw) {
