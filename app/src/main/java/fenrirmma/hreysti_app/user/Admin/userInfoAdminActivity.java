@@ -21,8 +21,8 @@ import fenrirmma.hreysti_app.login.SessionAccess;
 
 public class userInfoAdminActivity extends AppCompatActivity {
 
-    private TextView name, ssn, startDate;
-    private EditText role, expireDate;
+    private TextView name, ssn, startDate, expireDate;
+    private EditText role;
     private SessionAccess sa;
     private DatePickerDialog datePickerDialog;
 
@@ -74,9 +74,8 @@ public class userInfoAdminActivity extends AppCompatActivity {
                             this.recreate();
                         }
                     }
-
-
                 });
+        finish();
     }
 
     public void removeUser(View view) {
