@@ -1,5 +1,6 @@
 package fenrirmma.hreysti_app.user.Admin;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -10,7 +11,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
 
-import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,22 +22,30 @@ import fenrirmma.hreysti_app.login.SessionAccess;
 public class allUsersAdminActivity extends AppCompatActivity {
     private SessionAccess sa;
     private ListView userListView;
-    private List<String> userList;
+    private List<UserHelper> userList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_users_admin);
         sa = SessionAccess.getInstance(this);
-        userList = new ArrayList<>();
         userListView = findViewById(R.id.admin_user_list);
-        populateList(userList);
+        populateList();
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, userList);
-        userListView.setAdapter(arrayAdapter);
+        userListView.setOnItemClickListener((parent, view, pos, id) -> {
+            UserHelper curr = (UserHelper)parent.getItemAtPosition(pos);
+            Intent intent = new Intent(this, userInfoAdminActivity.class);
+            intent.putExtra("NAME", curr.getName());
+            intent.putExtra("SSN", curr.getSsn());
+            intent.putExtra("OPENID", curr.getOpenId());
+            intent.putExtra("ROLE", curr.getUserRole());
+            intent.putExtra("STARTDATE", curr.getStartDate());
+            intent.putExtra("EXPIREDATE", curr.getExpireDate());
+            startActivity(intent);
+        });
     }
 
-    private void populateList(List<String> list) {
+    private void populateList() {
+        userList = new ArrayList<>();
         Ion.with(this)
                 .load("GET", "http://10.0.2.2:5000/user/all")
                 .addHeader("Content-Type", "application/json")
@@ -54,14 +62,25 @@ public class allUsersAdminActivity extends AppCompatActivity {
                             Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
                         }
                         else{
-                            JsonArray users = result.get("all_users").getAsJsonArray();
+                            JsonArray users = result.getAsJsonArray("all_users");
                             for(int i = 0; i < users.size(); i++){
                                 JsonObject current = users.get(i).getAsJsonObject();
-                                list.add(current.get("name").getAsString());
+                                userList.add( new UserHelper(
+                                        current.get("name").getAsString(),
+                                        current.get("ssn").getAsString(),
+                                        current.get("open_id").getAsString(),
+                                        current.get("user_role").getAsString(),
+                                        current.get("start_date").getAsString(),
+                                        current.get("expire_date").getAsString()
+                                        ));
                             }
-
                         }
+                        ArrayAdapter<UserHelper> arrayAdapter = new ArrayAdapter<>(this,
+                                android.R.layout.simple_list_item_1, userList);
+                        userListView.setAdapter(arrayAdapter);
                     }
+
+
                 });
     }
 }

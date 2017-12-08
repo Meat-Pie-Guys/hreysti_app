@@ -22,7 +22,8 @@
         <activity android:name=".login.newSignUp" />
         <activity android:name=".user.Admin.adminActivity" />
         <activity android:name=".workout.exerciseOfTheDay" />
-        <activity android:name=".user.Admin.allUsersAdminActivity"></activity>
+        <activity android:name=".user.Admin.allUsersAdminActivity" />
+        <activity android:name=".user.Admin.userInfoAdminActivity"></activity>
     </application>
 
 </manifest>
