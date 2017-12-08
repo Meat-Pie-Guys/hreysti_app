@@ -20,7 +20,10 @@
         app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:backgroundTint="@android:color/black"
+        android:textColor="@android:color/white"
+        android:background="@android:drawable/dialog_holo_light_frame" />
 
     <Button
         android:id="@+id/btn_change_name"
@@ -36,7 +39,10 @@
         app:layout_constraintHorizontal_bias="0.832"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_exercise"
-        app:layout_constraintVertical_bias="0.012" />
+        app:layout_constraintVertical_bias="0.012"
+        android:backgroundTint="@android:color/black"
+        android:textColor="@android:color/white"
+        android:background="@android:drawable/dialog_holo_light_frame" />
 
     <EditText
         android:id="@+id/et_name"
@@ -84,7 +90,10 @@
         app:layout_constraintHorizontal_bias="0.832"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_change_name"
-        app:layout_constraintVertical_bias="0.003" />
+        app:layout_constraintVertical_bias="0.003"
+        android:backgroundTint="@android:color/black"
+        android:textColor="@android:color/white"
+        android:background="@android:drawable/dialog_holo_light_frame" />
 
     <Button
         android:id="@+id/btn_change_phone"
@@ -101,7 +110,10 @@
         app:layout_constraintHorizontal_bias="0.832"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_change_email"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintVertical_bias="0.063"
+        android:backgroundTint="@android:color/black"
+        android:textColor="@android:color/white"
+        android:background="@android:drawable/dialog_holo_light_frame" />
 
     <EditText
         android:id="@+id/et_phone"
@@ -151,7 +163,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.785"
-        android:onClick="MakeWorkout"/>
+        android:onClick="MakeWorkout"
+        android:backgroundTint="@android:color/black"
+        android:textColor="@android:color/white"
+        android:background="@android:drawable/dialog_holo_light_frame" />
 
     <Button
         android:id="@+id/btn_signup_for_exercise"
@@ -167,6 +182,9 @@
         app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.939" />
+        app:layout_constraintVertical_bias="0.939"
+        android:backgroundTint="@android:color/black"
+        android:textColor="@android:color/white"
+        android:background="@android:drawable/dialog_holo_light_frame" />
 
 </android.support.constraint.ConstraintLayout>
