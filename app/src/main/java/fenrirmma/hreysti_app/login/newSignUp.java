@@ -1,15 +1,114 @@
 package fenrirmma.hreysti_app.login;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.gson.JsonObject;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+
+import java.util.Objects;
 
 import fenrirmma.hreysti_app.R;
+import fenrirmma.hreysti_app.user.adminActivity;
+import fenrirmma.hreysti_app.user.clientActivity;
+import fenrirmma.hreysti_app.user.coachActivity;
 
 public class newSignUp extends AppCompatActivity {
+
+    SessionAccess sa;
+    private EditText NAME;
+    private EditText SSN;
+    private EditText password;
+    private EditText username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_sign_up);
+
+        NAME = findViewById(R.id.name);
+        SSN = findViewById(R.id.SSN);
+        password = findViewById(R.id.password);
+        username = findViewById(R.id.username);
+        sa = SessionAccess.getInstance(this);
+
+    }
+
+    public void menu(View view) {
+        String name = NAME.getText().toString();
+        String ssn = SSN.getText().toString();
+        String pw = password.getText().toString();
+        String uName = username.getText().toString();
+        setInfo(name, ssn, pw);
+    }
+
+    private void setInfo(String name, String ssn, String pw) {
+
+        JsonObject json = new JsonObject();
+        json.addProperty("name", name);
+        json.addProperty("SSN", ssn);
+        json.addProperty("password", pw);
+        Ion.with(this)
+                .load("POST", "http://10.0.2.2:5000/user")
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Accept", "application/json")
+                .setTimeout(1000)
+                .setJsonObjectBody(json)
+                .asJsonObject()
+                .setCallback((e, result) -> {
+                    if(e != null){
+                        Toast.makeText(this, "Ion error", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                    }
+                    else if(result.getAsInt() != 0){
+                        Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                    } else{
+                        getSession(ssn, pw);
+                    }
+
+                });
+
+    }
+
+    private void getSession(String ssn, String pw) {
+        String credentials = new String(Base64.encode(String.format("%s:%s", ssn, pw).getBytes(), Base64.DEFAULT));
+        Ion.with(this)
+                .load("GET", "http://10.0.2.2:5000/user")
+                .addHeader("Authorization", String.format("Basic %s", credentials))
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Accept", "application/json")
+                .setTimeout(1000)
+                .asJsonObject()
+                .setCallback((e, result) -> {
+                    if(e != null){
+                        Toast.makeText(this, "Ion error", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                    } else if(result.getAsInt() != 0){
+                        Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                    } else{
+                        sa.setRole(result.get("role").getAsString());
+                        sa.setToken(result.get("token").getAsString());
+                        proceed();
+                    }
+
+                });
+    }
+
+    private void proceed() {
+        String role = sa.getRole();
+        if(role.equals("admin")){
+            startActivity(new Intent(this, adminActivity.class));
+            finish();
+        } else if(role.equals("coach")){
+            startActivity(new Intent(this, coachActivity.class));
+            finish();
+        } else{
+            startActivity(new Intent(this, clientActivity.class));
+            finish();
+        }
     }
 }

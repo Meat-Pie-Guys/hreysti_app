@@ -7,19 +7,19 @@ import android.view.View;
 
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.login.MainActivity;
-import fenrirmma.hreysti_app.login.TokenAccess;
+import fenrirmma.hreysti_app.login.SessionAccess;
 import fenrirmma.hreysti_app.workout.exerciseOfTheDay;
 
 public class clientActivity extends AppCompatActivity {
 
-    private TokenAccess ta;
+    private SessionAccess ta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_idkandi);
 
-        ta = TokenAccess.getInstance(this);
+        ta = SessionAccess.getInstance(this);
 
     }
 
