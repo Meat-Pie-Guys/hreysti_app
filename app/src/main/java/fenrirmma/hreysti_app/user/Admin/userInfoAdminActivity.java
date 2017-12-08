@@ -1,9 +1,11 @@
 package fenrirmma.hreysti_app.user.Admin;
 
+import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,6 +13,8 @@ import android.widget.Toast;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
+
+import java.util.Calendar;
 
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.login.SessionAccess;
@@ -20,6 +24,7 @@ public class userInfoAdminActivity extends AppCompatActivity {
     private TextView name, ssn, startDate;
     private EditText role, expireDate;
     private SessionAccess sa;
+    private DatePickerDialog datePickerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +33,19 @@ public class userInfoAdminActivity extends AppCompatActivity {
         sa = SessionAccess.getInstance(this);
         setFields();
 
+        expireDate.setOnClickListener(v -> {
+            final Calendar c = Calendar.getInstance();
+            int mYear = c.get(Calendar.YEAR); // current year
+            int mMonth = c.get(Calendar.MONTH); // current month
+            int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+            datePickerDialog = new DatePickerDialog(userInfoAdminActivity.this,
+                    (view, year, monthOfYear, dayOfMonth) -> {
+                        expireDate.setText(dayOfMonth + "/"
+                                + (monthOfYear + 1) + "/" + year);
 
+                    }, mYear, mMonth, mDay);
+            datePickerDialog.show();
+        });
     }
 
     public void confirmChanges(View view) {
@@ -37,7 +54,7 @@ public class userInfoAdminActivity extends AppCompatActivity {
         json.addProperty("expire_date", expireDate.getText().toString());
         json.addProperty("role", role.getText().toString());
         Ion.with(this)
-                .load("GET", url)
+                .load("PUT", url)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "application/json")
                 .addHeader("fenrir-token", sa.getToken())
@@ -53,6 +70,7 @@ public class userInfoAdminActivity extends AppCompatActivity {
                             Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
                         }
                         else{
+                            Toast.makeText(this, "Hello THERE", Toast.LENGTH_SHORT).show();
                             this.recreate();
                         }
                     }

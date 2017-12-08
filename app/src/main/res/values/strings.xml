@@ -25,6 +25,7 @@
     <string name="admin_user_update_confirm">Confirm Changes</string>
     <string name="role">Role</string>
     <string name="remove_user">Remove User</string>
+    <string name="select_date">Select Date...</string>
     <string-array name="user_roles">
         <item>Client</item>
         <item>Coach</item>
