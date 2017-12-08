@@ -8,9 +8,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
+
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Objects;
 
@@ -45,12 +50,12 @@ public class newSignUp extends AppCompatActivity {
         setInfo(_name, _ssn, _pw);
     }
 
-    private void setInfo(String name, String ssn, String pw) {
+    private void setInfo(String _name, String _ssn, String _pw) {
 
         JsonObject json = new JsonObject();
-        json.addProperty("name", name);
-        json.addProperty("SSN", ssn);
-        json.addProperty("password", pw);
+        json.addProperty("name", _name);
+        json.addProperty("ssn", _ssn);
+        json.addProperty("password", _pw);
         Ion.with(this)
                 .load("POST", "http://10.0.2.2:5000/user")
                 .addHeader("Content-Type", "application/json")
@@ -62,12 +67,15 @@ public class newSignUp extends AppCompatActivity {
                     if(e != null){
                         Toast.makeText(this, "Ion error", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
                     }
-                    else if(result.getAsInt() != 0){
-                        Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
-                    } else{
-                        getSession(ssn, pw);
+                    else{
+                        String code = result.get("error").getAsString();
+                        if(!Objects.equals(code, "0")){
+                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        }
+                        else{
+                            getSession(_ssn, _pw);
+                        }
                     }
-
                 });
 
     }
@@ -75,7 +83,7 @@ public class newSignUp extends AppCompatActivity {
     private void getSession(String ssn, String pw) {
         String credentials = new String(Base64.encode(String.format("%s:%s", ssn, pw).getBytes(), Base64.DEFAULT));
         Ion.with(this)
-                .load("GET", "http://10.0.2.2:5000/user")
+                .load("GET", "http://10.0.2.2:5000/login")
                 .addHeader("Authorization", String.format("Basic %s", credentials))
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "application/json")
@@ -84,12 +92,17 @@ public class newSignUp extends AppCompatActivity {
                 .setCallback((e, result) -> {
                     if(e != null){
                         Toast.makeText(this, "Ion error", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
-                    } else if(result.getAsInt() != 0){
-                        Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
-                    } else{
-                        sa.setRole(result.get("role").getAsString());
-                        sa.setToken(result.get("token").getAsString());
-                        proceed();
+                    }
+                    else {
+                        String code = result.get("error").getAsString();
+                        if (!Objects.equals(code, "0")) {
+                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        }
+                        else{
+                            sa.setRole(result.get("role").getAsString());
+                            sa.setToken(result.get("token").getAsString());
+                            proceed();
+                        }
                     }
 
                 });
