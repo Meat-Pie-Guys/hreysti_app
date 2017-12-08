@@ -8,4 +8,7 @@
     <string name="sign_in">Sign In</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="ssn">SSN</string>
+    <string name="name">Name</string>
+    <string name="submit">Submit</string>
 </resources>

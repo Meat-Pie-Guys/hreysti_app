@@ -21,30 +21,27 @@ import fenrirmma.hreysti_app.user.coachActivity;
 
 public class newSignUp extends AppCompatActivity {
 
-    SessionAccess sa;
-    private EditText NAME;
-    private EditText SSN;
+    private SessionAccess sa;
+    private EditText name;
+    private EditText ssn;
     private EditText password;
-    private EditText username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_sign_up);
 
-        NAME = findViewById(R.id.name);
-        SSN = findViewById(R.id.SSN);
-        password = findViewById(R.id.password);
-        username = findViewById(R.id.username);
+        name = findViewById(R.id.signup_name);
+        ssn = findViewById(R.id.signup_ssn);
+        password = findViewById(R.id.signup_password);
         sa = SessionAccess.getInstance(this);
 
     }
 
     public void menu(View view) {
-        String name = NAME.getText().toString();
-        String ssn = SSN.getText().toString();
+        String name = name.getText().toString();
+        String ssn = ssn.getText().toString();
         String pw = password.getText().toString();
-        String uName = username.getText().toString();
         setInfo(name, ssn, pw);
     }
 
