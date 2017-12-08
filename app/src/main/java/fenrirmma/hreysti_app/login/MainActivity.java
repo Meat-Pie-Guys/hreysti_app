@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(this, "Ion error", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
                     }
                     else {
-                        String code = result.get("error").getAsString();
-                        if (!Objects.equals(code, "0")) {
+                        int code = result.get("error").getAsInt();
+                        if (code != 0) {
                             Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
                         }
                         else{
