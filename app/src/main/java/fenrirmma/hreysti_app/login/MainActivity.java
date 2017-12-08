@@ -6,15 +6,12 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.koushikdutta.ion.Ion;
 
-import java.util.Objects;
-
 import fenrirmma.hreysti_app.R;
-import fenrirmma.hreysti_app.user.adminActivity;
+import fenrirmma.hreysti_app.user.Admin.adminActivity;
 import fenrirmma.hreysti_app.user.clientActivity;
 import fenrirmma.hreysti_app.user.coachActivity;
 

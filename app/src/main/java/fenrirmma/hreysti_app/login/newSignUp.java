@@ -10,17 +10,13 @@ import android.widget.Toast;
 
 
 import com.google.gson.JsonObject;
-import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Objects;
 
 import fenrirmma.hreysti_app.R;
-import fenrirmma.hreysti_app.user.adminActivity;
+import fenrirmma.hreysti_app.user.Admin.adminActivity;
 import fenrirmma.hreysti_app.user.clientActivity;
 import fenrirmma.hreysti_app.user.coachActivity;
 

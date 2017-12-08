@@ -1,4 +1,4 @@
-package fenrirmma.hreysti_app.user;
+package fenrirmma.hreysti_app.user.Admin;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -26,5 +26,12 @@ public class adminActivity extends AppCompatActivity {
         sa.clearToken();
         startActivity(new Intent(this, MainActivity.class));
         finish();
+    }
+
+    public void assignCoach(View view) {
+    }
+
+    public void getAllUsers(View view) {
+        startActivity(new Intent(this, allUsersAdminActivity.class));
     }
 }
