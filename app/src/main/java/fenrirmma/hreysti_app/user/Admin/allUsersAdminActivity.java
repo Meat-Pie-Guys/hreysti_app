@@ -3,7 +3,10 @@ package fenrirmma.hreysti_app.user.Admin;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,6 +26,8 @@ public class allUsersAdminActivity extends AppCompatActivity {
     private SessionAccess sa;
     private ListView userListView;
     private List<UserHelper> userList;
+    private EditText search;
+    private ArrayAdapter<UserHelper> arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +35,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
         sa = SessionAccess.getInstance(this);
         userListView = findViewById(R.id.admin_user_list);
         populateList();
-
+        startSearchText();
         userListView.setOnItemClickListener((parent, view, pos, id) -> {
             UserHelper curr = (UserHelper)parent.getItemAtPosition(pos);
             Intent intent = new Intent(this, userInfoAdminActivity.class);
@@ -41,6 +46,23 @@ public class allUsersAdminActivity extends AppCompatActivity {
             intent.putExtra("STARTDATE", curr.getStartDate());
             intent.putExtra("EXPIREDATE", curr.getExpireDate());
             startActivity(intent);
+        });
+    }
+
+    private void startSearchText() {
+        search = findViewById(R.id.admin_search);
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+                // When user changed the Text
+                allUsersAdminActivity.this.arrayAdapter.getFilter().filter(cs);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) { }
+
+            @Override
+            public void afterTextChanged(Editable arg0) {}
         });
     }
 
@@ -75,12 +97,18 @@ public class allUsersAdminActivity extends AppCompatActivity {
                                         ));
                             }
                         }
-                        ArrayAdapter<UserHelper> arrayAdapter = new ArrayAdapter<>(this,
+                        arrayAdapter = new ArrayAdapter<>(this,
                                 android.R.layout.simple_list_item_1, userList);
                         userListView.setAdapter(arrayAdapter);
                     }
 
 
                 });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        populateList();
+        startSearchText();
     }
 }
