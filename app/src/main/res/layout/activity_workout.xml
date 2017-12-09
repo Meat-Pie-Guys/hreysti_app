@@ -19,7 +19,7 @@
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
-        <Button
+        <TextView
             android:id="@+id/set_type_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,35 +29,34 @@
             android:textColor="@android:color/white"
             android:background="@android:drawable/dialog_holo_light_frame" />
 
-        <TextView
+        <EditText
             android:id="@+id/set_type_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_marginStart="12dp"
-            android:text="helloghello"/>
+            android:hint="insert workout type...."/>
 
     </LinearLayout>
 
+
+    <EditText
+        android:id="@+id/workout"
+        android:layout_width="351dp"
+        android:layout_height="188dp"
+        android:hint="Create the workout here..." />
+
     <Button
-        android:id="@+id/add_excercises"
+        android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
+        android:layout_gravity="right"
         android:layout_marginTop="20dp"
-        android:text="@string/add_excercises"
+        android:background="@android:drawable/dialog_holo_light_frame"
         android:backgroundTint="@android:color/black"
-        android:textColor="@android:color/white"
-        android:background="@android:drawable/dialog_holo_light_frame" />
+        android:onClick="submitWorkout"
+        android:text="Submit"
+        android:textColor="@android:color/white" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/selected_excercises_for_workout"/>
-
-    <ListView
-        android:id="@+id/list_of_excercises"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"></ListView>
 
 </LinearLayout>
