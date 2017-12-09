@@ -15,6 +15,7 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
     private List<UserHelper> userList;
     private EditText search;
     private ArrayAdapter<UserHelper> arrayAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,7 +95,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
                                         current.get("open_id").getAsString(),
                                         current.get("user_role").getAsString(),
                                         current.get("start_date").getAsString(),
-                                        current.get("expire_date").getAsString()
+                                        DateConverter.convert(current.get("expire_date").getAsString())
                                         ));
                             }
                         }
