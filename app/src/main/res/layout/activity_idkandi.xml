@@ -50,30 +50,23 @@
         android:id="@+id/client_name"
         android:layout_width="211dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="388dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_change_name"
         app:layout_constraintHorizontal_bias="0.727"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.264" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/client_ssn"
         android:layout_width="211dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="324dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_change_email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/client_name"
-        app:layout_constraintVertical_bias="0.17" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <Button
@@ -95,12 +88,15 @@
 
     <TextView
         android:id="@+id/client_name_show"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="137dp"
+        android:layout_height="31dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/client_ssn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/client_name" />
+        app:layout_constraintTop_toBottomOf="@+id/client_name"
+        app:layout_constraintVertical_bias="0.008" />
 
 </android.support.constraint.ConstraintLayout>

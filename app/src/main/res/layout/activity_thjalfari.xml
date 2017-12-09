@@ -15,6 +15,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/workout_of_the_day"
+        android:onClick="exerciseOfTheDay"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.43"
@@ -34,6 +35,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/edit"
+        android:onClick="editName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.832"
@@ -45,7 +47,7 @@
         android:background="@android:drawable/dialog_holo_light_frame" />
 
     <EditText
-        android:id="@+id/et_name"
+        android:id="@+id/new_name"
         android:layout_width="211dp"
         android:layout_height="47dp"
         android:layout_marginBottom="8dp"
@@ -60,6 +62,29 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_exercise"
         app:layout_constraintVertical_bias="0.047" />
 
+    <TextView
+        android:id="@+id/coach_ssn"
+        android:layout_width="211dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_make_exercise"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/client_name_show" />
+
+    <TextView
+        android:id="@+id/coach_name_show"
+        android:layout_width="183dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/coach_ssn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_name" />
+
     <Button
         android:id="@+id/btn_make_exercise"
         android:layout_width="288dp"
@@ -68,17 +93,16 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:backgroundTint="@android:color/black"
+        android:onClick="MakeWorkout"
         android:text="Búa til nýja æfingu"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.785"
-        android:onClick="MakeWorkout"
-        android:backgroundTint="@android:color/black"
-        android:textColor="@android:color/white"
-        android:background="@android:drawable/dialog_holo_light_frame" />
+        app:layout_constraintVertical_bias="0.592" />
 
     <Button
         android:id="@+id/btn_signup_for_exercise"
@@ -88,15 +112,31 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:backgroundTint="@android:color/black"
         android:text="Skrá á æfingu"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.939"
-        android:backgroundTint="@android:color/black"
-        android:textColor="@android:color/white"
-        android:background="@android:drawable/dialog_holo_light_frame" />
+        app:layout_constraintVertical_bias="0.756" />
+
+    <Button
+        android:id="@+id/signOut"
+        android:layout_width="221dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="signOut"
+        android:text="Sign out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_signup_for_exercise"
+        app:layout_constraintVertical_bias="0.463" />
 
 </android.support.constraint.ConstraintLayout>
