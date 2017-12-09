@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void signUp(View view){
         startActivity(new Intent(this, newSignUp.class));
-        finish();
 
     }
 
