@@ -35,7 +35,6 @@ public class createWorkoutActivity extends AppCompatActivity {
     private TextView date, coach_name;
     private DatePickerDialog datePickerDialog;
     private List<UserHelper> list;
-    private ArrayAdapter<UserHelper> adapterList;
     private UserHelper coach;
     private ListView coachList;
 

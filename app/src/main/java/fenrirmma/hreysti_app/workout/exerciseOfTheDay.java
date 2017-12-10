@@ -4,10 +4,13 @@ package fenrirmma.hreysti_app.workout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
 
@@ -15,16 +18,22 @@ import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.login.SessionAccess;
 import fenrirmma.hreysti_app.user.Admin.DateConverter;
+import fenrirmma.hreysti_app.user.Admin.UserHelper;
 import fenrirmma.hreysti_app.user.clientActivity;
 
 public class exerciseOfTheDay extends AppCompatActivity {
 
     private SessionAccess sa;
-    private TextView todays_workout, display_time;
+    private TextView todays_workout, date_view;
+    private ListView workout_list;
     private String time;
+    private List<WorkoutHelper> list_workout;
     private int day, month, year;
 
     @Override
@@ -33,9 +42,15 @@ public class exerciseOfTheDay extends AppCompatActivity {
         setContentView(R.layout.activity_exercise_of_the_day);
 
         todays_workout = findViewById(R.id.workout_day);
-        display_time = findViewById(R.id.display_time);
+        workout_list = findViewById(R.id.list_workouts);
+        date_view = findViewById(R.id.date_view);
 
         sa = SessionAccess.getInstance(this);
+        setTime();
+
+    }
+
+    private void setTime() {
         DateTime dt = new DateTime();
         int dow = dt.getDayOfWeek();
 
@@ -46,6 +61,7 @@ public class exerciseOfTheDay extends AppCompatActivity {
             day = today.getDayOfMonth();
             month = today.getMonthOfYear();
             year = today.getYear();
+            date_view.setText(today.toString());
         } else{
             day = tomorrow.getDayOfMonth();
             month = tomorrow.getMonthOfYear();
@@ -69,6 +85,7 @@ public class exerciseOfTheDay extends AppCompatActivity {
             sb.append(Integer.toString(year) + "-" + Integer.toString(month) + "-" + Integer.toString(day) + "-" + time);
             String date = sb.toString();
             displayWorkout(date);
+            populateWorkoutList(date);
         } else{
             //all other days
             //get time
@@ -77,7 +94,48 @@ public class exerciseOfTheDay extends AppCompatActivity {
             sb.append(Integer.toString(year) + "-" + Integer.toString(month) + "-" + Integer.toString(day) + "-" + time);
             String date = sb.toString();
             displayWorkout(date);
+            populateWorkoutList(date);
         }
+
+    }
+
+    private void populateWorkoutList(String date) {
+        list_workout = new ArrayList<>();
+        Ion.with(this)
+                .load("GET", "http://10.0.2.2:5000/workout/all/" + date)
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Accept", "application/json")
+                .addHeader("fenrir-token", sa.getToken())
+                .setTimeout(1000)
+                .asJsonObject()
+                .setCallback((e, result) -> {
+                    if(e != null){
+                        Toast.makeText(this, "ION ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                    }else {
+                        int code = result.get("error").getAsInt();
+                        if (code != 0) {
+                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        }
+                        else{
+                            JsonArray users = result.getAsJsonArray("all_workouts");
+                            for(int i = 0; i < users.size(); i++){
+                                JsonObject current = users.get(i).getAsJsonObject();
+                                list_workout.add( new WorkoutHelper(
+                                        current.get("id").getAsString(),
+                                        current.get("coach_id").getAsString(),
+                                        current.get("description").getAsString(),
+                                        current.get("date").getAsString()
+                                ));
+                            }
+                        }
+                        ArrayAdapter<WorkoutHelper> adapter = new ArrayAdapter<>(this,
+                                android.R.layout.simple_list_item_1, list_workout);
+                        workout_list.setAdapter(adapter);
+                    }
+
+
+                });
+
     }
 
     private void displayWorkout(String date) {
