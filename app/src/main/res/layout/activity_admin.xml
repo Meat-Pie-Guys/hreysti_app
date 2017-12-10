@@ -18,7 +18,7 @@
         android:background="@android:drawable/dialog_holo_light_frame"
         android:backgroundTint="@android:color/black"
         android:text="@string/create_a_new_workout"
-        android:onClick="createWor+kout"
+        android:onClick="createWorkout"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

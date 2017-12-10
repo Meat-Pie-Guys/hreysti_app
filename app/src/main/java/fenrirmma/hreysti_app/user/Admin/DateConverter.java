@@ -27,6 +27,16 @@ public final class DateConverter {
         return date;
     }
 
+    public static String parser(String y){
+
+        String[] split = y.split("T");
+        String time = split[1];
+        String[] split2 = time.split(":");
+        String hour = split2[0];
+
+        return hour;
+    }
+
     private static String parseMonth(String m) {
         String _month = null;
         switch (m){
