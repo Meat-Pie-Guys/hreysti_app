@@ -44,11 +44,12 @@ public class newSignUp extends AppCompatActivity {
         String _name = name.getText().toString();
         String _ssn = ssn.getText().toString();
         String _pw = password.getText().toString();
-        if(KennitalaValidator.isValid(_ssn)){
-            setInfo(_name, _ssn, _pw);
+        setInfo(_name, _ssn, _pw);
+        /*if(KennitalaValidator.isValid(_ssn)){
+
         } else{
             Toast.makeText(this, "Kennitala is illegal", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
-        }
+        }*/
 
     }
 
