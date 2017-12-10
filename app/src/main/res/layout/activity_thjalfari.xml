@@ -69,6 +69,7 @@
         android:layout_marginBottom="28dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/btn_make_exercise"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/client_name_show" />
@@ -81,6 +82,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/coach_ssn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_name" />
@@ -96,7 +98,7 @@
         android:background="@android:drawable/dialog_holo_light_frame"
         android:backgroundTint="@android:color/black"
         android:onClick="MakeWorkout"
-        android:text="Búa til nýja æfingu"
+        android:text="Create a workout"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -122,6 +124,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.756" />
 
+
     <Button
         android:id="@+id/signOut"
         android:layout_width="221dp"
@@ -137,6 +140,9 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_signup_for_exercise"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:backgroundTint="@android:color/black"
+        android:textColor="@android:color/white"
         app:layout_constraintVertical_bias="0.463" />
 
 </android.support.constraint.ConstraintLayout>

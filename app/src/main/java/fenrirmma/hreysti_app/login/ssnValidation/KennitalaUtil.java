@@ -2,6 +2,7 @@ package fenrirmma.hreysti_app.login.ssnValidation;
 
 /**
  * Created by Copyright (c) 2014 Hilmar Ævar Hilmarsson
+ * https://github.com/hilmarh/java-kennitala
  */
 
 import java.util.Calendar;

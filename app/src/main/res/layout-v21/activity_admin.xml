@@ -6,6 +6,25 @@
     android:layout_height="match_parent"
     tools:context="fenrirmma.hreysti_app.user.Admin.adminActivity">
 
+    <Button
+        android:id="@+id/create_new_workout"
+        android:layout_width="288dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:backgroundTint="@android:color/black"
+        android:onClick="createWorkout"
+        android:text="@string/create_a_new_workout"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.227" />
+
 
     <Button
         android:id="@+id/assign_coach_btn"

@@ -23,7 +23,7 @@
         <activity android:name=".user.Admin.adminActivity" />
         <activity android:name=".workout.exerciseOfTheDay" />
         <activity android:name=".user.Admin.allUsersAdminActivity" />
-        <activity android:name=".user.Admin.userInfoAdminActivity"></activity>
+        <activity android:name=".user.Admin.userInfoAdminActivity" />
     </application>
 
 </manifest>
