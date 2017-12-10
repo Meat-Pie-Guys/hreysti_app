@@ -1,12 +1,14 @@
 package fenrirmma.hreysti_app.workout;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +25,7 @@ import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.login.SessionAccess;
 import fenrirmma.hreysti_app.user.Admin.DateConverter;
 import fenrirmma.hreysti_app.user.Admin.UserHelper;
+import fenrirmma.hreysti_app.user.Admin.userInfoAdminActivity;
 
 public class createWorkoutActivity extends AppCompatActivity {
 
@@ -34,6 +37,7 @@ public class createWorkoutActivity extends AppCompatActivity {
     private List<UserHelper> list;
     private ArrayAdapter<UserHelper> adapterList;
     private UserHelper coach;
+    private ListView coachList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +47,18 @@ public class createWorkoutActivity extends AppCompatActivity {
         sa = SessionAccess.getInstance(this);
         workout = findViewById(R.id.workout);
         date = findViewById(R.id.calander);
-        coach_name = findViewById(R.id.coach);
+        coach_name = findViewById(R.id.coach_name);
+        coachList = findViewById(R.id.listCoachView);
+
 
         setDate();
         setTime();
         getList();
-        setCoach();
+        coachList.setOnItemClickListener((parent, view, pos, id) -> {
+            coach = (UserHelper)parent.getItemAtPosition(pos);
+            coach_name.setText(coach.getName());
+
+        });
 
 
     }
@@ -84,31 +94,15 @@ public class createWorkoutActivity extends AppCompatActivity {
                                 ));
                             }
                         }
+                        ArrayAdapter<UserHelper> adapter = new ArrayAdapter<>(this,
+                                android.R.layout.simple_list_item_1, list);
+                        coachList.setAdapter(adapter);
                     }
 
 
                 });
     }
 
-    private void setCoach() {
-
-        ArrayAdapter<UserHelper> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
-        Spinner spin = findViewById(R.id.coach_spinner);
-        spin.setAdapter(adapter);
-
-        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                coach = (UserHelper)parent.getItemAtPosition(position);
-
-
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-    }
 
     private void setDate() {
 
@@ -149,7 +143,7 @@ public class createWorkoutActivity extends AppCompatActivity {
     public void submitWorkout(View view) {
 
         JsonObject json = new JsonObject();
-        json.addProperty("coach_id", "fdae539a-78ac-4f34-b589-beb33df029fe");
+        json.addProperty("coach_id", coach.getOpenId());
         json.addProperty("description", workout.getText().toString());
         json.addProperty("date", date.getText().toString());
         json.addProperty("time", _time);
