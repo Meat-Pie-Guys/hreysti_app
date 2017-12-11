@@ -20,31 +20,27 @@
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:text=" Exercise of the day:"/>
-    <CalendarView
+        android:text=" Exercises of the day:"/>
+    <TextView
+        android:id="@+id/workout_day"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/display_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycle_view_admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
-    </CalendarView>
-
-        <TextView
-            android:layout_width="288dp"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:textSize="20dp"
-            android:text="Exercise1"/>
-        <TextView
-            android:layout_width="288dp"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:textSize="20dp"
-            android:text="Exercise2"/>
-        <TextView
-            android:layout_width="288dp"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:textSize="20dp"
-            android:text="Exercise3"/>
-
+    <Button
+        android:id="@+id/btn_signup_for_exercise"
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+        android:text="sign up for exercise"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:backgroundTint="@android:color/black"
+        android:textColor="@android:color/white"/>
 
 </LinearLayout>
