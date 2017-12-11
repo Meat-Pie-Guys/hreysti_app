@@ -9,26 +9,32 @@ import java.util.Locale;
 public class WorkoutHelper {
 
     private String open_id;
-    private String coach_id;
+    private String coach_name;
     private String description;
     private String date;
+    private String attending;
 
-    public WorkoutHelper(String open_id, String coach_id, String description, String date){
+
+    public WorkoutHelper(String open_id, String coach_name, String description, String date, String attending){
         this.open_id = open_id;
-        this.coach_id = coach_id;
+        this.coach_name = coach_name;
         this.description = description;
         this.date = date;
+        this.attending = attending;
     }
 
     public String getOpen_id() {
         return open_id;
     }
 
-    public String getCoach_id() {
-        return "Rapeman";
-        //return coach_id;
+    public String getCoach_name() {
+
+        return coach_name;
     }
 
+    public String getAttending() {
+        return attending;
+    }
     public String getDescription() {
         return description;
     }

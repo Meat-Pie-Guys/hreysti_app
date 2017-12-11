@@ -57,10 +57,10 @@ public class CustomAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
         }
 
-
-        holder.txtCount.setText(String.format(resources.getString(R.string.people_registered_to_the_workout_1_s), "[5/12]"));
+        String attending = workoutArrayList.get(position).getAttending();
+        holder.txtCount.setText(String.format(resources.getString(R.string.people_registered_to_the_workout_1_s), attending + "/12"));
         holder.txtTime.setText(String.format(resources.getString(R.string.time_1_s), workoutArrayList.get(position).getDate()));
-        holder.txtCoach.setText(String.format(resources.getString(R.string.coach_1_s), workoutArrayList.get(position).getCoach_id()));
+        holder.txtCoach.setText(String.format(resources.getString(R.string.coach_1_s), workoutArrayList.get(position).getCoach_name()));
 
 
         return convertView;

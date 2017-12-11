@@ -52,8 +52,11 @@ public class exerciseOfTheDay extends AppCompatActivity {
         setTime();
 
         workout_list.setOnItemClickListener((parent, view, pos, id) -> {
+            //if user is client then attending workout
+            //if user is coach/admin then they can update
             WorkoutHelper curr = (WorkoutHelper) parent.getItemAtPosition(pos);
             participateInWorkout(curr.getOpen_id());
+            setTime();
 
         });
 
@@ -139,9 +142,10 @@ public class exerciseOfTheDay extends AppCompatActivity {
                                 JsonObject current = users.get(i).getAsJsonObject();
                                 list_workout.add( new WorkoutHelper(
                                         current.get("id").getAsString(),
-                                        current.get("coach_id").getAsString(),
+                                        current.get("coach_name").getAsString(),
                                         current.get("description").getAsString(),
-                                        current.get("date_time").getAsString()
+                                        current.get("date_time").getAsString(),
+                                        current.get("attending").getAsString()
                                 ));
                             }
                         }

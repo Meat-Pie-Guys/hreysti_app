@@ -29,7 +29,7 @@
     <string name="create_a_new_workout">Create a new workout</string>
     <string name="coach_1_s">Coach: %1$s</string>
     <string name="time_1_s">Time: %1$s</string>
-    <string name="people_registered_to_the_workout_1_s">People: %1$s</string>
+    <string name="people_registered_to_the_workout_1_s">Attending: %1$s</string>
     <string-array name="user_roles">
         <item>Client</item>
         <item>Coach</item>

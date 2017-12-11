@@ -2,6 +2,7 @@ package fenrirmma.hreysti_app.login.ssnValidation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public final class Validator {
     private Validator() { }
@@ -15,6 +16,7 @@ public final class Validator {
         return (century == 0 || century == 9)
                 &&
                 validDate(String.format(
+                        Locale.US,
                         "%d/%d/%d",
                         Integer.parseInt(ssn.substring(0, 2)),
                         Integer.parseInt(ssn.substring(2, 4)),
