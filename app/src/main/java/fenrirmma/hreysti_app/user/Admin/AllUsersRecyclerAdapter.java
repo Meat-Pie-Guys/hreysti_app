@@ -21,7 +21,7 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
     private List<UserHelper> userList;
     private Activity activity;
 
-    private AllUsersRecyclerAdapter(Activity activity, List<UserHelper> userList){
+    public AllUsersRecyclerAdapter(Activity activity, List<UserHelper> userList){
         this.userList = userList;
         this.activity = activity;
     }

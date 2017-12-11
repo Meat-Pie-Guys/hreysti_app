@@ -21,6 +21,7 @@
     <string name="admin_user_name">Name: %1$s</string>
     <string name="admin_user_ssn">SSN: %1$s</string>
     <string name="admin_user_startdate">Start Date: %1$s</string>
+    <string name="admin_user_role">%1$s</string>
     <string name="expiredate">ExpireDate</string>
     <string name="admin_user_update_confirm">Confirm Changes</string>
     <string name="role">Role</string>
