@@ -24,6 +24,7 @@
         <activity android:name=".workout.exerciseOfTheDay" />
         <activity android:name=".user.Admin.allUsersAdminActivity" />
         <activity android:name=".user.Admin.userInfoAdminActivity" />
+        <activity android:name=".workout.updateWorkoutActivity"></activity>
     </application>
 
 </manifest>

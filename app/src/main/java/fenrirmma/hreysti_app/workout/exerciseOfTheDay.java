@@ -21,6 +21,7 @@ import org.joda.time.LocalTime;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.login.SessionAccess;
@@ -35,7 +36,7 @@ public class exerciseOfTheDay extends AppCompatActivity {
     private TextView todays_workout, date_view;
     private ListView workout_list;
     ArrayAdapter<WorkoutHelper> adapter;
-    private String time;
+    private String time, role;
     private ArrayList<WorkoutHelper> list_workout;
     private int day, month, year;
 
@@ -47,17 +48,23 @@ public class exerciseOfTheDay extends AppCompatActivity {
         todays_workout = findViewById(R.id.workout_day);
         workout_list = findViewById(R.id.list_workouts);
         date_view = findViewById(R.id.date_view);
-
+        role = getIntent().getStringExtra("ROLE");
         sa = SessionAccess.getInstance(this);
         setTime();
 
         workout_list.setOnItemClickListener((parent, view, pos, id) -> {
-            //if user is client then attending workout
-            //if user is coach/admin then they can update
+            // TODO if user is client then attending workout
+            // TODO if user is coach/admin then they can update
             WorkoutHelper curr = (WorkoutHelper) parent.getItemAtPosition(pos);
-            participateInWorkout(curr.getOpen_id());
+            if(Objects.equals(role, "Client")){
+                participateInWorkout(curr.getOpen_id());
+            }
+            else{
+                Intent intent = new Intent(this, updateWorkoutActivity.class);
+                intent.putExtra("ID", curr.getOpen_id());
+                startActivity(intent);
+            }
             setTime();
-
         });
 
 
