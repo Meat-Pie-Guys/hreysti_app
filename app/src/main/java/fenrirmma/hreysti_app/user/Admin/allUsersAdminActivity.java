@@ -3,6 +3,7 @@ package fenrirmma.hreysti_app.user.Admin;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -40,6 +41,9 @@ public class allUsersAdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_all_users_admin);
         sa = SessionAccess.getInstance(this);
         recyclerView = findViewById(R.id.recycle_view_admin);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
         //userArrayList = new ArrayList<>();
         adapter = new AllUsersRecyclerAdapter(this, userArrayList);
         recyclerView.setAdapter(adapter);
@@ -123,7 +127,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //populateList();
+        populateList();
         //startSearchText();
     }
 }
