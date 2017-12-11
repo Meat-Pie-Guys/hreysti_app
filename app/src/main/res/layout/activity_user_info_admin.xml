@@ -28,13 +28,13 @@
                 android:text="Name:"
                 android:textColor="@android:color/black"
                 android:textSize="20dp" />
-            <EditText
+            <TextView
                 android:id="@+id/name"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="@string/admin_user_name"
-                android:inputType="textCapSentences" />
+                android:textColor="@android:color/black"
+                android:textSize="20dp"
+                android:text="@string/admin_user_name" />
         </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

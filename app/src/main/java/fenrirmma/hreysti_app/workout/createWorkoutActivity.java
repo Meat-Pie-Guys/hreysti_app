@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -32,12 +33,13 @@ public class createWorkoutActivity extends AppCompatActivity {
     private SessionAccess sa;
     private EditText workout;
     private String _time;
-    private TextView date, coach_name;
+    private TextView coach_name;
     private DatePickerDialog datePickerDialog;
     private List<UserHelper> list;
     private ArrayAdapter<UserHelper> adapterList;
     private UserHelper coach;
     private ListView coachList;
+    private Button date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class createWorkoutActivity extends AppCompatActivity {
 
         sa = SessionAccess.getInstance(this);
         workout = findViewById(R.id.workout);
-        date = findViewById(R.id.calander);
+        date = findViewById(R.id.btn_pick_date);
         coach_name = findViewById(R.id.coach_name);
         coachList = findViewById(R.id.listCoachView);
 
