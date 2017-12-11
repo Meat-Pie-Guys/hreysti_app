@@ -21,14 +21,6 @@
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:text=" Exercises of the day:"/>
-    <TextView
-        android:id="@+id/workout_day"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/display_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle_view_admin"
         android:layout_width="match_parent"

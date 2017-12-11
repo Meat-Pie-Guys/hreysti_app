@@ -35,7 +35,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_users_admin);
         sa = SessionAccess.getInstance(this);
-        userListView = findViewById(R.id.recycle_view);
+        userListView = findViewById(R.id.recycle_view_admin);
         populateList();
         startSearchText();
         userListView.setOnItemClickListener((parent, view, pos, id) -> {
