@@ -1,10 +1,14 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:cardview="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/card_view"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="6dp">
+    android:layout_height="match_parent"
+    android:id="@+id/card_view"
+    android:layout_margin="5dp"
+    card_view:cardCornerRadius="12dp"
+    card_view:cardElevation="1dp"
+    card_view:contentPadding="4dp"
+    android:clickable="true" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,43 +24,34 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/ssn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/expires"
-                android:text="123456-7890"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
+                android:text="@string/admin_user_name" />
 
             <TextView
                 android:id="@+id/role"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/ssn"
-                android:text="Iðkandi"
-                android:textColor="@android:color/black"
+                android:layout_below="@+id/name"
+                android:text="Iðkandi / Þjálfari"
                 android:textStyle="bold" />
+
             <TextView
-                android:id="@+id/expires"
+                android:id="@+id/ssn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/name"
-                android:text="01.01.3056"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
+                android:layout_below="@+id/role"
+                android:text="@string/admin_user_ssn"/>
+            <TextView
+                android:id="@+id/start_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ssn"
+                android:text="@string/admin_user_startdate"/>
 
 
         </RelativeLayout>
