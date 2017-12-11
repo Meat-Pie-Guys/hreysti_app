@@ -121,7 +121,7 @@ public class createWorkoutActivity extends AppCompatActivity {
     }
 
     private void setTime() {
-        String time[] = new String[]{"06:10", "10:30", "12:10", "17:15", "18:15"};
+        String time[] = new String[]{"06:10", "10:30", "12:10", "17:15"};
         ArrayAdapter<String> aAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, time);
         Spinner spinner = findViewById(R.id.time_spinner);
         spinner.setAdapter(aAdapter);
@@ -168,6 +168,5 @@ public class createWorkoutActivity extends AppCompatActivity {
                         }
                     }
                 });
-        finish();
     }
 }
