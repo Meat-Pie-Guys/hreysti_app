@@ -28,6 +28,7 @@ public class clientActivity extends AppCompatActivity {
     private SessionAccess sa;
     private TextView client_ssn, client_name_show;
     private EditText client_name;
+    private String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class clientActivity extends AppCompatActivity {
                             JsonObject user = result.get("user").getAsJsonObject();
                             client_name_show.setText(user.get("name").getAsString());
                             client_ssn.setText(user.get("ssn").getAsString());
+                            role = user.get("role").getAsString();
                         }
                     }
                 });
@@ -70,6 +72,8 @@ public class clientActivity extends AppCompatActivity {
 
     public void exerciseOfTheDay(View view){
         Intent intent = new Intent(clientActivity.this, exerciseOfTheDay.class);
+        intent.putExtra("ROLE", role);
+        Toast.makeText(this, role, Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
 

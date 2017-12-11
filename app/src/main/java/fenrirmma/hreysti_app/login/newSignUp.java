@@ -16,7 +16,7 @@ import com.koushikdutta.ion.Ion;
 import java.util.Objects;
 
 import fenrirmma.hreysti_app.R;
-import fenrirmma.hreysti_app.login.ssnValidation.KennitalaValidator;
+import fenrirmma.hreysti_app.login.ssnValidation.Validator;
 import fenrirmma.hreysti_app.user.Admin.adminActivity;
 import fenrirmma.hreysti_app.user.clientActivity;
 import fenrirmma.hreysti_app.user.coachActivity;
@@ -44,12 +44,12 @@ public class newSignUp extends AppCompatActivity {
         String _name = name.getText().toString();
         String _ssn = ssn.getText().toString();
         String _pw = password.getText().toString();
-        setInfo(_name, _ssn, _pw);
-        /*if(KennitalaValidator.isValid(_ssn)){
 
+        if(Validator.isValidSSN(_ssn)){
+            setInfo(_name, _ssn, _pw);
         } else{
             Toast.makeText(this, "Kennitala is illegal", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
-        }*/
+        }
 
     }
 
