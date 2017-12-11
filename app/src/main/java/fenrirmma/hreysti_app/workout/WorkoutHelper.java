@@ -40,11 +40,15 @@ public class WorkoutHelper {
     }
 
     public String getDate() {
-
-        return getTime(date);
+        return date;
     }
 
-    public String getTime(String date){
+    public String getTime() {
+
+        return _getTime(date);
+    }
+
+    public String _getTime(String date){
         String split[] = date.split(" ");
         String time = split[4];
         String split2 [] = time.split(":");
