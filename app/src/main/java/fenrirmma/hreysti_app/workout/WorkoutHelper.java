@@ -1,5 +1,7 @@
 package fenrirmma.hreysti_app.workout;
 
+import java.util.Locale;
+
 /**
  * Created by Notandi on 10.12.2017.
  */
@@ -23,7 +25,8 @@ public class WorkoutHelper {
     }
 
     public String getCoach_id() {
-        return coach_id;
+        return "Rapeman";
+        //return coach_id;
     }
 
     public String getDescription() {
@@ -31,6 +34,20 @@ public class WorkoutHelper {
     }
 
     public String getDate() {
-        return date;
+
+        return getTime(date);
     }
+
+    public String getTime(String date){
+        String split[] = date.split(" ");
+        String time = split[4];
+        String split2 [] = time.split(":");
+        String hour = split2[0];
+        String mins = split2[1];
+        String secs = split2[2];
+        StringBuilder sb = new StringBuilder();
+        sb.append(hour).append(":").append(mins);
+        return sb.toString();
+    }
+
 }
