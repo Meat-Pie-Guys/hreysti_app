@@ -54,7 +54,7 @@ public class exerciseOfTheDay extends AppCompatActivity {
         workout_list.setOnItemClickListener((parent, view, pos, id) -> {
             WorkoutHelper curr = (WorkoutHelper) parent.getItemAtPosition(pos);
             participateInWorkout(curr.getOpen_id());
-            
+
         });
 
 
