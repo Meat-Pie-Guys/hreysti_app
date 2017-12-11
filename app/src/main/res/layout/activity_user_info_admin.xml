@@ -60,6 +60,7 @@
             android:layout_above="@+id/edit_user_name"
             android:layout_alignStart="@+id/edit_user_name"
             android:textSize="20dp"
+            android:textColor="@android:color/black"
             android:text="@string/admin_user_ssn" />
     </LinearLayout>
     <LinearLayout
@@ -106,6 +107,7 @@
         android:layout_marginTop="8dp"
         android:hint="@string/admin_user_startdate" />
     </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

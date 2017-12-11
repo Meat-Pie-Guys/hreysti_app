@@ -75,7 +75,7 @@
             android:background="@android:drawable/dialog_holo_light_frame"
             android:backgroundTint="@android:color/black"
             android:onClick="exerciseOfTheDay"
-            android:text="Æfing dagsins"
+            android:text="Today's workouts"
             android:textColor="@android:color/white" />
 
 

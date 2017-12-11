@@ -20,6 +20,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:textColor="@android:color/black"
             android:hint="@string/name"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -36,6 +37,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:hint="@string/ssn"
+            android:textColor="@android:color/black"
             android:inputType="number" />
     </android.support.design.widget.TextInputLayout>
 
@@ -52,6 +54,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:hint="@string/password"
+            android:textColor="@android:color/black"
             android:inputType="textPassword"/>
     </android.support.design.widget.TextInputLayout>
 
