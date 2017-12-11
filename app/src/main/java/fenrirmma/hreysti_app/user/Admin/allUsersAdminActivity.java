@@ -35,7 +35,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_users_admin);
         sa = SessionAccess.getInstance(this);
-        userListView = findViewById(R.id.admin_user_list);
+        userListView = findViewById(R.id.recycle_view);
         populateList();
         startSearchText();
         userListView.setOnItemClickListener((parent, view, pos, id) -> {
@@ -52,7 +52,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
     }
 
     private void startSearchText() {
-        search = findViewById(R.id.admin_search);
+        /*frgggggdc  mnbvnm,search = findViewById(R.id.admin_search);
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
@@ -65,7 +65,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable arg0) {}
-        });
+        });*/
     }
 
     private void populateList() {

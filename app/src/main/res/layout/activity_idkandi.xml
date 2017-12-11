@@ -1,15 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="top|center"
     tools:context="fenrirmma.hreysti_app.user.clientActivity">
 
 
+    <RelativeLayout
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <TextView
+            android:id="@+id/client_name_show"
+            android:layout_width="137dp"
+            android:layout_height="31dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:textSize="18dp"
+            android:textColor="@android:color/black"
+            android:text="Client Name" />
+
+        <EditText
+            android:id="@+id/client_name"
+            android:layout_width="211dp"
+            android:layout_height="47dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/btn_change_name"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginBottom="420dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:backgroundTint="@android:color/black"
+            android:text="Change"
+            android:layout_toRightOf="@+id/client_name"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
     <Button
         android:id="@+id/btn_exercise"
-        android:layout_width="219dp"
+        android:layout_width="288dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -19,44 +59,11 @@
         android:backgroundTint="@android:color/black"
         android:onClick="exerciseOfTheDay"
         android:text="Æfing dagsins"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
+        android:textColor="@android:color/white" />
 
-    <Button
-        android:id="@+id/btn_change_name"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginBottom="420dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:backgroundTint="@android:color/black"
-        android:text="Breyta"
-        android:onClick="changeName"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.845"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/client_name"
-        android:layout_width="211dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_change_name"
-        app:layout_constraintHorizontal_bias="0.727"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <TextView
         android:id="@+id/client_ssn"
@@ -78,10 +85,7 @@
         android:background="@android:drawable/dialog_holo_light_frame"
         android:backgroundTint="@android:color/black"
         android:text="Sign up for workout"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_exercise" />
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/log_result"
@@ -114,17 +118,5 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_exercise"
         app:layout_constraintVertical_bias="0.755" />
 
-    <TextView
-        android:id="@+id/client_name_show"
-        android:layout_width="137dp"
-        android:layout_height="31dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/client_ssn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/client_name"
-        app:layout_constraintVertical_bias="0.008" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
