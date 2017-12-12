@@ -44,12 +44,12 @@ public class allUsersAdminActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        //userArrayList = new ArrayList<>();
-        adapter = new AllUsersRecyclerAdapter(this, userArrayList);
-        recyclerView.setAdapter(adapter);
+
+        userArrayList = new ArrayList<>();
         populateList();
+
         //startSearchText();
-       // setData();
+        //setData();
         /*
         userListView.setOnItemClickListener((parent, view, pos, id) -> {
             UserHelper curr = (UserHelper)parent.getItemAtPosition(pos);
@@ -65,7 +65,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
     }
 
     private void setData(){
-        userArrayList.add(new UserHelper("Nafn1", "0107853599", "openId", "cockmaster", "00.00.0000", "99.99.9999"));
+        userArrayList.add(new UserHelper("Nafn1", "0107853599", "openId", "Admin", "00.00.0000", "99.99.9999"));
     }
 
     private void startSearchText() {
@@ -115,10 +115,10 @@ public class allUsersAdminActivity extends AppCompatActivity {
                                         DateConverter.convert(current.get("expire_date").getAsString())
                                         ));
                             }
-                        }/*
-                        arrayAdapter = new ArrayAdapter<>(this,
-                                android.R.layout.simple_list_item_1, userArrayList);
-                        userListView.setAdapter(arrayAdapter);*/
+                        }
+
+                        adapter = new AllUsersRecyclerAdapter(this, userArrayList);
+                        recyclerView.setAdapter(adapter);
                     }
 
 

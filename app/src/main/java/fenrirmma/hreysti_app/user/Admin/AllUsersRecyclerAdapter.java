@@ -1,6 +1,7 @@
 package fenrirmma.hreysti_app.user.Admin;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,13 +38,13 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
 
     @Override
     public void onBindViewHolder(AllUsersRecyclerAdapter.ViewHolder viewHolder, int pos){
+        viewHolder.image.setImageResource(R.mipmap.ic_launcher);
         viewHolder.name.setText(userList.get(pos).getName());
         viewHolder.role.setText(userList.get(pos).getUserRole());
         viewHolder.ssn.setText(userList.get(pos).getSsn());
         viewHolder.expiration.setText(userList.get(pos).getExpireDate());
     }
 
-    @Override
     public int getItemCount(){return(null != userList ? userList.size() : 0);}
 
     protected class ViewHolder extends RecyclerView.ViewHolder{
