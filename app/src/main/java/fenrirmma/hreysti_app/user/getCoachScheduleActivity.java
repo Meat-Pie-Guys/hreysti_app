@@ -1,5 +1,6 @@
 package fenrirmma.hreysti_app.user;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.DatePicker;
@@ -18,6 +19,7 @@ import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.login.SessionAccess;
 import fenrirmma.hreysti_app.workout.CustomAdapter;
 import fenrirmma.hreysti_app.workout.WorkoutHelper;
+import fenrirmma.hreysti_app.workout.updateWorkoutActivity;
 
 public class getCoachScheduleActivity extends AppCompatActivity {
 
@@ -46,6 +48,16 @@ public class getCoachScheduleActivity extends AppCompatActivity {
             }
         });
 
+        coachList.setOnItemClickListener((parent, view, pos, id) -> {
+            WorkoutHelper curr = (WorkoutHelper) parent.getItemAtPosition(pos);
+            Intent intent = new Intent(this, updateWorkoutActivity.class);
+            intent.putExtra("ID", curr.getOpen_id());
+            intent.putExtra("coach_name", curr.getCoach_name());
+            intent.putExtra("description", curr.getDescription());
+            intent.putExtra("date", curr.getDate());
+            intent.putExtra("time", curr.getTime());
+            startActivity(intent);
+        });
     }
 
     private void makeDateString() {
