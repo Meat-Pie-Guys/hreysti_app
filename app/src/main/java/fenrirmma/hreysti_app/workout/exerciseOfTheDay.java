@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +20,12 @@ import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -33,12 +39,13 @@ import fenrirmma.hreysti_app.user.clientActivity;
 public class exerciseOfTheDay extends AppCompatActivity {
 
     private SessionAccess sa;
-    private TextView todays_workout, date_view;
+    private TextView todays_workout;
     private ListView workout_list;
-    ArrayAdapter<WorkoutHelper> adapter;
+    private DatePicker exercisePicker;
     private String time, role;
     private ArrayList<WorkoutHelper> list_workout;
     private int day, month, year;
+    private String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +54,33 @@ public class exerciseOfTheDay extends AppCompatActivity {
 
         todays_workout = findViewById(R.id.workout_day);
         workout_list = findViewById(R.id.list_workouts);
-        date_view = findViewById(R.id.date_view);
         role = getIntent().getStringExtra("ROLE");
         sa = SessionAccess.getInstance(this);
-        setTime();
-
+        exercisePicker = findViewById(R.id.eotd_date_picker);
+        Calendar calendar = Calendar.getInstance();
+        Date now = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
+        String currentDateTime = calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + "-06-10";
         workout_list.setOnItemClickListener((parent, view, pos, id) -> {
             // TODO if user is client then attending workout
             // TODO if user is coach/admin then they can update
             WorkoutHelper curr = (WorkoutHelper) parent.getItemAtPosition(pos);
             if(Objects.equals(role, "Client")){
-                participateInWorkout(curr.getOpen_id());
+                try {
+                    Date dateGot = formatter.parse(curr.getDate());
+                    System.out.println(dateGot.toString());
+                    System.out.println(now.toString());
+                    if(now.after(dateGot)){
+                        participateInWorkout(curr.getOpen_id());
+                        populateWorkoutList(date);
+                    }
+                    else{
+                        // TODO láta user vita að þetta var ekkihægt því þetta var gömul dagsetning?
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
             }
             else{
                 Intent intent = new Intent(this, updateWorkoutActivity.class);
@@ -68,65 +91,17 @@ public class exerciseOfTheDay extends AppCompatActivity {
                 intent.putExtra("time", curr.getTime());
                 startActivity(intent);
             }
-            setTime();
+        });
+        displayWorkout(currentDateTime);
+        exercisePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                date = year + "-" + (month+1) + "-" + dayOfMonth + "-06-10";
+                displayWorkout(date);
+                populateWorkoutList(date);
+            }
         });
 
-
-    }
-
-    private void setTime() {
-        DateTime dt = new DateTime();
-        int dow = dt.getDayOfWeek();
-
-        LocalDate today = LocalDate.now();
-        LocalDate tomorrow = LocalDate.now().plusDays(1);
-
-        StringBuilder sb_display_date = new StringBuilder();
-        if(Integer.parseInt(DateConverter.parser(today.toDateTimeAtCurrentTime().toString())) < 21){
-            day = today.getDayOfMonth();
-            month = today.getMonthOfYear();
-            year = today.getYear();
-            sb_display_date.append(Integer.toString(day) + "/" + Integer.toString(month) + "/" + Integer.toString(year));
-        } else{
-            day = tomorrow.getDayOfMonth();
-            month = tomorrow.getMonthOfYear();
-            year = tomorrow.getYear();
-            sb_display_date.append(Integer.toString(day) + "/" + Integer.toString(month) + "/" + Integer.toString(year));
-        }
-
-        date_view.setText(sb_display_date.toString());
-        StringBuilder sb = new StringBuilder();
-        //sunday, closed....send motivational quote
-        if(dow == 7){
-            sb.append("Það er lokað í dag. En mundu að:\n" + RandomMotivational.getRandomQuote());
-            todays_workout.setText(sb.toString());
-            //todays_workout.setText(DateConverter.parser(today.toDateTimeAtCurrentTime().toString()));
-            /*time = "12-10";
-            sb.append(Integer.toString(year) + "-" + Integer.toString(month) + "-" + Integer.toString(day) + "-" + time);
-            String date = sb.toString();
-            displayWorkout(date);*/
-
-        } else if(dow == 6){
-            //saturday...only one training
-            //get time
-            time = "10-30";
-            //get date
-            sb.append(Integer.toString(year) + "-" + Integer.toString(month) + "-" + Integer.toString(day) + "-" + time);
-            String date = sb.toString();
-            displayWorkout(date);
-            populateWorkoutList(date);
-
-        } else{
-            //normal weekday...3 trainings
-            //all other days
-            //get time
-            time = "06-10";
-            //get date
-            sb.append(Integer.toString(year) + "-" + Integer.toString(month) + "-" + Integer.toString(day) + "-" + time);
-            String date = sb.toString();
-            displayWorkout(date);
-            populateWorkoutList(date);
-        }
 
     }
 
