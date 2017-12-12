@@ -120,18 +120,18 @@
         android:textColor="@android:color/white" />
 
     <Button
-        android:id="@+id/btn_signup_for_exercise"
+        android:id="@+id/schedule"
         android:layout_width="288dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="getSchedule"
         android:background="@android:drawable/dialog_holo_light_frame"
         android:backgroundTint="@android:color/black"
-        android:text="Skrá á æfingu"
+        android:text="Get schedule"
         android:textColor="@android:color/white" />
-
 
     <Button
         android:id="@+id/signOut"
@@ -144,6 +144,6 @@
         android:background="@android:drawable/dialog_holo_light_frame"
         android:backgroundTint="@android:color/holo_green_dark"
         android:textColor="@android:color/white"
-        android:text="Sign out" />
+        android:text="@string/sign_out" />
 
 </LinearLayout>

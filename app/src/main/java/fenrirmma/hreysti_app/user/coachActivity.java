@@ -22,6 +22,7 @@ public class coachActivity extends AppCompatActivity {
     private SessionAccess sa;
     private EditText new_name;
     private TextView coach_ssn, coach_name;
+    private String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class coachActivity extends AppCompatActivity {
                             JsonObject user = result.get("user").getAsJsonObject();
                             coach_name.setText(user.get("name").getAsString());
                             coach_ssn.setText(user.get("ssn").getAsString());
+                            role = user.get("role").getAsString();
                         }
                     }
                 });
@@ -63,6 +65,8 @@ public class coachActivity extends AppCompatActivity {
 
     public void exerciseOfTheDay(View view){
         Intent intent = new Intent(coachActivity.this, exerciseOfTheDay.class);
+        intent.putExtra("ROLE", role);
+        Toast.makeText(this, role, Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
 
@@ -103,5 +107,10 @@ public class coachActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    public void getSchedule(View view) {
+        Intent intent = new Intent(this, getCoachScheduleActivity.class);
+        startActivity(intent);
     }
 }

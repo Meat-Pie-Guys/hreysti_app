@@ -37,6 +37,7 @@
                 android:textColor="@android:color/black"
                 android:text="0101010101"/>
         </LinearLayout>
+
         <LinearLayout
             android:orientation="horizontal"
             android:gravity="center"
@@ -63,7 +64,6 @@
                 android:layout_height="42dp" />
         </LinearLayout>
 
-
     <LinearLayout
         android:layout_width="335dp"
         android:layout_height="wrap_content"
@@ -77,8 +77,8 @@
             android:layout_marginRight="10dp"
             android:gravity="left"
             android:text="Coach assigned:"
-            android:textColor="@android:color/black"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:textColor="@android:color/black"/>
+
 
         <TextView
             android:id="@+id/coach_name"
@@ -116,7 +116,5 @@
         android:onClick="submitWorkout"
         android:text="Submit"
         android:textColor="@android:color/white" />
-
-
 
 </LinearLayout>

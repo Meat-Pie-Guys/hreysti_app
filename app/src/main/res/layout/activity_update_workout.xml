@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fenrirmma.hreysti_app.workout.createWorkoutActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_workout"
+        android:textSize="30dp" />
+
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:backgroundTint="@android:color/black"
+        android:text="date"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/_time"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:backgroundTint="@android:color/black"
+        android:text="time"
+        android:textColor="@android:color/white" />
+
+    <LinearLayout
+        android:layout_width="335dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginRight="10dp"
+            android:gravity="left"
+            android:text="@string/pick_a_coach_from_the_list"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/coach_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginLeft="10dp"
+            android:gravity="right"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/listCoachView"
+        android:choiceMode="singleChoice"
+        android:layout_width="wrap_content"
+        android:layout_height="112dp">
+
+    </ListView>
+
+
+    <EditText
+        android:id="@+id/workout"
+        android:layout_width="351dp"
+        android:layout_height="154dp"
+        android:hint="Create the workout here..." />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:backgroundTint="@android:color/black"
+        android:onClick="submitWorkout"
+        android:text="Submit changes"
+        android:textColor="@android:color/white" />
+
+
+
+</LinearLayout>
