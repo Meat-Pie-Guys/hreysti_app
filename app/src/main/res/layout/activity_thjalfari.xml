@@ -114,6 +114,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="getSchedule"
         android:background="@android:drawable/dialog_holo_light_frame"
         android:backgroundTint="@android:color/black"
         android:text="Workout schedule"

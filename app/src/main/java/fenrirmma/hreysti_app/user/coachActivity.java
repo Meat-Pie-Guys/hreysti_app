@@ -108,4 +108,9 @@ public class coachActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    public void getSchedule(View view) {
+        Intent intent = new Intent(this, getCoachScheduleActivity.class);
+        startActivity(intent);
+    }
 }
