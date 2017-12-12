@@ -1,12 +1,9 @@
 package fenrirmma.hreysti_app.user.Admin;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -17,12 +14,13 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
 
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import fenrirmma.hreysti_app.R;
-import fenrirmma.hreysti_app.login.SessionAccess;
+import fenrirmma.hreysti_app.Utils.DateConverter;
+import fenrirmma.hreysti_app.Utils.UserHelper;
+import fenrirmma.hreysti_app.Utils.SessionAccess;
 
 
 public class allUsersAdminActivity extends AppCompatActivity {

@@ -1,7 +1,6 @@
 package fenrirmma.hreysti_app.user.Admin;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import fenrirmma.hreysti_app.R;
+import fenrirmma.hreysti_app.Utils.UserHelper;
 
 /**
  * Created by magnu on 10/12/2017.

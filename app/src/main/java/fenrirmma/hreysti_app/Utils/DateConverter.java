@@ -1,4 +1,4 @@
-package fenrirmma.hreysti_app.user.Admin;
+package fenrirmma.hreysti_app.Utils;
 
 /**
  * Created by Notandi on 8.12.2017.

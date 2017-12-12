@@ -1,4 +1,4 @@
-package fenrirmma.hreysti_app.login.ssnValidation;
+package fenrirmma.hreysti_app.Utils.ssnValidation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

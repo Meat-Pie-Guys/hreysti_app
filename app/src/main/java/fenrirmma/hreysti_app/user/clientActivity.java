@@ -1,7 +1,6 @@
 package fenrirmma.hreysti_app.user;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,18 +8,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
-
-import org.json.JSONArray;
-
-import java.util.Objects;
 
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.login.MainActivity;
-import fenrirmma.hreysti_app.login.SessionAccess;
+import fenrirmma.hreysti_app.Utils.SessionAccess;
 import fenrirmma.hreysti_app.workout.exerciseOfTheDay;
 
 public class clientActivity extends AppCompatActivity {

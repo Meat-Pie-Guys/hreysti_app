@@ -18,14 +18,14 @@
         </activity>
         <activity android:name=".workout.createWorkoutActivity" />
         <activity android:name=".user.clientActivity" />
-        <activity android:name=".user.coachActivity" />
+        <activity android:name=".user.Coach.coachActivity" />
         <activity android:name=".login.newSignUp" />
         <activity android:name=".user.Admin.adminActivity" />
         <activity android:name=".workout.exerciseOfTheDay" />
         <activity android:name=".user.Admin.allUsersAdminActivity" />
         <activity android:name=".user.Admin.userInfoAdminActivity" />
         <activity android:name=".workout.updateWorkoutActivity" />
-        <activity android:name=".user.getCoachScheduleActivity"></activity>
+        <activity android:name=".user.Coach.getCoachScheduleActivity"></activity>
     </application>
 
 </manifest>

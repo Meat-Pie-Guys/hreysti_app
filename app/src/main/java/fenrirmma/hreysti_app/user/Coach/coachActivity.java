@@ -1,4 +1,4 @@
-package fenrirmma.hreysti_app.user;
+package fenrirmma.hreysti_app.user.Coach;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +13,7 @@ import com.koushikdutta.ion.Ion;
 
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.login.MainActivity;
-import fenrirmma.hreysti_app.login.SessionAccess;
+import fenrirmma.hreysti_app.Utils.SessionAccess;
 import fenrirmma.hreysti_app.workout.createWorkoutActivity;
 import fenrirmma.hreysti_app.workout.exerciseOfTheDay;
 

@@ -4,8 +4,6 @@ package fenrirmma.hreysti_app.workout;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,25 +14,17 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
 
-import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
-import org.joda.time.LocalTime;
-
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 import fenrirmma.hreysti_app.R;
-import fenrirmma.hreysti_app.login.SessionAccess;
-import fenrirmma.hreysti_app.user.Admin.DateConverter;
-import fenrirmma.hreysti_app.user.Admin.UserHelper;
-import fenrirmma.hreysti_app.user.Admin.userInfoAdminActivity;
-import fenrirmma.hreysti_app.user.clientActivity;
+import fenrirmma.hreysti_app.Utils.CustomAdapter;
+import fenrirmma.hreysti_app.Utils.WorkoutHelper;
+import fenrirmma.hreysti_app.Utils.SessionAccess;
 
 public class exerciseOfTheDay extends AppCompatActivity {
 
@@ -58,6 +48,7 @@ public class exerciseOfTheDay extends AppCompatActivity {
         sa = SessionAccess.getInstance(this);
         exercisePicker = findViewById(R.id.eotd_date_picker);
         Calendar calendar = Calendar.getInstance();
+
         Date now = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
         String currentDateTime = calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + "-06-10";

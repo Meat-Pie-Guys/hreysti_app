@@ -1,4 +1,4 @@
-package fenrirmma.hreysti_app.user;
+package fenrirmma.hreysti_app.user.Coach;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -11,14 +11,13 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import fenrirmma.hreysti_app.R;
-import fenrirmma.hreysti_app.login.SessionAccess;
-import fenrirmma.hreysti_app.workout.CustomAdapter;
-import fenrirmma.hreysti_app.workout.WorkoutHelper;
+import fenrirmma.hreysti_app.Utils.SessionAccess;
+import fenrirmma.hreysti_app.Utils.CustomAdapter;
+import fenrirmma.hreysti_app.Utils.WorkoutHelper;
 import fenrirmma.hreysti_app.workout.updateWorkoutActivity;
 
 public class getCoachScheduleActivity extends AppCompatActivity {

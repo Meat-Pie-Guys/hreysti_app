@@ -1,4 +1,4 @@
-package fenrirmma.hreysti_app.login;
+package fenrirmma.hreysti_app.Utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

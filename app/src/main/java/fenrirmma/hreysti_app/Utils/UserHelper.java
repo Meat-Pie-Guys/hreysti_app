@@ -1,4 +1,4 @@
-package fenrirmma.hreysti_app.user.Admin;
+package fenrirmma.hreysti_app.Utils;
 
 import java.sql.Date;
 import java.util.Locale;

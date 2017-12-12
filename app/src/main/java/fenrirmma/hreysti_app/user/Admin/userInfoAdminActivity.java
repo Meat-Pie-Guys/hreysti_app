@@ -4,20 +4,17 @@ import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
 
 import java.util.Calendar;
 
 import fenrirmma.hreysti_app.R;
-import fenrirmma.hreysti_app.login.SessionAccess;
+import fenrirmma.hreysti_app.Utils.SessionAccess;
 
 public class userInfoAdminActivity extends AppCompatActivity {
 
