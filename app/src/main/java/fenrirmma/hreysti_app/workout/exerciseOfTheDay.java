@@ -60,7 +60,7 @@ public class exerciseOfTheDay extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         Date now = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
-        String currentDateTime = calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + "-06-10";
+        String currentDateTime = calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.DAY_OF_MONTH);
         workout_list.setOnItemClickListener((parent, view, pos, id) -> {
             // TODO if user is client then attending workout
             // TODO if user is coach/admin then they can update
@@ -73,6 +73,7 @@ public class exerciseOfTheDay extends AppCompatActivity {
                     if(now.after(dateGot)){
                         participateInWorkout(curr.getOpen_id());
                         populateWorkoutList(date);
+                        displayWorkout(date);
                     }
                     else{
                         // TODO láta user vita að þetta var ekkihægt því þetta var gömul dagsetning?
@@ -92,13 +93,14 @@ public class exerciseOfTheDay extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        displayWorkout(currentDateTime);
+        displayWorkout(currentDateTime +  "-06-10");
+        populateWorkoutList(currentDateTime + "-06-10");
         exercisePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                date = year + "-" + (month+1) + "-" + dayOfMonth + "-06-10";
-                displayWorkout(date);
-                populateWorkoutList(date);
+                date = year + "-" + (month+1) + "-" + dayOfMonth;
+                displayWorkout(date + "-06-10");
+                populateWorkoutList(date + "-06-10");
             }
         });
 
