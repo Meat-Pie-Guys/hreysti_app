@@ -47,7 +47,7 @@ public class newSignUp extends AppCompatActivity {
         String _pw = password.getText().toString();
 
         if(Validator.isValidSSN(_ssn)){
-            if(_name.trim().length() == 0){setInfo(_name, _ssn, _pw);}
+            if(_name.trim().length() != 0){setInfo(_name, _ssn, _pw);}
             name.setError("Name cannot be only white space");
         } else{
             ssn.setError("Kennitala is illegal");

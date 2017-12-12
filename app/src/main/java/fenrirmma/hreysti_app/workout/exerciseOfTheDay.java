@@ -52,6 +52,7 @@ public class exerciseOfTheDay extends AppCompatActivity {
         Date now = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
         String currentDateTime = calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.DAY_OF_MONTH);
+        date = currentDateTime;
         workout_list.setOnItemClickListener((parent, view, pos, id) -> {
             // TODO if user is client then attending workout
             // TODO if user is coach/admin then they can update
@@ -61,10 +62,10 @@ public class exerciseOfTheDay extends AppCompatActivity {
                     Date dateGot = formatter.parse(curr.getDate());
                     System.out.println(dateGot.toString());
                     System.out.println(now.toString());
-                    if(now.after(dateGot)){
+                    if(now.before(dateGot)){
                         participateInWorkout(curr.getOpen_id());
                         populateWorkoutList(date);
-                        displayWorkout(date);
+                        displayWorkout(date + "-06-10");
                     }
                     else{
                         // TODO láta user vita að þetta var ekkihægt því þetta var gömul dagsetning?
@@ -91,7 +92,7 @@ public class exerciseOfTheDay extends AppCompatActivity {
             public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
                 date = year + "-" + (month+1) + "-" + dayOfMonth;
                 displayWorkout(date + "-06-10");
-                populateWorkoutList(date + "-06-10");
+                populateWorkoutList(date);
             }
         });
 

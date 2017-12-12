@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ public class coachActivity extends AppCompatActivity {
     private EditText new_name;
     private TextView coach_ssn, coach_name;
     private String role;
+    private Button change;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class coachActivity extends AppCompatActivity {
         new_name = findViewById(R.id.new_name);
         coach_name = findViewById(R.id.coach_name_show);
         coach_ssn = findViewById(R.id.coach_ssn);
+        change = findViewById(R.id.btn_change_name);
 
         populateView();
     }
@@ -47,11 +50,11 @@ public class coachActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "ION ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        coach_name.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            coach_name.setError("No such user");
                         }
                         else{
                             JsonObject user = result.get("user").getAsJsonObject();
@@ -84,7 +87,9 @@ public class coachActivity extends AppCompatActivity {
 
     public void editName(View view) {
         JsonObject json = new JsonObject();
-        json.addProperty("name", new_name.getText().toString());
+        String name = new_name.getText().toString();
+        if(name.trim().length() == 0){new_name.setError("Name cannot be only white space!");}
+        json.addProperty("name", name);
         Ion.with(this)
                 .load("PUT", "http://10.0.2.2:5000/user/name/update")
                 .addHeader("Content-Type", "application/json")
@@ -95,15 +100,15 @@ public class coachActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "ION ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        change.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            if(code == 5){change.setError("Name cannot be empty");}
+                            change.setError("Name missing");
                         }
                         else{
-                            Toast.makeText(this, "SUCCESS", Toast.LENGTH_SHORT).show();
-                            // TODO Eitthvað success skilabð betra en Toastið
+                            Toast.makeText(this, "Name changed", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

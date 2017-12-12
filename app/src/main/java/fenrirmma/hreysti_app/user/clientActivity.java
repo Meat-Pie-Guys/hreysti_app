@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ public class clientActivity extends AppCompatActivity {
     private TextView client_ssn, client_name_show;
     private EditText client_name;
     private String role;
+    private Button change;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class clientActivity extends AppCompatActivity {
         client_name = findViewById(R.id.client_name);
         client_ssn = findViewById(R.id.client_ssn);
         client_name_show = findViewById(R.id.client_name_show);
+        change = findViewById(R.id.btn_change_name);
 
         populateView();
 
@@ -47,11 +50,11 @@ public class clientActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "ION ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        client_name.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            client_name.setError("No such user");
                         }
                         else{
                             JsonObject user = result.get("user").getAsJsonObject();
@@ -78,7 +81,9 @@ public class clientActivity extends AppCompatActivity {
 
     public void changeName(View view) {
         JsonObject json = new JsonObject();
-        json.addProperty("name", client_name.getText().toString());
+        String name = client_name.getText().toString();
+        if(name.trim().length() == 0){client_name.setError("Name cannot be only white space!");}
+        json.addProperty("name", name);
         Ion.with(this)
                 .load("PUT", "http://10.0.2.2:5000/user/name/update")
                 .addHeader("Content-Type", "application/json")
@@ -89,15 +94,16 @@ public class clientActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "ION ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        change.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            if(code == 5){change.setError("Name cannot be empty");}
+                            change.setError("Name missing");
                         }
                         else{
-                            Toast.makeText(this, "SUCCESS", Toast.LENGTH_SHORT).show();
-                            // TODO Eitthvað success skilabð betra en Toastið
+                            Toast.makeText(this, "Name changed", Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 });
