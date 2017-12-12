@@ -62,6 +62,10 @@ public class exerciseOfTheDay extends AppCompatActivity {
             else{
                 Intent intent = new Intent(this, updateWorkoutActivity.class);
                 intent.putExtra("ID", curr.getOpen_id());
+                intent.putExtra("coach_name", curr.getCoach_name());
+                intent.putExtra("description", curr.getDescription());
+                intent.putExtra("date", curr.getDate());
+                intent.putExtra("time", curr.getTime());
                 startActivity(intent);
             }
             setTime();

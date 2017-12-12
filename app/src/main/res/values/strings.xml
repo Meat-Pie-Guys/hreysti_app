@@ -30,6 +30,9 @@
     <string name="coach_1_s">Coach: %1$s</string>
     <string name="time_1_s">Time: %1$s</string>
     <string name="people_registered_to_the_workout_1_s">Attending: %1$s</string>
+    <string name="edit_workout">Edit workout</string>
+    <string name="select_time_for_the_workout_from_the_list">Select time for the workout from the list</string>
+    <string name="pick_a_coach_from_the_list">Pick a coach from the list</string>
     <string-array name="user_roles">
         <item>Client</item>
         <item>Coach</item>
