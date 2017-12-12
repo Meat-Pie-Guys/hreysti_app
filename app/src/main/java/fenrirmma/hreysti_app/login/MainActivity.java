@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.koushikdutta.ion.Ion;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private SessionAccess sa;
     private EditText ssn;
     private EditText password;
-    //private RelativeLayout load;
+    private RelativeLayout load;
 
 
     @Override
@@ -32,17 +33,18 @@ public class MainActivity extends AppCompatActivity {
         ssn = findViewById(R.id.sign_in_ssn);
         password = findViewById(R.id.sign_in_pw);
         sa = SessionAccess.getInstance(this);
+        load = findViewById(R.id.loadingPanel);
 
         if(sa.hasToken()) proceed();
 
     }
 
     public void signIn(View view){
-
+        load.setVisibility(view.VISIBLE);
         String _ssn = ssn.getText().toString();
         String pw = password.getText().toString();
         getToken(_ssn, pw);
-
+        load.setVisibility(view.GONE);
     }
 
     private void getToken(String ssn, String pw) {
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+
     }
 
     public void signUp(View view){

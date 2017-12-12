@@ -1,124 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="top|center"
     tools:context="fenrirmma.hreysti_app.user.clientActivity">
 
-
-    <Button
-        android:id="@+id/btn_exercise"
-        android:layout_width="219dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="228dp"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:backgroundTint="@android:color/black"
-        android:onClick="exerciseOfTheDay"
-        android:text="Æfing dagsins"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_change_name"
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginBottom="420dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:backgroundTint="@android:color/black"
-        android:text="Breyta"
-        android:onClick="changeName"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.845"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/client_name"
-        android:layout_width="211dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/client_ssn"
-        android:layout_width="211dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="324dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/sign_up_workout"
-        android:layout_width="288dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:backgroundTint="@android:color/black"
-        android:text="Sign up for workout"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/log_result"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_exercise" />
-
-    <Button
-        android:id="@+id/log_result"
-        android:layout_width="288dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:backgroundTint="@android:color/black"
-        android:text="Log your results"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/signOut"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/signOut"
-        android:layout_width="221dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:onClick="signOut"
-        android:text="Sign out"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:id="@+id/card_view"
+        android:layout_margin="5dp"
+        card_view:cardCornerRadius="12dp"
+        card_view:cardElevation="1dp"
+        card_view:contentPadding="4dp"
+        android:clickable="true">
 
-    <TextView
-        android:id="@+id/client_name_show"
-        android:layout_width="137dp"
-        android:layout_height="31dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/client_ssn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/client_name"
-        app:layout_constraintVertical_bias="0.008" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-</android.support.constraint.ConstraintLayout>
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:padding="5dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/coach_name_show"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Joe Reciever"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/role"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/coach_name_show"
+                    android:text="Iðkandi"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/coach_ssn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/role"
+                    android:text="123456-7890"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+        <RelativeLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <TextView
+                android:id="@+id/client_name_show"
+                android:layout_width="137dp"
+                android:layout_height="31dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:textSize="18dp"
+                android:textColor="@android:color/black"
+                android:hint="Name" />
+
+            <EditText
+                android:id="@+id/client_name"
+                android:layout_width="211dp"
+                android:layout_height="47dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp" />
+
+            <Button
+                android:id="@+id/btn_change_name"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginBottom="420dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@android:drawable/dialog_holo_light_frame"
+                android:backgroundTint="@android:color/black"
+                android:text="Change"
+                android:layout_toRightOf="@+id/client_name"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/client_ssn"
+            android:layout_gravity="left"
+            android:layout_width="211dp"
+            android:layout_height="47dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="24dp"
+            android:text="@string/admin_user_ssn"
+            android:textColor="@android:color/black"
+            android:textSize="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_exercise"
+            android:layout_width="288dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:backgroundTint="@android:color/black"
+            android:onClick="exerciseOfTheDay"
+            android:text="Today's workouts"
+            android:textColor="@android:color/white" />
+
+
+        <Button
+            android:id="@+id/sign_up_workout"
+            android:layout_width="288dp"
+            android:layout_height="47dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:backgroundTint="@android:color/black"
+            android:text="Sign up for workout"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/log_result"
+            android:layout_width="288dp"
+            android:layout_height="47dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:backgroundTint="@android:color/black"
+            android:text="Log your results"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/signOut"
+            android:layout_width="288dp"
+            android:layout_height="47dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:onClick="signOut"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:textColor="@android:color/white"
+            android:text="Sign out" />
+    </LinearLayout>
+
+</LinearLayout>
+
