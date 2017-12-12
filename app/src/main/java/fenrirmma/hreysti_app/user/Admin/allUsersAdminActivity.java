@@ -3,6 +3,8 @@ package fenrirmma.hreysti_app.user.Admin;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
@@ -29,15 +31,26 @@ public class allUsersAdminActivity extends AppCompatActivity {
     private List<UserHelper> userList;
     private EditText search;
     private ArrayAdapter<UserHelper> arrayAdapter;
+    private RecyclerView recyclerView;
+    private ArrayList<UserHelper> userArrayList;
+    private AllUsersRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_users_admin);
         sa = SessionAccess.getInstance(this);
-        userListView = findViewById(R.id.admin_user_list);
+        recyclerView = findViewById(R.id.recycle_view_admin);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        userArrayList = new ArrayList<>();
         populateList();
-        startSearchText();
+
+        //startSearchText();
+        //setData();
+        /*
         userListView.setOnItemClickListener((parent, view, pos, id) -> {
             UserHelper curr = (UserHelper)parent.getItemAtPosition(pos);
             Intent intent = new Intent(this, userInfoAdminActivity.class);
@@ -48,11 +61,15 @@ public class allUsersAdminActivity extends AppCompatActivity {
             intent.putExtra("STARTDATE", curr.getStartDate());
             intent.putExtra("EXPIREDATE", curr.getExpireDate());
             startActivity(intent);
-        });
+        });*/
+    }
+
+    private void setData(){
+        userArrayList.add(new UserHelper("Nafn1", "0107853599", "openId", "Admin", "00.00.0000", "99.99.9999"));
     }
 
     private void startSearchText() {
-        search = findViewById(R.id.admin_search);
+        /*search = findViewById(R.id.admin_search);
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
@@ -65,11 +82,11 @@ public class allUsersAdminActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable arg0) {}
-        });
+        });*/
     }
 
     private void populateList() {
-        userList = new ArrayList<>();
+        userArrayList = new ArrayList<>();
         Ion.with(this)
                 .load("GET", "http://10.0.2.2:5000/user/all")
                 .addHeader("Content-Type", "application/json")
@@ -89,7 +106,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
                             JsonArray users = result.getAsJsonArray("all_users");
                             for(int i = 0; i < users.size(); i++){
                                 JsonObject current = users.get(i).getAsJsonObject();
-                                userList.add( new UserHelper(
+                                userArrayList.add( new UserHelper(
                                         current.get("name").getAsString(),
                                         current.get("ssn").getAsString(),
                                         current.get("open_id").getAsString(),
@@ -99,9 +116,9 @@ public class allUsersAdminActivity extends AppCompatActivity {
                                         ));
                             }
                         }
-                        arrayAdapter = new ArrayAdapter<>(this,
-                                android.R.layout.simple_list_item_1, userList);
-                        userListView.setAdapter(arrayAdapter);
+
+                        adapter = new AllUsersRecyclerAdapter(this, userArrayList);
+                        recyclerView.setAdapter(adapter);
                     }
 
 
@@ -111,6 +128,6 @@ public class allUsersAdminActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         populateList();
-        startSearchText();
+        //startSearchText();
     }
 }

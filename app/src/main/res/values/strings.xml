@@ -15,12 +15,12 @@
     <string name="workout_of_the_day">Workout of the day</string>
     <string name="get_user_list">Get user list</string>
     <string name="assign_workout_to_coach">Assign Workout to coach</string>
-    <string name="sign_out">Sign out</string>
     <string name="list_of_users_in_database">List of Users in database</string>
     <string name="search_for_user">Search for user</string>
     <string name="admin_user_name">Name: %1$s</string>
     <string name="admin_user_ssn">SSN: %1$s</string>
     <string name="admin_user_startdate">Start Date: %1$s</string>
+    <string name="admin_user_role">%1$s</string>
     <string name="expiredate">ExpireDate</string>
     <string name="admin_user_update_confirm">Confirm Changes</string>
     <string name="role">Role</string>
@@ -33,6 +33,7 @@
     <string name="edit_workout">Edit workout</string>
     <string name="select_time_for_the_workout_from_the_list">Select time for the workout from the list</string>
     <string name="pick_a_coach_from_the_list">Pick a coach from the list</string>
+    <string name="sign_out">Sign out</string>
     <string-array name="user_roles">
         <item>Client</item>
         <item>Coach</item>
