@@ -217,5 +217,4 @@ public class exerciseOfTheDay extends AppCompatActivity {
                     }
                 });
     }
-
 }
