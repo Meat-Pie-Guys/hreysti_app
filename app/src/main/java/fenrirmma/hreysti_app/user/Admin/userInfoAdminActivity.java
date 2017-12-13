@@ -1,6 +1,6 @@
 package fenrirmma.hreysti_app.user.Admin;
 
-
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -128,6 +128,12 @@ public class userInfoAdminActivity extends AppCompatActivity {
         ssn.setText(String.format(getResources().getString(R.string.admin_user_ssn), getIntent().getStringExtra("SSN")));
         //startDate.setText(tring.format(getResources().getString(R.string.admin_user_startdate), getIntent().getStringExtra("STARTDATE"));
         //expireDate.setText(getIntent().getStringExtra("EXPIREDATE"));
+    }
+
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(this, allUsersAdminActivity.class));
+        finish();
     }
 
     @Override

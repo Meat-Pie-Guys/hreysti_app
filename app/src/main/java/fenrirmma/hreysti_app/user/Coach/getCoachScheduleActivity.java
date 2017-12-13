@@ -36,24 +36,12 @@ public class getCoachScheduleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_coach_schedule);
         sa = SessionAccess.getInstance(this);
-        //coachDate = findViewById(R.id.coach_datepicker);
+
         coachList = findViewById(R.id.coach_listview);
         btnGetSched = findViewById(R.id.btn_coach_sched);
 
-        //makeDateString();
         setExerciseDate();
         populateWorkoutList(date);
-
-        /*Calendar calendar = Calendar.getInstance();
-
-        coachDate.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
-
-            @Override
-            public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                date = year + "-" + (month+1) + "-" + dayOfMonth;
-                populateWorkoutList(date);
-            }
-        });*/
 
         coachList.setOnItemClickListener((parent, view, pos, id) -> {
             WorkoutHelper curr = (WorkoutHelper) parent.getItemAtPosition(pos);
@@ -66,13 +54,6 @@ public class getCoachScheduleActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
-/*
-    private void makeDateString() {
-        int day = coachDate.getDayOfMonth();
-        int month = coachDate.getMonth() + 1;
-        int year = coachDate.getYear();
-        date = year + "-" + month + "-" + day;
-    }*/
 
     private void setExerciseDate() {
 

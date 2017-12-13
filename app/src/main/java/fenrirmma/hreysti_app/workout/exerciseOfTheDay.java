@@ -5,6 +5,8 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -40,24 +42,32 @@ public class exerciseOfTheDay extends AppCompatActivity {
     private int day, month, year;
     private String date;
     private Button btnDate;
+    private RecyclerView recyclerView;
+    private exerciseOfTheDayRecyclerAdapter exerciceAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_of_the_day);
 
         todays_workout = findViewById(R.id.workout_day);
-        workout_list = findViewById(R.id.list_workouts);
+        //workout_list = findViewById(R.id.list_workouts);
         role = getIntent().getStringExtra("ROLE");
         sa = SessionAccess.getInstance(this);
-        //exercisePicker = findViewById(R.id.eotd_date_picker);
         btnDate = findViewById(R.id.btn_exercise_date);
+
+        recyclerView = findViewById(R.id.recycle_view_exercise);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
         Calendar calendar = Calendar.getInstance();
 
-        Date now = new Date();
+        //Date now = new Date();
         setExerciseDate();
         SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
         String currentDateTime = calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.DAY_OF_MONTH);
         date = currentDateTime;
+        /*
         workout_list.setOnItemClickListener((parent, view, pos, id) -> {
             // TODO if user is client then attending workout
             // TODO if user is coach/admin then they can update
@@ -90,7 +100,7 @@ public class exerciseOfTheDay extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        displayWorkout(currentDateTime +  "-06-10");
+        displayWorkout(currentDateTime +  "-06-10");*/
     }
 
     private void setExerciseDate() {
@@ -144,7 +154,9 @@ public class exerciseOfTheDay extends AppCompatActivity {
                             }
                         }
 
-                        workout_list.setAdapter(new CustomAdapter(this, list_workout));
+                        //workout_list.setAdapter(new CustomAdapter(this, list_workout));
+                        exerciceAdapter = new exerciseOfTheDayRecyclerAdapter(this, list_workout);
+                        recyclerView.setAdapter(exerciceAdapter);
                     }
 
 
