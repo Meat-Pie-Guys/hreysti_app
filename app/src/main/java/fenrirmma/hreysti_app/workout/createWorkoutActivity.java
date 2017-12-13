@@ -186,7 +186,7 @@ public class createWorkoutActivity extends AppCompatActivity {
                         }
                         else{
                             submit.setError(null);
-                            //Toast.makeText(this, "Workout successfully created for" + _time + ". If you want to create another workout for this day then select a different time", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Workout successfully created for" + _time + ". If you want to create another workout for this day then select a different time", Toast.LENGTH_LONG).show();
 
                         }
                     }

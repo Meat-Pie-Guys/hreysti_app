@@ -28,16 +28,9 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/excercise"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Æfing" />
-
-            <TextView
                 android:id="@+id/workout_day"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/excercise"
                 android:text="45.17.34092"
                 android:textStyle="bold" />
 
