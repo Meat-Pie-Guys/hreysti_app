@@ -49,12 +49,6 @@ public class allUsersAdminActivity extends AppCompatActivity {
         populateList();
 
         startSearchText();
-        //setData();
-
-    }
-
-    private void setData(){
-        userArrayList.add(new UserHelper("Nafn1", "0107853599", "openId", "Admin", "00.00.0000", "99.99.9999"));
     }
 
     private void startSearchText() {
