@@ -1,6 +1,7 @@
 package fenrirmma.hreysti_app.user.Admin;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +44,23 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
         viewHolder.role.setText(userList.get(pos).getUserRole());
         viewHolder.ssn.setText(userList.get(pos).getSsn());
         viewHolder.expiration.setText(userList.get(pos).getExpireDate());
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(view.getContext(), userInfoAdminActivity.class);
+            intent.putExtra("NAME", userList.get(pos).getName());
+            intent.putExtra("SSN", userList.get(pos).getSsn());
+            intent.putExtra("OPENID", userList.get(pos).getOpenId());
+            intent.putExtra("ROLE", userList.get(pos).getUserRole());
+            intent.putExtra("STARTDATE", userList.get(pos).getStartDate());
+            intent.putExtra("EXPIREDATE", userList.get(pos).getExpireDate());
+            view.getContext().startActivity(intent);
+        }
+    });
+
     }
+
 
     public int getItemCount(){return(null != userList ? userList.size() : 0);}
 

@@ -48,8 +48,10 @@ public class newSignUp extends AppCompatActivity {
 
         if(Validator.isValidSSN(_ssn)){
             if(_name.trim().length() != 0){setInfo(_name, _ssn, _pw);}
-            name.setError("Name cannot be only white space");
+            clearError();
+            name.setError("Name cannot be empty!");
         } else{
+            clearError();
             ssn.setError("Kennitala is illegal");
         }
 
@@ -71,6 +73,7 @@ public class newSignUp extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
+                        clearError();
                         password.setError("Can't connect to the database!");
                     }
                     else{
@@ -79,23 +82,29 @@ public class newSignUp extends AppCompatActivity {
                             //10, 5, 6, 7, 8
                             switch (code){
                                 case 10 :
+                                    clearError();
                                     name.setError("Missing header fields");
                                     break;
                                 case 5 :
+                                    clearError();
                                     name.setError("Missing information");
                                     break;
                                 case 6 :
+                                    clearError();
                                     password.setError("Password must be at least 6 characters long");
                                     break;
                                 case 7 :
-                                    ssn.setError("Kennitala is illegal");
+                                    clearError();
+                                    ssn.setError("SSN is illegal");
                                     break;
                                 case 8 :
+                                    clearError();
                                     name.setError("User already exists in database");
                                     break;
                             }
                         }
                         else{
+                            clearError();
                             getSession(_ssn, _pw);
                         }
                     }
@@ -114,18 +123,22 @@ public class newSignUp extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
+                        clearError();
                         password.setError("Can't connect to the database!");
                     }
                     else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
                             if(code == 4){
+                                clearError();
                                 password.setError("SSN or password missing");
                             } else {
+                                clearError();
                                 password.setError("SSN or password wrong!");
                             }
                         }
                         else{
+                            clearError();
                             sa.setRole(result.get("role").getAsString());
                             sa.setToken(result.get("token").getAsString());
                             proceed();
@@ -147,5 +160,11 @@ public class newSignUp extends AppCompatActivity {
             startActivity(new Intent(this, clientActivity.class));
             finish();
         }
+    }
+    private void clearError(){
+        name.setError(null);
+        ssn.setError(null);
+        password.setError(null);
+
     }
 }

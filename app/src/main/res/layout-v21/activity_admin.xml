@@ -8,58 +8,82 @@
     android:gravity="top|center"
     tools:context="fenrirmma.hreysti_app.user.Admin.adminActivity">
 
-    <Button
-        android:id="@+id/create_new_workout"
-        android:layout_width="288dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:backgroundTint="@android:color/black"
-        android:text="@string/create_a_new_workout"
-        android:onClick="createWorkout"
-        android:textColor="@android:color/white"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/assign_coach_btn"
-        android:layout_width="288dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:backgroundTint="@android:color/black"
-        android:onClick="workoutOfTheDay"
-        android:text="@string/workout_of_the_day"
-        android:textColor="@android:color/white" />
+        <Button
+            android:id="@+id/create_new_workout"
+            android:layout_width="175dp"
+            android:layout_height="110dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:backgroundTint="@android:color/black"
+            android:onClick="createWorkout"
+            android:text="@string/create_a_new_workout"
+            android:textColor="@android:color/white" />
 
-    <Button
-        android:id="@+id/get_user_list"
-        android:layout_width="288dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="getAllUsers"
-        android:text="@string/list_of_users_in_database"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:backgroundTint="@android:color/black"
-        android:textColor="@android:color/white"/>
+        <Button
+            android:id="@+id/assign_coach_btn"
+            android:layout_width="175dp"
+            android:layout_height="110dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:backgroundTint="@android:color/black"
+            android:onClick="workoutOfTheDay"
+            android:text="@string/workout_of_the_day"
+            android:textColor="@android:color/white" />
 
-    <Button
-        android:id="@+id/signOut"
-        android:layout_width="288dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="signOut"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:backgroundTint="@android:color/holo_green_dark"
-        android:textColor="@android:color/white"
-        android:text="@string/sign_out" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/get_user_list"
+            android:layout_width="175dp"
+            android:layout_height="110dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:onClick="getAllUsers"
+            android:text="@string/list_of_users_in_database"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:backgroundTint="@android:color/black"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:id="@+id/signOut"
+            android:layout_width="175dp"
+            android:layout_height="110dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:onClick="signOut"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:textColor="@android:color/white"
+            android:text="@string/sign_out" />
+
+
+    </LinearLayout>
+
+
+
+
 </LinearLayout>
 

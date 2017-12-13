@@ -91,60 +91,84 @@
             android:textColor="@android:color/white" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_exercise"
-        android:layout_width="288dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/workout_of_the_day"
-        android:onClick="exerciseOfTheDay"
-        android:backgroundTint="@android:color/black"
-        android:textColor="@android:color/white"
-        android:background="@android:drawable/dialog_holo_light_frame" />
 
-    <Button
-        android:id="@+id/btn_make_exercise"
-        android:layout_width="288dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:backgroundTint="@android:color/black"
-        android:onClick="MakeWorkout"
-        android:text="Create a workout"
-        android:textColor="@android:color/white" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/schedule"
-        android:layout_width="288dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="getSchedule"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:backgroundTint="@android:color/black"
-        android:text="Get schedule"
-        android:textColor="@android:color/white" />
+        <Button
+            android:id="@+id/btn_exercise"
+            android:layout_width="175dp"
+            android:layout_height="110dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:backgroundTint="@android:color/black"
+            android:onClick="exerciseOfTheDay"
+            android:text="@string/workout_of_the_day"
+            android:textColor="@android:color/white" />
 
-    <Button
-        android:id="@+id/signOut"
-        android:layout_width="288dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="signOut"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:backgroundTint="@android:color/holo_green_dark"
-        android:textColor="@android:color/white"
-        android:text="@string/sign_out" />
+        <Button
+            android:id="@+id/btn_make_exercise"
+            android:layout_width="175dp"
+            android:layout_height="110dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:backgroundTint="@android:color/black"
+            android:onClick="MakeWorkout"
+            android:text="Create a workout"
+            android:textColor="@android:color/white" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:id="@+id/schedule"
+            android:layout_width="175dp"
+            android:layout_height="110dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:onClick="getSchedule"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:backgroundTint="@android:color/black"
+            android:text="Get schedule"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/signOut"
+            android:layout_width="175dp"
+            android:layout_height="110dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:onClick="signOut"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:textColor="@android:color/white"
+            android:text="@string/sign_out" />
+
+
+    </LinearLayout>
+
+
+
+
 
 </LinearLayout>

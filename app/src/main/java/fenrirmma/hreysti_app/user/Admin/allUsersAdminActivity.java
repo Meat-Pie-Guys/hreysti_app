@@ -48,18 +48,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
 
         //startSearchText();
         //setData();
-        /*
-        userListView.setOnItemClickListener((parent, view, pos, id) -> {
-            UserHelper curr = (UserHelper)parent.getItemAtPosition(pos);
-            Intent intent = new Intent(this, userInfoAdminActivity.class);
-            intent.putExtra("NAME", curr.getName());
-            intent.putExtra("SSN", curr.getSsn());
-            intent.putExtra("OPENID", curr.getOpenId());
-            intent.putExtra("ROLE", curr.getUserRole());
-            intent.putExtra("STARTDATE", curr.getStartDate());
-            intent.putExtra("EXPIREDATE", curr.getExpireDate());
-            startActivity(intent);
-        });*/
+
     }
 
     private void setData(){

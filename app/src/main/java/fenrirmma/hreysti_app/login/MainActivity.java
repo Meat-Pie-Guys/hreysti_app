@@ -59,18 +59,22 @@ public class MainActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
+                        password.setError(null);
                         password.setError("Can't connect to the database!");
                     }
                     else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
                             if(code == 4){
+                                password.setError(null);
                                 password.setError("SSN or password missing");
                             } else {
+                                password.setError(null);
                                 password.setError("SSN or password wrong!");
                             }
                         }
                         else{
+                            password.setError(null);
                             sa.setRole(result.get("role").getAsString());
                             sa.setToken(result.get("token").getAsString());
                             proceed();
