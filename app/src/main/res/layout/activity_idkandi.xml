@@ -18,7 +18,7 @@
         card_view:cardCornerRadius="12dp"
         card_view:cardElevation="1dp"
         card_view:contentPadding="4dp"
-        android:clickable="true">
+        android:clickable="false">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,26 +37,26 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/coach_name_show"
+                    android:id="@+id/client_name_show_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Joe Reciever"
+                    android:text="@string/admin_user_name"
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/role"
+                    android:id="@+id/client_role_show_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/coach_name_show"
-                    android:text="Iðkandi"
+                    android:layout_below="@+id/client_name_show_card"
+                    android:text="@string/admin_user_role"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/coach_ssn"
+                    android:id="@+id/client_ssn_show_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/role"
-                    android:text="123456-7890"
+                    android:layout_below="@+id/client_role_show_card"
+                    android:text="@string/admin_user_ssn"
                     android:textStyle="bold"/>
 
             </RelativeLayout>
@@ -67,19 +67,9 @@
             android:layout_width="match_parent"
             android:layout_height="60dp">
 
-            <TextView
-                android:id="@+id/client_name_show"
-                android:layout_width="137dp"
-                android:layout_height="31dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:textSize="18dp"
-                android:textColor="@android:color/black"
-                android:hint="Name" />
-
             <EditText
                 android:id="@+id/client_name"
+                android:hint="Change Name"
                 android:layout_width="211dp"
                 android:layout_height="47dp"
                 android:layout_marginEnd="8dp"
@@ -98,20 +88,20 @@
                 android:backgroundTint="@android:color/black"
                 android:text="Change"
                 android:onClick="changeName"
-                android:layout_toRightOf="@+id/client_name"
+                android:layout_toEndOf="@+id/client_name"
                 android:textColor="@android:color/white" />
         </RelativeLayout>
         <TextView
             android:id="@+id/client_ssn"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:layout_width="211dp"
             android:layout_height="47dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="24dp"
-            android:text="@string/admin_user_ssn"
+            android:hint="SSN"
             android:textColor="@android:color/black"
-            android:textSize="20dp"/>
+            android:textSize="20sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"

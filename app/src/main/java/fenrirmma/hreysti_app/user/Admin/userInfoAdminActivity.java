@@ -86,19 +86,19 @@ public class userInfoAdminActivity extends AppCompatActivity {
     private void setFields() {
         //Setting all the appropriate text fields in the activity
         role = findViewById(R.id.edit_user_role);
-        expireDate = findViewById(R.id.edit_user_expire_date);
+        //expireDate = findViewById(R.id.edit_user_expire_date);
         name = findViewById(R.id.edit_user_name);
         ssn = findViewById(R.id.edit_user_ssn);
-        startDate = findViewById(R.id.edit_user_start_date);
+        //startDate = findViewById(R.id.edit_user_start_date);
 
         String _name = String.format(getResources().getString(R.string.admin_user_name), getIntent().getStringExtra("NAME"));
         String _ssn = String.format(getResources().getString(R.string.admin_user_ssn), getIntent().getStringExtra("SSN"));
         String _startDate = String.format(getResources().getString(R.string.admin_user_startdate), getIntent().getStringExtra("STARTDATE"));
 
         role.setText(getIntent().getStringExtra("ROLE"));
-        expireDate.setText(getIntent().getStringExtra("EXPIREDATE"));
+        //expireDate.setText(getIntent().getStringExtra("EXPIREDATE"));
         name.setText(_name);
         ssn.setText(_ssn);
-        startDate.setText(_startDate);
+        //startDate.setText(_startDate);
     }
 }

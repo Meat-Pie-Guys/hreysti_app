@@ -4,7 +4,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:id="@+id/card_view_exercise"
+    android:id="@+id/card_view_coach"
     android:layout_margin="5dp"
     card_view:cardCornerRadius="12dp"
     card_view:cardElevation="1dp"
@@ -17,7 +17,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/image_exercise"
+            android:id="@+id/image"
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:padding="5dp"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/excercise"
+                android:id="@+id/coach_card_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Æfing" />
@@ -37,7 +37,7 @@
                 android:id="@+id/workout_day"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/excercise"
+                android:layout_below="@+id/coach_card_name"
                 android:text="45.17.34092"
                 android:textStyle="bold" />
 

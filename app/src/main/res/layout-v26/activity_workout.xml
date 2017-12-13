@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:gravity="top|center"
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/make_a_workout"
-        android:textSize="30dp" />
+        android:textSize="30sp" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -50,8 +50,7 @@
             <Spinner
                 android:id="@+id/time_spinner"
                 android:layout_width="60dp"
-                android:layout_marginRight="8dp"
-                android:layout_toRightOf="@+id/time"
+                android:layout_marginEnd="8dp"
                 android:autofillHints="pick time"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_height="42dp" />
@@ -66,10 +65,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginRight="10dp"
-            android:gravity="left"
-            android:text="Coach assigned:"
+            android:layout_gravity="start"
+            android:layout_marginRight="10sp"
+            android:gravity="start"
+            android:text="@string/coach_assigned"
             android:textColor="@android:color/black"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -86,20 +85,11 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listCoachView"
-        android:choiceMode="singleChoice"
-        android:layout_width="wrap_content"
-        android:layout_height="112dp">
-
-    </ListView>
-
-
     <EditText
         android:id="@+id/workout"
         android:layout_width="351dp"
-        android:layout_height="154dp"
-        android:hint="Create the workout here..." />
+        android:layout_height="wrap_content"
+        android:hint="Description" />
 
     <Button
         android:id="@+id/submit"
@@ -111,5 +101,13 @@
         android:text="Submit"
         android:textColor="@android:color/white"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+    
+        <ListView
+            android:id="@+id/listCoachView"
+            android:choiceMode="singleChoice"
+            android:layout_width="wrap_content"
+            android:textAlignment="center"
+            android:layout_height="112dp">
+        </ListView>
 
 </LinearLayout>

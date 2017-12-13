@@ -34,6 +34,9 @@
     <string name="select_time_for_the_workout_from_the_list">Select time for the workout from the list</string>
     <string name="pick_a_coach_from_the_list">Pick a coach from the list</string>
     <string name="sign_out">Sign out</string>
+    <string name="pick_time">Pick Time</string>
+    <string name="pick_date">Pick date</string>
+    <string name="coach_assigned">Coach assigned:</string>
     <string-array name="user_roles">
         <item>Client</item>
         <item>Coach</item>

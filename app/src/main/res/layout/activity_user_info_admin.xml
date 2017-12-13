@@ -33,8 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="20dp"
-                android:text="@string/admin_user_name" />
+                android:textSize="20dp" />
         </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -60,8 +59,7 @@
             android:layout_above="@+id/edit_user_name"
             android:layout_alignStart="@+id/edit_user_name"
             android:textSize="20dp"
-            android:textColor="@android:color/black"
-            android:text="@string/admin_user_ssn" />
+            android:textColor="@android:color/black" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -81,32 +79,9 @@
             android:id="@+id/edit_user_role"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="tjékka á þessu"/>
+            android:layout_weight="0.5"/>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    <EditText
-        android:id="@+id/edit_user_start_date"
-        android:layout_width="243dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="@string/select_date"
-        android:inputType="textPersonName"/>
 
-    <TextView
-        android:id="@+id/edit_user_expire_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/admin_user_startdate" />
-    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -114,11 +89,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
         <Button
             android:id="@+id/edit_user_change_confirm"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
+            android:layout_width="280dp"
+            android:layout_height="100dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
@@ -131,8 +107,8 @@
 
         <Button
             android:id="@+id/edit_user_remove"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
+            android:layout_width="280dp"
+            android:layout_height="100dp"
             android:layout_alignBaseline="@+id/edit_user_change_confirm"
             android:layout_alignBottom="@+id/edit_user_change_confirm"
             android:layout_toEndOf="@+id/edit_user_change_confirm"
@@ -143,7 +119,4 @@
             android:background="@android:drawable/dialog_holo_light_frame"/>
         </LinearLayout>
     </RelativeLayout>
-
-
-
 </LinearLayout>

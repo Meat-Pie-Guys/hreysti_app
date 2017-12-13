@@ -50,7 +50,12 @@ public class allUsersAdminActivity extends AppCompatActivity {
 
         userArrayList = new ArrayList<>();
         populateList();
+        startSearchText();
+    }
 
+    private void startSearchText() {
+        search = findViewById(R.id.admin_search);
+        search.addTextChangedListener(new TextWatcher() {
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -64,6 +69,10 @@ public class allUsersAdminActivity extends AppCompatActivity {
             }
         });
 
+
+            @Override
+            public void afterTextChanged(Editable arg0) {}
+        });
     }
 
 
