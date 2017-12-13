@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.JsonArray;
@@ -25,7 +26,6 @@ import fenrirmma.hreysti_app.workout.updateWorkoutActivity;
 public class getCoachScheduleActivity extends AppCompatActivity {
 
     private String date;
-    private DatePicker coachDate;
     private ListView coachList;
     private SessionAccess sa;
     private ArrayList<WorkoutHelper> list_workout;
@@ -36,24 +36,10 @@ public class getCoachScheduleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_coach_schedule);
         sa = SessionAccess.getInstance(this);
-        //coachDate = findViewById(R.id.coach_datepicker);
         coachList = findViewById(R.id.coach_listview);
         btnGetSched = findViewById(R.id.btn_coach_sched);
 
-        //makeDateString();
         setExerciseDate();
-        populateWorkoutList(date);
-
-        /*Calendar calendar = Calendar.getInstance();
-
-        coachDate.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
-
-            @Override
-            public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                date = year + "-" + (month+1) + "-" + dayOfMonth;
-                populateWorkoutList(date);
-            }
-        });*/
 
         coachList.setOnItemClickListener((parent, view, pos, id) -> {
             WorkoutHelper curr = (WorkoutHelper) parent.getItemAtPosition(pos);
@@ -66,16 +52,8 @@ public class getCoachScheduleActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
-/*
-    private void makeDateString() {
-        int day = coachDate.getDayOfMonth();
-        int month = coachDate.getMonth() + 1;
-        int year = coachDate.getYear();
-        date = year + "-" + month + "-" + day;
-    }*/
 
     private void setExerciseDate() {
-
         btnGetSched.setOnClickListener(v -> {
             final Calendar c = Calendar.getInstance();
             int mYear = c.get(Calendar.YEAR); // current year
@@ -84,9 +62,9 @@ public class getCoachScheduleActivity extends AppCompatActivity {
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(getCoachScheduleActivity.this,
                     (view, year, monthOfYear, dayOfMonth) -> {
-                        btnGetSched.setText(dayOfMonth + "-"
-                                + (monthOfYear + 1) + "-" + year);
-                        date =  year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+                        btnGetSched.setText(dayOfMonth + getString(R.string.date_dash)
+                                + (monthOfYear + 1) + getString(R.string.date_dash) + year);
+                        date =  year + "-" + (monthOfYear + 1) + getString(R.string.date_dash) + dayOfMonth;
                         populateWorkoutList(date);
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();
@@ -104,11 +82,13 @@ public class getCoachScheduleActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "ION ERROR cock", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        btnGetSched.setError(null);
+                        btnGetSched.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            btnGetSched.setError(null);
+                            btnGetSched.setError("Access denied!");
                         }
                         else{
                             JsonArray users = result.getAsJsonArray("all_workouts");
