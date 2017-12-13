@@ -2,6 +2,7 @@ package fenrirmma.hreysti_app.Utils;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,14 @@ public class CustomAdapter extends BaseAdapter{
         holder.txtTime.setText(String.format(resources.getString(R.string.time_1_s), workoutArrayList.get(position).getTime()));
         holder.txtCoach.setText(String.format(resources.getString(R.string.coach_1_s), workoutArrayList.get(position).getCoach_name()));
 
+        holder.txtCoach.setTextSize(20);
+        holder.txtCount.setTextSize(20);
+        holder.txtTime.setTextSize(20);
+
+        String counter = holder.txtCount.toString();
+        if(counter.equals("1/12")){
+            holder.txtCount.setTextColor(Color.RED);
+        }
 
         return convertView;
     }
