@@ -37,25 +37,25 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/coach_name_show"
+                    android:id="@+id/client_name_show_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/admin_user_name"
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/role"
+                    android:id="@+id/client_role_show_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/coach_name_show"
+                    android:layout_below="@+id/client_name_show_card"
                     android:text="@string/admin_user_role"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/coach_ssn"
+                    android:id="@+id/client_ssn_show_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/role"
+                    android:layout_below="@+id/client_role_show_card"
                     android:text="@string/admin_user_ssn"
                     android:textStyle="bold"/>
 
@@ -67,19 +67,9 @@
             android:layout_width="match_parent"
             android:layout_height="60dp">
 
-            <TextView
-                android:id="@+id/client_name_show"
-                android:layout_width="137dp"
-                android:layout_height="31dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
-                android:hint="Name" />
-
             <EditText
                 android:id="@+id/client_name"
+                android:hint="Change Name"
                 android:layout_width="211dp"
                 android:layout_height="47dp"
                 android:layout_marginEnd="8dp"

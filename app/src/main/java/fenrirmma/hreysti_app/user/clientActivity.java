@@ -20,7 +20,7 @@ import fenrirmma.hreysti_app.workout.exerciseOfTheDay;
 public class clientActivity extends AppCompatActivity {
 
     private SessionAccess sa;
-    private TextView client_ssn, client_name_show;
+    private TextView client_ssn, client_name_show, client_name_show_card, client_ssn_show_card, client_role_show_card;
     private EditText client_name;
     private String role;
     private Button change;
@@ -33,7 +33,10 @@ public class clientActivity extends AppCompatActivity {
         sa = SessionAccess.getInstance(this);
         client_name = findViewById(R.id.client_name);
         client_ssn = findViewById(R.id.client_ssn);
-        client_name_show = findViewById(R.id.client_name_show);
+        //client_name_show = findViewById(R.id.client_name_show);
+        client_name_show_card = findViewById(R.id.client_name_show_card);
+        client_ssn_show_card = findViewById(R.id.client_ssn_show_card);
+        client_role_show_card = findViewById(R.id.client_role_show_card);
         change = findViewById(R.id.btn_change_name);
 
         populateView();
@@ -58,13 +61,17 @@ public class clientActivity extends AppCompatActivity {
                         }
                         else{
                             JsonObject user = result.get("user").getAsJsonObject();
-                            client_name_show.setText(user.get("name").getAsString());
+                            //client_name_show.setText(user.get("name").getAsString());
                             client_ssn.setText(user.get("ssn").getAsString());
+                            client_name_show_card.setText(user.get("name").getAsString());
+                            client_ssn_show_card.setText(user.get("ssn").getAsString());
+                            client_role_show_card.setText(user.get("role").getAsString());
                             role = user.get("role").getAsString();
                         }
                     }
                 });
     }
+
 
     public void exerciseOfTheDay(View view){
         Intent intent = new Intent(clientActivity.this, exerciseOfTheDay.class);
@@ -107,6 +114,9 @@ public class clientActivity extends AppCompatActivity {
                         }
                     }
                 });
+        Intent intent = new Intent(this, clientActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }
