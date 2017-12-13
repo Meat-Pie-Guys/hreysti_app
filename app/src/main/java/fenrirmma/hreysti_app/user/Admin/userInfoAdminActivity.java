@@ -1,6 +1,7 @@
 package fenrirmma.hreysti_app.user.Admin;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -52,12 +53,11 @@ public class userInfoAdminActivity extends AppCompatActivity {
                             Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
                         }
                         else{
-                            Toast.makeText(this, "Hello THERE", Toast.LENGTH_SHORT).show();
-                            this.recreate();
+                            startActivity(new Intent(this, allUsersAdminActivity.class));
+                            finish();
                         }
                     }
                 });
-        finish();
     }
 
     public void removeUser(View view) {
@@ -78,6 +78,7 @@ public class userInfoAdminActivity extends AppCompatActivity {
                             Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
                         }
                         else{
+                            startActivity(new Intent(this, allUsersAdminActivity.class));
                             finish();
                         }
                     }
@@ -100,5 +101,11 @@ public class userInfoAdminActivity extends AppCompatActivity {
         name.setText(_name);
         ssn.setText(_ssn);
         //startDate.setText(_startDate);
+    }
+
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(this, allUsersAdminActivity.class));
+        finish();
     }
 }
