@@ -1,33 +1,33 @@
 package fenrirmma.hreysti_app.user.Admin;
 
-import android.app.DatePickerDialog;
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
-
-import java.util.Calendar;
-
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.Utils.SessionAccess;
 
 public class userInfoAdminActivity extends AppCompatActivity {
 
-    private TextView name, ssn, startDate, expireDate;
+    private TextView name, ssn;
     private EditText role;
     private SessionAccess sa;
+    private Button confirm, remove;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info_admin);
         sa = SessionAccess.getInstance(this);
+        confirm = findViewById(R.id.edit_user_change_confirm);
+        remove = findViewById(R.id.edit_user_remove);
         setFields();
 
     }
@@ -46,11 +46,29 @@ public class userInfoAdminActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "ION ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        clearError();
+                        confirm.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            switch (code){
+                                case 11 :
+                                    clearError();
+                                    confirm.setError("Missing data");
+                                    break;
+                                case 2 :
+                                    clearError();
+                                    confirm.setError("There is no such user");
+                                    break;
+                                case 5 :
+                                    clearError();
+                                    confirm.setError("Field cannot be empty!");
+                                    break;
+                                case 16 :
+                                    clearError();
+                                    confirm.setError("That is an invalid role!");
+                                    break;
+                            }
                         }
                         else{
                             startActivity(new Intent(this, allUsersAdminActivity.class));
@@ -71,11 +89,18 @@ public class userInfoAdminActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "ION ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        clearError();
+                        remove.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            if(code == 11) {
+                                clearError();
+                                remove.setError("Cannot delete admins!");
+                            } else{
+                                clearError();
+                                remove.setError("There is no such user");
+                            }
                         }
                         else{
                             startActivity(new Intent(this, allUsersAdminActivity.class));
@@ -83,6 +108,12 @@ public class userInfoAdminActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    private void clearError(){
+        confirm.setError(null);
+        remove.setError(null);
+
+
     }
     private void setFields() {
         //Setting all the appropriate text fields in the activity
@@ -92,15 +123,11 @@ public class userInfoAdminActivity extends AppCompatActivity {
         ssn = findViewById(R.id.edit_user_ssn);
         //startDate = findViewById(R.id.edit_user_start_date);
 
-        String _name = String.format(getResources().getString(R.string.admin_user_name), getIntent().getStringExtra("NAME"));
-        String _ssn = String.format(getResources().getString(R.string.admin_user_ssn), getIntent().getStringExtra("SSN"));
-        String _startDate = String.format(getResources().getString(R.string.admin_user_startdate), getIntent().getStringExtra("STARTDATE"));
-
         role.setText(getIntent().getStringExtra("ROLE"));
+        name.setText(String.format(getResources().getString(R.string.admin_user_name), getIntent().getStringExtra("NAME")));
+        ssn.setText(String.format(getResources().getString(R.string.admin_user_ssn), getIntent().getStringExtra("SSN")));
+        //startDate.setText(tring.format(getResources().getString(R.string.admin_user_startdate), getIntent().getStringExtra("STARTDATE"));
         //expireDate.setText(getIntent().getStringExtra("EXPIREDATE"));
-        name.setText(_name);
-        ssn.setText(_ssn);
-        //startDate.setText(_startDate);
     }
 
     @Override
