@@ -21,36 +21,28 @@ public class CustomFilter extends Filter {
         this.adapter = adapter;
         this.filterList = filterList;
     }
-
     //Filter
     @Override
     protected FilterResults performFiltering(CharSequence constraint) {
         FilterResults results = new FilterResults();
-
-        //validity
+        //is it valid
         if(constraint != null && constraint.length() > 0){
             constraint = constraint.toString().toUpperCase();
             ArrayList<UserHelper> fileteredUsers = new ArrayList<>();
-
             for(UserHelper uh: filterList){
-
                 if(uh.getName().toUpperCase().contains(constraint)){
                     fileteredUsers.add(uh);
                 }
             }
-
             results.count = fileteredUsers.size();
             results.values = fileteredUsers;
-
             return results;
         }
-
         results.count = filterList.size();
         results.values = filterList;
 
         return results;
     }
-
     // display results
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {

@@ -5,21 +5,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
-
-
 import java.util.ArrayList;
-import java.util.List;
-
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.Utils.DateConverter;
 import fenrirmma.hreysti_app.Utils.UserHelper;
@@ -28,10 +18,6 @@ import fenrirmma.hreysti_app.Utils.SessionAccess;
 
 public class allUsersAdminActivity extends AppCompatActivity {
     private SessionAccess sa;
-    private ListView userListView;
-    private List<UserHelper> userList;
-    private EditText search;
-    private ArrayAdapter<UserHelper> arrayAdapter;
     private RecyclerView recyclerView;
     private ArrayList<UserHelper> userArrayList;
     private AllUsersRecyclerAdapter adapter;
@@ -64,7 +50,6 @@ public class allUsersAdminActivity extends AppCompatActivity {
         });
     }
 
-
     private void populateList() {
         userArrayList = new ArrayList<>();
         Ion.with(this)
@@ -76,11 +61,11 @@ public class allUsersAdminActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "ION ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        Toast.makeText(this, "Can't connect to the database!", Toast.LENGTH_SHORT).show();
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            Toast.makeText(this, "Only allowed for admins", Toast.LENGTH_SHORT).show();
                         }
                         else{
                             JsonArray users = result.getAsJsonArray("all_users");
@@ -101,14 +86,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
                         recyclerView.setAdapter(adapter);
                     }
 
-
                 });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //this.recreate();
-       // populateList();
-    }
 }
