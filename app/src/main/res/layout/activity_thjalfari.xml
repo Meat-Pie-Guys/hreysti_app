@@ -92,17 +92,10 @@
             android:textColor="@android:color/white" />
     </LinearLayout>
 
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
         <Button
             android:id="@+id/btn_exercise"
-            android:layout_width="175dp"
-            android:layout_height="110dp"
+            android:layout_width="288dp"
+            android:layout_height="47dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
@@ -115,8 +108,8 @@
 
         <Button
             android:id="@+id/btn_make_exercise"
-            android:layout_width="175dp"
-            android:layout_height="110dp"
+            android:layout_width="288dp"
+            android:layout_height="47dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
@@ -128,19 +121,10 @@
             android:textColor="@android:color/white" />
 
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
         <Button
             android:id="@+id/schedule"
-            android:layout_width="175dp"
-            android:layout_height="110dp"
+            android:layout_width="288dp"
+            android:layout_height="47dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
@@ -153,8 +137,8 @@
 
         <Button
             android:id="@+id/signOut"
-            android:layout_width="175dp"
-            android:layout_height="110dp"
+            android:layout_width="288dp"
+            android:layout_height="47dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
@@ -164,12 +148,6 @@
             android:backgroundTint="@android:color/holo_green_dark"
             android:textColor="@android:color/white"
             android:text="@string/sign_out" />
-
-
-    </LinearLayout>
-
-
-
 
 
 </LinearLayout>

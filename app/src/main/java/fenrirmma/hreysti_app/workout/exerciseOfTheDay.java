@@ -1,9 +1,12 @@
 package fenrirmma.hreysti_app.workout;
 
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -36,7 +39,7 @@ public class exerciseOfTheDay extends AppCompatActivity {
     private ArrayList<WorkoutHelper> list_workout;
     private int day, month, year;
     private String date;
-
+    private Button btnDate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +49,12 @@ public class exerciseOfTheDay extends AppCompatActivity {
         workout_list = findViewById(R.id.list_workouts);
         role = getIntent().getStringExtra("ROLE");
         sa = SessionAccess.getInstance(this);
-        exercisePicker = findViewById(R.id.eotd_date_picker);
+        //exercisePicker = findViewById(R.id.eotd_date_picker);
+        btnDate = findViewById(R.id.btn_exercise_date);
         Calendar calendar = Calendar.getInstance();
 
         Date now = new Date();
+        setExerciseDate();
         SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
         String currentDateTime = calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.DAY_OF_MONTH);
         date = currentDateTime;
@@ -86,17 +91,26 @@ public class exerciseOfTheDay extends AppCompatActivity {
             }
         });
         displayWorkout(currentDateTime +  "-06-10");
-        populateWorkoutList(currentDateTime + "-06-10");
-        exercisePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
-            @Override
-            public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                date = year + "-" + (month+1) + "-" + dayOfMonth;
-                displayWorkout(date + "-06-10");
-                populateWorkoutList(date);
-            }
+    }
+
+    private void setExerciseDate() {
+
+        btnDate.setOnClickListener(v -> {
+            final Calendar c = Calendar.getInstance();
+            int mYear = c.get(Calendar.YEAR); // current year
+            int mMonth = c.get(Calendar.MONTH); // current month
+            int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(exerciseOfTheDay.this,
+                    (view, year, monthOfYear, dayOfMonth) -> {
+                        btnDate.setText(dayOfMonth + "-"
+                                + (monthOfYear + 1) + "-" + year);
+                        date =  year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+                        displayWorkout(date + "-06-10");
+                        populateWorkoutList(date);
+                    }, mYear, mMonth, mDay);
+            datePickerDialog.show();
         });
-
-
     }
 
     private void populateWorkoutList(String date) {
