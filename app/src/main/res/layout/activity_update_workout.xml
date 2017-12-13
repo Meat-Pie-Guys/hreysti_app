@@ -48,10 +48,17 @@
         android:textColor="@android:color/white" />
     </LinearLayout>
 
+    <EditText
+        android:id="@+id/workout"
+        android:layout_width="351dp"
+        android:layout_height="60dp"
+        android:hint="Description" />
+
     <LinearLayout
         android:layout_width="335dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -83,11 +90,7 @@
     </ListView>
 
 
-    <EditText
-        android:id="@+id/workout"
-        android:layout_width="351dp"
-        android:layout_height="60dp"
-        android:hint="Description" />
+
 
     <Button
         android:id="@+id/submit"

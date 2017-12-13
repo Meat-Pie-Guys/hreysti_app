@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -46,7 +48,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
         userArrayList = new ArrayList<>();
         populateList();
 
-        //startSearchText();
+        startSearchText();
         //setData();
 
     }
@@ -56,7 +58,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
     }
 
     private void startSearchText() {
-        /*search = findViewById(R.id.admin_search);
+        search = findViewById(R.id.admin_search);
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
@@ -69,7 +71,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable arg0) {}
-        });*/
+        });
     }
 
     private void populateList() {
