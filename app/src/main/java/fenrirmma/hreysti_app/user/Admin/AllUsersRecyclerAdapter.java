@@ -6,10 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.List;
+import java.util.ArrayList;
+
 
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.Utils.UserHelper;
@@ -18,15 +21,23 @@ import fenrirmma.hreysti_app.Utils.UserHelper;
  * Created by magnu on 10/12/2017.
  */
 
-public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecyclerAdapter.ViewHolder> {
+public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecyclerAdapter.ViewHolder> implements Filterable{
 
-    private List<UserHelper> userList;
+
+    ArrayList<UserHelper> userList;
+    private ArrayList<UserHelper> filterList;
     private Activity activity;
+    CustomFilter filter;
 
-    public AllUsersRecyclerAdapter(Activity activity, List<UserHelper> userList){
+    public AllUsersRecyclerAdapter(Activity activity, ArrayList<UserHelper> userList){
         this.userList = userList;
+        this.filterList = userList;
         this.activity = activity;
+
     }
+    /*public List<UserHelper> getUserList() { //ekki að nota þennan, væri betra að hafa userList private og nota þennan
+        return userList;
+    }*/
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType){
@@ -64,6 +75,15 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
 
     public int getItemCount(){return(null != userList ? userList.size() : 0);}
 
+    @Override
+    public Filter getFilter() {
+        if(filter == null){
+
+            filter = new CustomFilter(this, filterList);
+        }
+        return filter;
+    }
+
     protected class ViewHolder extends RecyclerView.ViewHolder{
         private ImageView image;
         private TextView name;
@@ -81,6 +101,7 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
             expiration = view.findViewById(R.id.expiration);
             container = view.findViewById(R.id.card_view);
         }
+
     }
 }
 
