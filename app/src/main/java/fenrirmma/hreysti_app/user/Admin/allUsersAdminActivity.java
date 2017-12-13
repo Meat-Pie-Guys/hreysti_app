@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -32,6 +35,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<UserHelper> userArrayList;
     private AllUsersRecyclerAdapter adapter;
+    private SearchView sv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,7 @@ public class allUsersAdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_all_users_admin);
         sa = SessionAccess.getInstance(this);
         recyclerView = findViewById(R.id.recycle_view_admin);
+        sv = findViewById(R.id.mSearch);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -46,31 +51,23 @@ public class allUsersAdminActivity extends AppCompatActivity {
         userArrayList = new ArrayList<>();
         populateList();
 
-        //startSearchText();
-        //setData();
-
-    }
-
-    private void setData(){
-        userArrayList.add(new UserHelper("Nafn1", "0107853599", "openId", "Admin", "00.00.0000", "99.99.9999"));
-    }
-
-    private void startSearchText() {
-        /*search = findViewById(R.id.admin_search);
-        search.addTextChangedListener(new TextWatcher() {
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
-                // When user changed the Text
-                allUsersAdminActivity.this.arrayAdapter.getFilter().filter(cs);
+            public boolean onQueryTextSubmit(String query) {
+                return false;
             }
 
             @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) { }
+            public boolean onQueryTextChange(String query) {
+                adapter.getFilter().filter(query);
+                return false;
+            }
+        });
 
-            @Override
-            public void afterTextChanged(Editable arg0) {}
-        });*/
     }
+
+
+
 
     private void populateList() {
         userArrayList = new ArrayList<>();

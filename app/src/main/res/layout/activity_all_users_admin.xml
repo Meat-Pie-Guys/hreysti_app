@@ -7,12 +7,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="fenrirmma.hreysti_app.user.clientActivity">
+
+    <android.support.v7.widget.SearchView
+        android:id="@+id/mSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:queryHint="Search..." />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle_view_admin"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 
 </FrameLayout>
