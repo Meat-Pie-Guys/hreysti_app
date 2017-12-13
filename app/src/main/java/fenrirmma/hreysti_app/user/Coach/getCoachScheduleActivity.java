@@ -4,6 +4,8 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
@@ -25,11 +27,11 @@ import fenrirmma.hreysti_app.workout.updateWorkoutActivity;
 public class getCoachScheduleActivity extends AppCompatActivity {
 
     private String date;
-    private DatePicker coachDate;
-    private ListView coachList;
     private SessionAccess sa;
     private ArrayList<WorkoutHelper> list_workout;
     private Button btnGetSched;
+    private RecyclerView recyclerView;
+    private getCoachScheduleRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +39,15 @@ public class getCoachScheduleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_get_coach_schedule);
         sa = SessionAccess.getInstance(this);
 
-        coachList = findViewById(R.id.coach_listview);
         btnGetSched = findViewById(R.id.btn_coach_sched);
+
+        recyclerView = findViewById(R.id.recycle_view_coach_schedule);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
         setExerciseDate();
         populateWorkoutList(date);
-
+        /*
         coachList.setOnItemClickListener((parent, view, pos, id) -> {
             WorkoutHelper curr = (WorkoutHelper) parent.getItemAtPosition(pos);
             Intent intent = new Intent(this, updateWorkoutActivity.class);
@@ -52,7 +57,7 @@ public class getCoachScheduleActivity extends AppCompatActivity {
             intent.putExtra("date", curr.getDate());
             intent.putExtra("time", curr.getTime());
             startActivity(intent);
-        });
+        });*/
     }
 
     private void setExerciseDate() {
@@ -104,7 +109,9 @@ public class getCoachScheduleActivity extends AppCompatActivity {
                                 ));
                             }
                         }
-                        coachList.setAdapter(new CustomAdapter(this, list_workout));
+                        //coachList.setAdapter(new CustomAdapter(this, list_workout));
+                        adapter = new getCoachScheduleRecyclerAdapter(this, list_workout);
+                        recyclerView.setAdapter(adapter);
                     }
                 });
     }
