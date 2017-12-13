@@ -135,4 +135,10 @@ public class userInfoAdminActivity extends AppCompatActivity {
         startActivity(new Intent(this, allUsersAdminActivity.class));
         finish();
     }
+
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(this, allUsersAdminActivity.class));
+        finish();
+    }
 }
