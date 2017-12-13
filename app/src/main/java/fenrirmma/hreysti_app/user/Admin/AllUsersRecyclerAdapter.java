@@ -59,15 +59,16 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(view.getContext(), userInfoAdminActivity.class);
-            intent.putExtra("NAME", userList.get(pos).getName());
-            intent.putExtra("SSN", userList.get(pos).getSsn());
-            intent.putExtra("OPENID", userList.get(pos).getOpenId());
-            intent.putExtra("ROLE", userList.get(pos).getUserRole());
-            intent.putExtra("STARTDATE", userList.get(pos).getStartDate());
-            intent.putExtra("EXPIREDATE", userList.get(pos).getExpireDate());
-            view.getContext().startActivity(intent);
-        }
+                Intent intent = new Intent(view.getContext(), userInfoAdminActivity.class);
+                intent.putExtra("NAME", userList.get(pos).getName());
+                intent.putExtra("SSN", userList.get(pos).getSsn());
+                intent.putExtra("OPENID", userList.get(pos).getOpenId());
+                intent.putExtra("ROLE", userList.get(pos).getUserRole());
+                intent.putExtra("STARTDATE", userList.get(pos).getStartDate());
+                intent.putExtra("EXPIREDATE", userList.get(pos).getExpireDate());
+                view.getContext().startActivity(intent);
+                activity.finish();
+            }
     });
 
     }
