@@ -33,7 +33,6 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
         this.userList = userList;
         this.filterList = userList;
         this.activity = activity;
-
     }
     /*public List<UserHelper> getUserList() { //ekki að nota þennan, væri betra að hafa userList private og nota þennan
         return userList;
@@ -70,9 +69,7 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
                 activity.finish();
             }
     });
-
     }
-
 
     public int getItemCount(){return(null != userList ? userList.size() : 0);}
 
