@@ -16,10 +16,11 @@ import com.koushikdutta.ion.Ion;
 import java.util.Objects;
 
 import fenrirmma.hreysti_app.R;
-import fenrirmma.hreysti_app.login.ssnValidation.Validator;
+import fenrirmma.hreysti_app.Utils.SessionAccess;
+import fenrirmma.hreysti_app.Utils.ssnValidation.Validator;
 import fenrirmma.hreysti_app.user.Admin.adminActivity;
 import fenrirmma.hreysti_app.user.clientActivity;
-import fenrirmma.hreysti_app.user.coachActivity;
+import fenrirmma.hreysti_app.user.Coach.coachActivity;
 
 public class newSignUp extends AppCompatActivity {
 
@@ -46,10 +47,14 @@ public class newSignUp extends AppCompatActivity {
         String _pw = password.getText().toString();
 
         if(Validator.isValidSSN(_ssn)){
-            setInfo(_name, _ssn, _pw);
+            if(_name.trim().length() != 0){setInfo(_name, _ssn, _pw);}
+            clearError();
+            name.setError("Name cannot be empty!");
         } else{
-            Toast.makeText(this, "Kennitala is illegal", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+            clearError();
+            ssn.setError("Kennitala is illegal");
         }
+
 
     }
 
@@ -68,14 +73,38 @@ public class newSignUp extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "Ion error", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        clearError();
+                        password.setError("Can't connect to the database!");
                     }
                     else{
-                        String code = result.get("error").getAsString();
-                        if(!Objects.equals(code, "0")){
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        int code = result.get("error").getAsInt();
+                        if(code != 0){
+                            //10, 5, 6, 7, 8
+                            switch (code){
+                                case 10 :
+                                    clearError();
+                                    name.setError("Missing header fields");
+                                    break;
+                                case 5 :
+                                    clearError();
+                                    name.setError("Missing information");
+                                    break;
+                                case 6 :
+                                    clearError();
+                                    password.setError("Password must be at least 6 characters long");
+                                    break;
+                                case 7 :
+                                    clearError();
+                                    ssn.setError("SSN is illegal");
+                                    break;
+                                case 8 :
+                                    clearError();
+                                    name.setError("User already exists in database");
+                                    break;
+                            }
                         }
                         else{
+                            clearError();
                             getSession(_ssn, _pw);
                         }
                     }
@@ -94,14 +123,22 @@ public class newSignUp extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "Ion error", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        clearError();
+                        password.setError("Can't connect to the database!");
                     }
                     else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            if(code == 4){
+                                clearError();
+                                password.setError("SSN or password missing");
+                            } else {
+                                clearError();
+                                password.setError("SSN or password wrong!");
+                            }
                         }
                         else{
+                            clearError();
                             sa.setRole(result.get("role").getAsString());
                             sa.setToken(result.get("token").getAsString());
                             proceed();
@@ -123,5 +160,11 @@ public class newSignUp extends AppCompatActivity {
             startActivity(new Intent(this, clientActivity.class));
             finish();
         }
+    }
+    private void clearError(){
+        name.setError(null);
+        ssn.setError(null);
+        password.setError(null);
+
     }
 }

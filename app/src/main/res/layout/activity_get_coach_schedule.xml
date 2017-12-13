@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fenrirmma.hreysti_app.user.getCoachScheduleActivity">
+    tools:context="fenrirmma.hreysti_app.user.Coach.getCoachScheduleActivity">
 
     <ListView
         android:id="@+id/coach_listview"

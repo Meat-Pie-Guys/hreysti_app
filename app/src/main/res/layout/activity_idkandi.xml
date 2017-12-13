@@ -97,6 +97,7 @@
                 android:background="@android:drawable/dialog_holo_light_frame"
                 android:backgroundTint="@android:color/black"
                 android:text="Change"
+                android:onClick="changeName"
                 android:layout_toRightOf="@+id/client_name"
                 android:textColor="@android:color/white" />
         </RelativeLayout>

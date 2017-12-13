@@ -73,6 +73,7 @@
 
 
 
+
         <RelativeLayout
             android:id="@+id/loadingPanel"
             android:layout_width="wrap_content"

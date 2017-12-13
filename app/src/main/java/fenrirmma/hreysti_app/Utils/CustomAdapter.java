@@ -1,4 +1,4 @@
-package fenrirmma.hreysti_app.workout;
+package fenrirmma.hreysti_app.Utils;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -11,7 +11,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import fenrirmma.hreysti_app.R;
-import fenrirmma.hreysti_app.workout.WorkoutHelper;
 
 /**
  * Created by Notandi on 11.12.2017.

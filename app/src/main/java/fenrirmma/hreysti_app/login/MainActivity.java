@@ -12,9 +12,10 @@ import android.widget.Toast;
 import com.koushikdutta.ion.Ion;
 
 import fenrirmma.hreysti_app.R;
+import fenrirmma.hreysti_app.Utils.SessionAccess;
 import fenrirmma.hreysti_app.user.Admin.adminActivity;
 import fenrirmma.hreysti_app.user.clientActivity;
-import fenrirmma.hreysti_app.user.coachActivity;
+import fenrirmma.hreysti_app.user.Coach.coachActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,14 +59,22 @@ public class MainActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "Ion error", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        password.setError(null);
+                        password.setError("Can't connect to the database!");
                     }
                     else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            if(code == 4){
+                                password.setError(null);
+                                password.setError("SSN or password missing");
+                            } else {
+                                password.setError(null);
+                                password.setError("SSN or password wrong!");
+                            }
                         }
                         else{
+                            password.setError(null);
                             sa.setRole(result.get("role").getAsString());
                             sa.setToken(result.get("token").getAsString());
                             proceed();

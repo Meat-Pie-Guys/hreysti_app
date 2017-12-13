@@ -1,7 +1,6 @@
 package fenrirmma.hreysti_app.workout;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,10 +22,9 @@ import java.util.Calendar;
 import java.util.List;
 
 import fenrirmma.hreysti_app.R;
-import fenrirmma.hreysti_app.login.SessionAccess;
-import fenrirmma.hreysti_app.user.Admin.DateConverter;
-import fenrirmma.hreysti_app.user.Admin.UserHelper;
-import fenrirmma.hreysti_app.user.Admin.userInfoAdminActivity;
+import fenrirmma.hreysti_app.Utils.SessionAccess;
+import fenrirmma.hreysti_app.Utils.DateConverter;
+import fenrirmma.hreysti_app.Utils.UserHelper;
 
 public class createWorkoutActivity extends AppCompatActivity {
 

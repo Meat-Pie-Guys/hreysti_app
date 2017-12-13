@@ -1,4 +1,4 @@
-package fenrirmma.hreysti_app.workout;
+package fenrirmma.hreysti_app.Utils;
 
 /**
  * Created by Notandi on 10.12.2017.

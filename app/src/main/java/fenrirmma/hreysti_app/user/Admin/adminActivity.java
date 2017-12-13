@@ -7,8 +7,9 @@ import android.view.View;
 
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.login.MainActivity;
-import fenrirmma.hreysti_app.login.SessionAccess;
+import fenrirmma.hreysti_app.Utils.SessionAccess;
 import fenrirmma.hreysti_app.workout.createWorkoutActivity;
+import fenrirmma.hreysti_app.workout.exerciseOfTheDay;
 
 public class adminActivity extends AppCompatActivity {
 
@@ -29,7 +30,8 @@ public class adminActivity extends AppCompatActivity {
         finish();
     }
 
-    public void assignCoach(View view) {
+    public void workoutOfTheDay(View view) {
+        startActivity(new Intent(this, exerciseOfTheDay.class));
     }
 
     public void getAllUsers(View view) {

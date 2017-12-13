@@ -1,4 +1,4 @@
-package fenrirmma.hreysti_app.user.Admin;
+package fenrirmma.hreysti_app.Utils;
 
 import java.sql.Date;
 import java.util.Locale;
@@ -14,6 +14,8 @@ public class UserHelper {
     private String ssn;
     private String openId;
     private String userRole;
+    private String expireDate;
+    private String startDate;
 
     public UserHelper(String name, String ssn, String openId, String userRole, String startDate, String expireDate) {
         this.name = name;
@@ -24,7 +26,7 @@ public class UserHelper {
         this.expireDate = expireDate;
     }
 
-    private String startDate;
+
 
     public String getName() {
         return name;
@@ -50,7 +52,7 @@ public class UserHelper {
         return expireDate;
     }
 
-    private String expireDate;
+
 
     @Override
     public String toString() {

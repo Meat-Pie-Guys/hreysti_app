@@ -22,20 +22,13 @@
             android:layout_height="wrap_content">
             <Button
                 android:id="@+id/btn_pick_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="288dp"
+                android:layout_height="47dp"
                 android:background="@android:drawable/dialog_holo_light_frame"
                 android:backgroundTint="@android:color/black"
                 android:text="Pick date"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@android:color/white"/>
-            <TextView
-                android:id="@+id/display_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/btn_pick_date"
-                android:textSize="20dp"
-                android:textColor="@android:color/black"
-                android:text="0101010101"/>
         </LinearLayout>
 
         <LinearLayout
@@ -61,6 +54,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_toRightOf="@+id/time"
                 android:autofillHints="pick time"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_height="42dp" />
         </LinearLayout>
 
@@ -77,7 +71,8 @@
             android:layout_marginRight="10dp"
             android:gravity="left"
             android:text="Coach assigned:"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
 
         <TextView
@@ -115,6 +110,7 @@
         android:backgroundTint="@android:color/black"
         android:onClick="submitWorkout"
         android:text="Submit"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
 </LinearLayout>
