@@ -109,6 +109,6 @@ public class allUsersAdminActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         //this.recreate();
-        populateList();
+       // populateList();
     }
 }
