@@ -53,6 +53,16 @@
         android:layout_width="351dp"
         android:layout_height="60dp"
         android:hint="Description" />
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:backgroundTint="@android:color/black"
+        android:onClick="submitWorkout"
+        android:text="Submit changes"
+        android:textColor="@android:color/white" />
 
     <LinearLayout
         android:layout_width="335dp"
@@ -66,7 +76,7 @@
             android:layout_marginRight="10dp"
             android:gravity="center"
             android:textAlignment="center"
-            android:text="@string/pick_a_coach_from_the_list"
+            android:text="Coach Selected"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <TextView
@@ -85,21 +95,12 @@
         android:id="@+id/listCoachView"
         android:choiceMode="singleChoice"
         android:layout_width="wrap_content"
-        android:layout_height="112dp">
+        android:layout_height="wrap_content">
 
     </ListView>
 
 
 
 
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="288dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:backgroundTint="@android:color/black"
-        android:onClick="submitWorkout"
-        android:text="Submit changes"
-        android:textColor="@android:color/white" />
+
 </LinearLayout>
