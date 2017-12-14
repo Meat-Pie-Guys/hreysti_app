@@ -90,33 +90,34 @@ public class clientActivity extends AppCompatActivity {
         JsonObject json = new JsonObject();
         String name = client_name.getText().toString();
         if(name.trim().length() == 0){client_name.setError("Name cannot be only white space!");}
-        json.addProperty("name", name);
-        Ion.with(this)
-                .load("PUT", "http://10.0.2.2:5000/user/name/update")
-                .addHeader("Content-Type", "application/json")
-                .addHeader("Accept", "application/json")
-                .addHeader("fenrir-token", sa.getToken())
-                .setTimeout(1000)
-                .setJsonObjectBody(json)
-                .asJsonObject()
-                .setCallback((e, result) -> {
-                    if(e != null){
-                        change.setError("Can't connect to the database!");
-                    }else {
-                        int code = result.get("error").getAsInt();
-                        if (code != 0) {
-                            if(code == 5){change.setError("Name cannot be empty");}
-                            change.setError("Name missing");
-                        }
-                        else{
-                            Toast.makeText(this, "Name changed", Toast.LENGTH_SHORT).show();
+        else {
+            json.addProperty("name", name);
+            Ion.with(this)
+                    .load("PUT", "http://10.0.2.2:5000/user/name/update")
+                    .addHeader("Content-Type", "application/json")
+                    .addHeader("Accept", "application/json")
+                    .addHeader("fenrir-token", sa.getToken())
+                    .setTimeout(1000)
+                    .setJsonObjectBody(json)
+                    .asJsonObject()
+                    .setCallback((e, result) -> {
+                        if (e != null) {
+                            change.setError("Can't connect to the database!");
+                        } else {
+                            int code = result.get("error").getAsInt();
+                            if (code != 0) {
+                                if (code == 5) {
+                                    change.setError("Name cannot be empty");
+                                }
+                                change.setError("Name missing");
+                            } else {
+                                Toast.makeText(this, "Name changed", Toast.LENGTH_SHORT).show();
 
+                            }
                         }
-                    }
-                });
-        Intent intent = new Intent(this, clientActivity.class);
-        startActivity(intent);
-        finish();
+                    });
+            this.recreate();
+        }
     }
 
 }
