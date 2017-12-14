@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:gravity="top|center"
     android:layout_width="match_parent"
+    android:id="@+id/create_new_workout_root"
     android:layout_height="match_parent"
     tools:context="fenrirmma.hreysti_app.workout.createWorkoutActivity">
 

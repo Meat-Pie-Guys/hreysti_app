@@ -37,4 +37,7 @@ dependencies {
     compile 'com.android.support:design:26.1.0'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestCompile 'org.mockito:mockito-android:2.12.0'
+    androidTestCompile 'com.squareup.okhttp3:mockwebserver:3.9.1'
+    androidTestCompile 'android.arch.core:core-testing:1.0.0'
 }

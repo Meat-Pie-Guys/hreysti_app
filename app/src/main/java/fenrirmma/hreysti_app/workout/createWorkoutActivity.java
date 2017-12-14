@@ -37,6 +37,13 @@ public class createWorkoutActivity extends AppCompatActivity {
     private UserHelper coach;
     private ListView coachList;
     private Button date, submit;
+    private static String url = "http://10.0.2.2:5000/user/coaches";
+
+
+    public static void setUrl(String newUrl){
+        url = newUrl;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +71,7 @@ public class createWorkoutActivity extends AppCompatActivity {
     private void getList() {
         list = new ArrayList<>();
         Ion.with(this)
-                .load("GET", "http://10.0.2.2:5000/user/coaches")
+                .load("GET", url)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "application/json")
                 .addHeader("fenrir-token", sa.getToken())
