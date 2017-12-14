@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.JsonArray;
@@ -27,6 +28,7 @@ import fenrirmma.hreysti_app.workout.updateWorkoutActivity;
 public class getCoachScheduleActivity extends AppCompatActivity {
 
     private String date;
+    private ListView coachList;
     private SessionAccess sa;
     private ArrayList<WorkoutHelper> list_workout;
     private Button btnGetSched;
@@ -38,6 +40,11 @@ public class getCoachScheduleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_coach_schedule);
         sa = SessionAccess.getInstance(this);
+        //coachList = findViewById(R.id.coach_listview);
+        btnGetSched = findViewById(R.id.btn_coach_sched);
+
+        setExerciseDate();
+
 
         btnGetSched = findViewById(R.id.btn_coach_sched);
 
@@ -48,6 +55,7 @@ public class getCoachScheduleActivity extends AppCompatActivity {
         setExerciseDate();
         populateWorkoutList(date);
         /*
+
         coachList.setOnItemClickListener((parent, view, pos, id) -> {
             WorkoutHelper curr = (WorkoutHelper) parent.getItemAtPosition(pos);
             Intent intent = new Intent(this, updateWorkoutActivity.class);
@@ -61,7 +69,6 @@ public class getCoachScheduleActivity extends AppCompatActivity {
     }
 
     private void setExerciseDate() {
-
         btnGetSched.setOnClickListener(v -> {
             final Calendar c = Calendar.getInstance();
             int mYear = c.get(Calendar.YEAR); // current year
@@ -70,9 +77,9 @@ public class getCoachScheduleActivity extends AppCompatActivity {
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(getCoachScheduleActivity.this,
                     (view, year, monthOfYear, dayOfMonth) -> {
-                        btnGetSched.setText(dayOfMonth + "-"
-                                + (monthOfYear + 1) + "-" + year);
-                        date =  year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+                        btnGetSched.setText(dayOfMonth + getString(R.string.date_dash)
+                                + (monthOfYear + 1) + getString(R.string.date_dash) + year);
+                        date =  year + "-" + (monthOfYear + 1) + getString(R.string.date_dash) + dayOfMonth;
                         populateWorkoutList(date);
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();
@@ -90,11 +97,13 @@ public class getCoachScheduleActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "ION ERROR cock", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        btnGetSched.setError(null);
+                        btnGetSched.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            btnGetSched.setError(null);
+                            btnGetSched.setError("Access denied!");
                         }
                         else{
                             JsonArray users = result.getAsJsonArray("all_workouts");
