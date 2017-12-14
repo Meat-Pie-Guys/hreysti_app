@@ -84,7 +84,7 @@
             android:layout_marginLeft="10dp"
             android:gravity="right"
             android:textColor="@android:color/black"
-            android:text="Joe Piledrive"
+            android:hint="@string/select_a_coach"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
     </LinearLayout>
 
@@ -110,6 +110,12 @@
         android:layout_width="wrap_content"
         android:layout_height="112dp"
         android:choiceMode="singleChoice"
-        android:textAlignment="center"></ListView>
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/make_workout_msg"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

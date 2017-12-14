@@ -166,13 +166,9 @@ public class exerciseOfTheDay extends AppCompatActivity {
                             }
                         }
                         workout_list.setAdapter(new CustomAdapter(this, list_workout));
-
                       //  exerciceAdapter = new exerciseOfTheDayRecyclerAdapter(this, list_workout);
                         //recyclerView.setAdapter(exerciceAdapter);
-
                     }
-
-
                 });
         list_workout.clear();
 
