@@ -12,11 +12,6 @@ import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.Utils.UserHelper;
 
 
-
-/**
- * Created by Notandi on 14.12.2017.
- */
-
 public class attendingUsersRecyclerAdapter extends RecyclerView.Adapter<attendingUsersRecyclerAdapter.ViewHolder> {
 
     private ArrayList<UserHelper> userList;
@@ -29,13 +24,11 @@ public class attendingUsersRecyclerAdapter extends RecyclerView.Adapter<attendin
 
     @Override
     public attendingUsersRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType){
-
         LayoutInflater inflater = activity.getLayoutInflater();
         View view = inflater.inflate(R.layout.activity_get_users_single_item, viewGroup, false);
         attendingUsersRecyclerAdapter.ViewHolder viewHolder = new attendingUsersRecyclerAdapter.ViewHolder(view);
         return viewHolder;
     }
-
 
     @Override
     public void onBindViewHolder(attendingUsersRecyclerAdapter.ViewHolder viewHolder, int pos){
@@ -43,12 +36,9 @@ public class attendingUsersRecyclerAdapter extends RecyclerView.Adapter<attendin
         viewHolder.name.setText(userList.get(pos).getName());
         viewHolder.role.setText(userList.get(pos).getUserRole());
         viewHolder.ssn.setText(userList.get(pos).getSsn());
-
-
     }
 
     public int getItemCount(){return(null != userList ? userList.size() : 0);}
-
 
 
     protected class ViewHolder extends RecyclerView.ViewHolder{

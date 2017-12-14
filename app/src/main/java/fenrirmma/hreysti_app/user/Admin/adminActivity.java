@@ -23,7 +23,6 @@ public class adminActivity extends AppCompatActivity {
         sa = SessionAccess.getInstance(this);
     }
 
-
     public void signOut(View view) {
         sa.clearToken();
         startActivity(new Intent(this, MainActivity.class));

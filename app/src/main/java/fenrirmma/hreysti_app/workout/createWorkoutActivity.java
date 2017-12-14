@@ -12,16 +12,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.Utils.SessionAccess;
 import fenrirmma.hreysti_app.Utils.DateConverter;
@@ -60,7 +56,6 @@ public class createWorkoutActivity extends AppCompatActivity {
             coach_name.setText(coach.getName());
 
         });
-
     }
 
     private void getList() {
@@ -74,15 +69,16 @@ public class createWorkoutActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        date.setError(null);
-                        date.setError("Can't connect to the database!");
+                        workout.setError(null);
+                        workout.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            date.setError(null);
-                            date.setError("Access denied!");
+                            workout.setError(null);
+                            workout.setError("Access denied!");
                         }
                         else{
+                            workout.setError(null);
                             JsonArray users = result.getAsJsonArray("all_users");
                             for(int i = 0; i < users.size(); i++){
                                 JsonObject current = users.get(i).getAsJsonObject();
@@ -108,7 +104,6 @@ public class createWorkoutActivity extends AppCompatActivity {
 
 
     private void setDate() {
-
         date.setOnClickListener(v -> {
             final Calendar c = Calendar.getInstance();
             int mYear = c.get(Calendar.YEAR); // current year
@@ -118,7 +113,6 @@ public class createWorkoutActivity extends AppCompatActivity {
                     (view, year, monthOfYear, dayOfMonth) -> {
                         date.setText(dayOfMonth + "/"
                                 + (monthOfYear + 1) + "/" + year);
-
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();
         });
@@ -135,14 +129,12 @@ public class createWorkoutActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 _time = parent.getItemAtPosition(position).toString();
-
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
-
     }
 
     public void submitWorkout(View view) {
@@ -162,36 +154,35 @@ public class createWorkoutActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        submit.setError(null);
-                        submit.setError("Can't connect to the database!");
+                        workout.setError(null);
+                        workout.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
                             switch (code){
                                 case 11 :
-                                    submit.setError(null);
-                                    submit.setError("Access denied");
+                                    workout.setError(null);
+                                    workout.setError("Access denied");
                                     break;
                                 case 10 :
-                                    submit.setError(null);
-                                    submit.setError("Missing data");
+                                    workout.setError(null);
+                                    workout.setError("Missing data");
                                     break;
                                 case 5 :
-                                    submit.setError(null);
-                                    submit.setError("Fields cannot be empty");
+                                    workout.setError(null);
+                                    workout.setError("Fields cannot be empty");
                                     break;
                                 case 17 :
-                                    submit.setError(null);
-                                    submit.setError("Workout with that time already exists");
+                                    workout.setError(null);
+                                    workout.setError("Workout with that time already exists");
                                     break;
                             }
                         }
                         else{
-                            submit.setError(null);
-                            //Toast.makeText(this, "Workout successfully created for" + _time + ". If you want to create another workout for this day then select a different time", Toast.LENGTH_LONG).show();
+                            workout.setError(null);
                             make_workout_msg.setTextSize(20);
                             make_workout_msg.setTextColor(Color.BLACK);
-                            make_workout_msg.setText("Workout successfully created. If you want to create another workout for this day then select a different time");
+                            make_workout_msg.setText(R.string.message_to_coach);
                         }
                     }
                 });

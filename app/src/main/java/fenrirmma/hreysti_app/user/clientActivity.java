@@ -20,7 +20,7 @@ import fenrirmma.hreysti_app.workout.exerciseOfTheDay;
 public class clientActivity extends AppCompatActivity {
 
     private SessionAccess sa;
-    private TextView client_ssn, client_name_show, client_name_show_card, client_ssn_show_card, client_role_show_card;
+    private TextView client_ssn, client_name_show_card, client_ssn_show_card, client_role_show_card;
     private EditText client_name;
     private String role;
     private Button change;
@@ -33,7 +33,6 @@ public class clientActivity extends AppCompatActivity {
         sa = SessionAccess.getInstance(this);
         client_name = findViewById(R.id.client_name);
         client_ssn = findViewById(R.id.client_ssn);
-        //client_name_show = findViewById(R.id.client_name_show);
         client_name_show_card = findViewById(R.id.client_name_show_card);
         client_ssn_show_card = findViewById(R.id.client_ssn_show_card);
         client_role_show_card = findViewById(R.id.client_role_show_card);
@@ -53,15 +52,17 @@ public class clientActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
+                        client_name.setError(null);
                         client_name.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
+                            client_name.setError(null);
                             client_name.setError("No such user");
                         }
                         else{
+                            client_name.setError(null);
                             JsonObject user = result.get("user").getAsJsonObject();
-                            //client_name_show.setText(user.get("name").getAsString());
                             client_ssn.setText(user.get("ssn").getAsString());
                             client_name_show_card.setText(user.get("name").getAsString());
                             client_ssn_show_card.setText(user.get("ssn").getAsString());
@@ -89,7 +90,10 @@ public class clientActivity extends AppCompatActivity {
     public void changeName(View view) {
         JsonObject json = new JsonObject();
         String name = client_name.getText().toString();
-        if(name.trim().length() == 0){client_name.setError("Name cannot be only white space!");}
+        if(name.trim().length() == 0){
+            client_name.setError(null);
+            client_name.setError("Name cannot be only white space!");
+        }
         else {
             json.addProperty("name", name);
             Ion.with(this)
@@ -102,15 +106,19 @@ public class clientActivity extends AppCompatActivity {
                     .asJsonObject()
                     .setCallback((e, result) -> {
                         if (e != null) {
-                            change.setError("Can't connect to the database!");
+                            client_name.setError(null);
+                            client_name.setError("Can't connect to the database!");
                         } else {
                             int code = result.get("error").getAsInt();
                             if (code != 0) {
                                 if (code == 5) {
-                                    change.setError("Name cannot be empty");
+                                    client_name.setError(null);
+                                    client_name.setError("Name cannot be empty");
                                 }
-                                change.setError("Name missing");
+                                client_name.setError(null);
+                                client_name.setError("Name missing");
                             } else {
+                                client_name.setError(null);
                                 Toast.makeText(this, "Name changed", Toast.LENGTH_SHORT).show();
 
                             }

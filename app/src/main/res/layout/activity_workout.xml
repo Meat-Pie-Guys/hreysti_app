@@ -50,7 +50,7 @@
             <Spinner
                 android:id="@+id/time_spinner"
                 android:layout_width="60dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_toRightOf="@+id/time"
                 android:autofillHints="pick time"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -69,7 +69,7 @@
             android:layout_gravity="left"
             android:layout_marginRight="10dp"
             android:gravity="left"
-            android:text="Coach assigned:"
+            android:text="@string/coach_assigned"
             android:textColor="@android:color/black"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -78,11 +78,9 @@
             android:id="@+id/coach_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="10dp"
-            android:gravity="right"
+            android:layout_marginStart="10dp"
             android:textColor="@android:color/black"
-            android:hint="@string/select_a_coach"
+            android:hint="@string/pick_a_coach_from_the_list"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
     </LinearLayout>
 

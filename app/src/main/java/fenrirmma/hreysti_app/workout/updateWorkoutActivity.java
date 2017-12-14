@@ -1,32 +1,19 @@
 package fenrirmma.hreysti_app.workout;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
-
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.Utils.SessionAccess;
 import fenrirmma.hreysti_app.Utils.DateConverter;
 import fenrirmma.hreysti_app.Utils.UserHelper;
-import fenrirmma.hreysti_app.Utils.WorkoutHelper;
 
 public class updateWorkoutActivity extends AppCompatActivity {
 
@@ -34,10 +21,8 @@ public class updateWorkoutActivity extends AppCompatActivity {
     private EditText workout;
     private TextView date, coach_name, time;
     private ArrayList<UserHelper> myList;
-    private UserHelper coaches;
     private ListView list_coaches;
     private updateWorkoutAdapter adapter;
-    private RecyclerView recyclerView;
     private String coach;
 
     @Override
@@ -56,8 +41,6 @@ public class updateWorkoutActivity extends AppCompatActivity {
 
 
         list_coaches.setOnItemClickListener((parent, view, pos, id) -> {
-            // TODO if user is client then attending workout
-            // TODO if user is coach/admin then they can update
             UserHelper curr = (UserHelper) parent.getItemAtPosition(pos);
             coach = curr.getOpenId();
             coach_name.setText(curr.getName());
@@ -84,13 +67,17 @@ public class updateWorkoutActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "ION ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        workout.setError(null);
+                        workout.setError("Cannot connect to database");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            workout.setError(null);
+                            workout.setError("Access denied");
+
                         }
                         else{
+                            workout.setError(null);
                             JsonArray users = result.getAsJsonArray("all_users");
                             for(int i = 0; i < users.size(); i++){
                                 JsonObject current = users.get(i).getAsJsonObject();
@@ -125,15 +112,32 @@ public class updateWorkoutActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "ION ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        workout.setError(null);
+                        workout.setError("Cannot connect to database");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            switch (code){
+                                case 11 :
+                                    workout.setError(null);
+                                    workout.setError("Access denied");
+                                    break;
+                                case 14 :
+                                    workout.setError(null);
+                                    workout.setError("There is no such workout in the database");
+                                    break;
+                                case 10 :
+                                    workout.setError(null);
+                                    workout.setError("Missing data");
+                                    break;
+                                case 5 :
+                                    workout.setError(null);
+                                    workout.setError("Empty data");
+                                    break;
+                            }
                         }
                         else{
-                            Toast.makeText(this, "SUCCESS", Toast.LENGTH_SHORT).show();
-                            // TODO Eitthvað success skilabð betra en Toastið
+                            workout.setError(null);
                         }
                     }
                 });

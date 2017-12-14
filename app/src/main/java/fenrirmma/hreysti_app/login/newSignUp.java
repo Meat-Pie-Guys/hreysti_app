@@ -79,7 +79,6 @@ public class newSignUp extends AppCompatActivity {
                     else{
                         int code = result.get("error").getAsInt();
                         if(code != 0){
-                            //10, 5, 6, 7, 8
                             switch (code){
                                 case 10 :
                                     clearError();

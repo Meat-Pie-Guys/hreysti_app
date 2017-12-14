@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:textAlignment="center"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:background="@android:drawable/dialog_holo_light_frame"
         android:backgroundTint="@android:color/black"
         android:text="date"
@@ -41,18 +41,25 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
         android:textAlignment="center"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:background="@android:drawable/dialog_holo_light_frame"
         android:backgroundTint="@android:color/black"
         android:text="time"
         android:textColor="@android:color/white" />
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/workout"
-        android:layout_width="351dp"
-        android:layout_height="60dp"
-        android:hint="Description" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <EditText
+            android:id="@+id/workout"
+            android:layout_width="351dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:hint="@string/create_a_new_workout" />
+
+    </ScrollView>
+
     <Button
         android:id="@+id/submit"
         android:layout_width="288dp"
@@ -61,7 +68,7 @@
         android:background="@android:drawable/dialog_holo_light_frame"
         android:backgroundTint="@android:color/black"
         android:onClick="submitWorkout"
-        android:text="Submit changes"
+        android:text="@string/submit_changes"
         android:textColor="@android:color/white" />
 
     <LinearLayout

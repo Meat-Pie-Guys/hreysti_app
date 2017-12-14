@@ -23,7 +23,6 @@ public class coachActivity extends AppCompatActivity {
     private SessionAccess sa;
     private EditText new_name;
     private TextView coach_ssn, coach_name;
-    private String role;
     private Button change;
 
     @Override
@@ -51,27 +50,24 @@ public class coachActivity extends AppCompatActivity {
                 .setCallback((e, result) -> {
                     if(e != null){
                         clearError();
-                        coach_name.setError("Can't connect to the database!");
+                        new_name.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
                             clearError();
-                            coach_name.setError("No such user");
+                            new_name.setError("No such user");
                         }
                         else{
                             JsonObject user = result.get("user").getAsJsonObject();
                             coach_name.setText(user.get("name").getAsString());
                             coach_ssn.setText(user.get("ssn").getAsString());
-                            role = user.get("role").getAsString();
                         }
                     }
                 });
     }
 
     private void clearError() {
-        coach_name.setError(null);
         new_name.setError(null);
-        change.setError(null);
     }
 
     public void exerciseOfTheDay(View view){
@@ -111,16 +107,16 @@ public class coachActivity extends AppCompatActivity {
                     .setCallback((e, result) -> {
                         if (e != null) {
                             clearError();
-                            change.setError("Can't connect to the database!");
+                            new_name.setError("Can't connect to the database!");
                         } else {
                             int code = result.get("error").getAsInt();
                             if (code != 0) {
                                 clearError();
                                 if (code == 5) {
-                                    change.setError("Name cannot be empty");
+                                    new_name.setError("Name cannot be empty");
                                 }
                                 clearError();
-                                change.setError("Name missing");
+                                new_name.setError("Name missing");
                             } else {
                                 Toast.makeText(this, "Name changed", Toast.LENGTH_SHORT).show();
                             }

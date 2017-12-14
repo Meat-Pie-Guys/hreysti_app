@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Hreysti_App</string>
+    <string name="app_name">bardagahreysti</string>
     <string name="make_a_workout">Make a Workout</string>
     <string name="add_excercises">Add Excercises</string>
     <string name="set_workout_type">Set Workout Type</string>
-    <string name="selected_excercises_for_workout">selected excercises for workout</string>
+    <string name="selected_excercises_for_workout">selected exercises for workout</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
     <string name="username">Username</string>
@@ -26,25 +26,25 @@
     <string name="role">Role</string>
     <string name="remove_user">Remove User</string>
     <string name="select_date">Select Date...</string>
-    <string name="create_a_new_workout">Create a new workout</string>
+    <string name="create_a_new_workout">Create a new workout here...</string>
     <string name="coach_1_s">Coach: %1$s</string>
     <string name="time_1_s">Time: %1$s</string>
     <string name="people_registered_to_the_workout_1_s">%1$s</string>
     <string name="edit_workout">Edit workout</string>
     <string name="select_time_for_the_workout_from_the_list">Select time for the workout from the list</string>
-    <string name="pick_a_coach_from_the_list">Pick a coach from the list</string>
+    <string name="pick_a_coach_from_the_list">Select a coach...</string>
     <string name="sign_out">Sign out</string>
     <string name="pick_time">Pick Time</string>
     <string name="pick_date">Pick date</string>
     <string name="coach_assigned">Coach assigned:</string>
-    <string name="date_dash">-</string>
     <string name="change_name">change_name</string>
-    <string name="today_s_workouts_btn">today_workout</string>
     <string name="hint_ssn">ssn_hint</string>
     <string name="_1_s">%1$s</string>
     <string name="change">change</string>
     <string name="coach">coach</string>
-    <string name="select_a_coach">select_a_coach</string>
+    <string name="coach_instruction">Select a date to display your workouts that day</string>
+    <string name="message_to_coach">Workout successfully created. If you want to create another workout for this day then select a different time</string>
+    <string name="submit_changes">Submit changes</string>
     <string-array name="user_roles">
         <item>Client</item>
         <item>Coach</item>

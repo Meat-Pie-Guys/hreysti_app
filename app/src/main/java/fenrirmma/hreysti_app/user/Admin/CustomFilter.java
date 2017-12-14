@@ -8,9 +8,6 @@ import java.util.List;
 
 import fenrirmma.hreysti_app.Utils.UserHelper;
 
-/**
- * Created by Notandi on 13.12.2017.
- */
 
 public class CustomFilter extends Filter {
 

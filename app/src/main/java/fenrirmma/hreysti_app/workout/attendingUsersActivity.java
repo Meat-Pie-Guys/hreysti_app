@@ -77,6 +77,5 @@ public class attendingUsersActivity extends AppCompatActivity {
                     }
 
                 });
-
     }
 }
