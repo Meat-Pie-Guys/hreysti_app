@@ -16,6 +16,7 @@
         android:background="@android:drawable/dialog_holo_light_frame"
         android:backgroundTint="@android:color/black"
         android:text="@string/pick_date"
+        android:onClick="updateDate"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@android:color/white"/>
 
