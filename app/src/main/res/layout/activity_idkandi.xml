@@ -69,7 +69,7 @@
 
             <EditText
                 android:id="@+id/client_name"
-                android:hint="Change Name"
+                android:hint="@string/change_name"
                 android:layout_width="211dp"
                 android:layout_height="47dp"
                 android:layout_marginEnd="8dp"
@@ -86,7 +86,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@android:drawable/dialog_holo_light_frame"
                 android:backgroundTint="@android:color/black"
-                android:text="Change"
+                android:text="@string/change"
                 android:onClick="changeName"
                 android:layout_toEndOf="@+id/client_name"
                 android:textColor="@android:color/white" />
@@ -99,7 +99,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="24dp"
-            android:hint="SSN"
+            android:hint="@string/hint_ssn"
             android:textColor="@android:color/black"
             android:textSize="20sp"/>
 
@@ -112,7 +112,7 @@
         <Button
             android:id="@+id/btn_exercise"
             android:layout_width="288dp"
-            android:layout_height="wrap_content"
+            android:layout_height="105dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
@@ -120,41 +120,14 @@
             android:background="@android:drawable/dialog_holo_light_frame"
             android:backgroundTint="@android:color/black"
             android:onClick="exerciseOfTheDay"
-            android:text="Today's workouts"
+            android:text="@string/today_s_workouts_btn"
             android:textColor="@android:color/white" />
 
-
-        <Button
-            android:id="@+id/sign_up_workout"
-            android:layout_width="288dp"
-            android:layout_height="47dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@android:drawable/dialog_holo_light_frame"
-            android:backgroundTint="@android:color/black"
-            android:text="Sign up for workout"
-            android:textColor="@android:color/white"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <Button
-            android:id="@+id/log_result"
-            android:layout_width="288dp"
-            android:layout_height="47dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@android:drawable/dialog_holo_light_frame"
-            android:backgroundTint="@android:color/black"
-            android:text="Log your results"
-            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/signOut"
             android:layout_width="288dp"
-            android:layout_height="47dp"
+            android:layout_height="105dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
@@ -163,7 +136,7 @@
             android:background="@android:drawable/dialog_holo_light_frame"
             android:backgroundTint="@android:color/holo_green_dark"
             android:textColor="@android:color/white"
-            android:text="Sign out" />
+            android:text="@string/sign_out" />
     </LinearLayout>
 
 </LinearLayout>
