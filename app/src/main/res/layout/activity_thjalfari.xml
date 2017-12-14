@@ -86,7 +86,7 @@
             android:background="@android:drawable/dialog_holo_light_frame"
             android:backgroundTint="@android:color/black"
             android:onClick="editName"
-            android:text="change"
+            android:text="@string/change"
             android:textColor="@android:color/white" />
     </LinearLayout>
 
