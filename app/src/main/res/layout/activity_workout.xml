@@ -82,7 +82,7 @@
             android:layout_marginLeft="10dp"
             android:gravity="right"
             android:textColor="@android:color/black"
-            android:text="Joe Piledrive"
+            android:hint="@string/select_a_coach"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
     </LinearLayout>
 
