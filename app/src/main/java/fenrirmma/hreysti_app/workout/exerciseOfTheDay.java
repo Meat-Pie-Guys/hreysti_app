@@ -161,7 +161,8 @@ public class exerciseOfTheDay extends AppCompatActivity {
                                         current.get("coach_name").getAsString(),
                                         current.get("description").getAsString(),
                                         current.get("date_time").getAsString(),
-                                        current.get("attending").getAsString()
+                                        current.get("attending").getAsString(),
+                                        current.get("coach_id").getAsString()
                                 ));
                             }
                         }
@@ -221,6 +222,12 @@ public class exerciseOfTheDay extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        populateWorkoutList(date);
     }
 
 }
