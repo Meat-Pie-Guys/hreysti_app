@@ -25,7 +25,8 @@
         <activity android:name=".user.Admin.allUsersAdminActivity" />
         <activity android:name=".user.Admin.userInfoAdminActivity" />
         <activity android:name=".workout.updateWorkoutActivity" />
-        <activity android:name=".user.Coach.getCoachScheduleActivity"></activity>
+        <activity android:name=".user.Coach.getCoachScheduleActivity" />
+        <activity android:name=".workout.attendingUsersActivity"></activity>
     </application>
 
 </manifest>
