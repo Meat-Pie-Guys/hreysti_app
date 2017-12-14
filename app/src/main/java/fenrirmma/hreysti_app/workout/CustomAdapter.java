@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -47,35 +48,29 @@ public class CustomAdapter extends BaseAdapter{
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.workout_of_the_day_list_view, null);
             holder = new ViewHolder();
-            holder.txtCount = (TextView) convertView.findViewById(R.id.count);
-            holder.txtTime= (TextView) convertView.findViewById(R.id.time_of_class);
-            holder.txtCoach = (TextView) convertView.findViewById(R.id.coach_of_class);
+            holder.displayTime= convertView.findViewById(R.id.display_time);
+            holder.todayCoach = convertView.findViewById(R.id.today_coach);
+            holder.attending = convertView.findViewById(R.id.attending);
+            holder.image = convertView.findViewById(R.id.image_exercise);
 
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-
+        holder.image.setImageResource(R.mipmap.ic_launcher);
         String attending = workoutArrayList.get(position).getAttending();
-        holder.txtCount.setText(String.format(resources.getString(R.string.people_registered_to_the_workout_1_s), attending + "/12"));
-        holder.txtTime.setText(String.format(resources.getString(R.string.time_1_s), workoutArrayList.get(position).getTime()));
-        holder.txtCoach.setText(String.format(resources.getString(R.string.coach_1_s), workoutArrayList.get(position).getCoach_name()));
+        holder.attending.setText(String.format(resources.getString(R.string.people_registered_to_the_workout_1_s), attending + "/12"));
+        holder.displayTime.setText(String.format(resources.getString(R.string.time_1_s), workoutArrayList.get(position).getTime()));
+        holder.todayCoach.setText(String.format(resources.getString(R.string.coach_1_s), workoutArrayList.get(position).getCoach_name()));
 
-        holder.txtCoach.setTextSize(20);
-        holder.txtCount.setTextSize(20);
-        holder.txtTime.setTextSize(20);
-
-        String counter = holder.txtCount.toString();
-        if(counter.equals("1/12")){
-            holder.txtCount.setTextColor(Color.RED);
-        }
 
         return convertView;
     }
 
     static class ViewHolder {
-        TextView txtCount;
-        TextView txtTime;
-        TextView txtCoach;
+        TextView displayTime;
+        TextView todayCoach;
+        TextView attending;
+        ImageView image;
     }
 }
