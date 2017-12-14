@@ -3,7 +3,7 @@ package fenrirmma.hreysti_app.Utils;
 
 public final class DateConverter {
     private DateConverter(){}
-
+    //Both these functions are used for further improvements of the project when handling start date and expire date
     public static String convert(String x){
 
         String[] split = x.split(" ");
@@ -23,7 +23,7 @@ public final class DateConverter {
 
         return date;
     }
-
+    //joda time local datetime parser
     public static String parser(String y){
 
         String[] split = y.split("T");
