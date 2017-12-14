@@ -42,6 +42,9 @@
     <string name="today_s_workouts_btn">today_workout</string>
     <string name="hint_ssn">ssn_hint</string>
     <string name="_1_s">%1$s</string>
+    <string name="change">change</string>
+    <string name="coach">coach</string>
+    <string name="select_a_coach">select_a_coach</string>
     <string-array name="user_roles">
         <item>Client</item>
         <item>Coach</item>
