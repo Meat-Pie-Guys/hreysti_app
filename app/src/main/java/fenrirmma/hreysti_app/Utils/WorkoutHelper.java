@@ -1,10 +1,6 @@
 package fenrirmma.hreysti_app.Utils;
 
-import java.util.Locale;
 
-/**
- * Created by Notandi on 10.12.2017.
- */
 
 public class WorkoutHelper {
 
@@ -59,7 +55,6 @@ public class WorkoutHelper {
         String split2 [] = time.split(":");
         String hour = split2[0];
         String mins = split2[1];
-        String secs = split2[2];
         StringBuilder sb = new StringBuilder();
         sb.append(hour).append(":").append(mins);
         return sb.toString();

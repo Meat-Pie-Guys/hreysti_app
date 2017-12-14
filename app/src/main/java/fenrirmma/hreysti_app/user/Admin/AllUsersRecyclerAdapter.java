@@ -17,10 +17,6 @@ import java.util.ArrayList;
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.Utils.UserHelper;
 
-/**
- * Created by magnu on 10/12/2017.
- */
-
 public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecyclerAdapter.ViewHolder> implements Filterable{
 
 
@@ -52,16 +48,16 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
         viewHolder.ssn.setText(userList.get(pos).getSsn());
 
         viewHolder.itemView.setOnClickListener(view -> {
-                Intent intent = new Intent(view.getContext(), userInfoAdminActivity.class);
-                intent.putExtra("NAME", userList.get(pos).getName());
-                intent.putExtra("SSN", userList.get(pos).getSsn());
-                intent.putExtra("OPENID", userList.get(pos).getOpenId());
-                intent.putExtra("ROLE", userList.get(pos).getUserRole());
-                intent.putExtra("STARTDATE", userList.get(pos).getStartDate());
-                intent.putExtra("EXPIREDATE", userList.get(pos).getExpireDate());
-                view.getContext().startActivity(intent);
-                activity.finish();
-            });
+            Intent intent = new Intent(view.getContext(), userInfoAdminActivity.class);
+            intent.putExtra("NAME", userList.get(pos).getName());
+            intent.putExtra("SSN", userList.get(pos).getSsn());
+            intent.putExtra("OPENID", userList.get(pos).getOpenId());
+            intent.putExtra("ROLE", userList.get(pos).getUserRole());
+            intent.putExtra("STARTDATE", userList.get(pos).getStartDate());
+            intent.putExtra("EXPIREDATE", userList.get(pos).getExpireDate());
+            view.getContext().startActivity(intent);
+            activity.finish();
+        });
     }
 
     public int getItemCount(){return(null != userList ? userList.size() : 0);}
@@ -69,7 +65,6 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
     @Override
     public Filter getFilter() {
         if(filter == null){
-
             filter = new CustomFilter(this, filterList);
         }
         return filter;
@@ -79,8 +74,7 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
         private ImageView image;
         private TextView name;
         private TextView role;
-        private TextView ssn;;
-        private View container;
+        private TextView ssn;
 
         public ViewHolder(View view){
             super(view);
@@ -88,7 +82,6 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
             name = view.findViewById(R.id.name);
             role = view.findViewById(R.id.role);
             ssn = view.findViewById(R.id.ssn);
-            container = view.findViewById(R.id.card_view);
         }
 
     }

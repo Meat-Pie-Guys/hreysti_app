@@ -1,8 +1,5 @@
 package fenrirmma.hreysti_app.Utils;
 
-/**
- * Created by Notandi on 8.12.2017.
- */
 
 public final class DateConverter {
     private DateConverter(){}

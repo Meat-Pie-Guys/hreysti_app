@@ -15,9 +15,6 @@ import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.Utils.WorkoutHelper;
 import fenrirmma.hreysti_app.workout.updateWorkoutActivity;
 
-/**
- * Created by magnu on 13/12/2017.
- */
 
 public class getCoachScheduleRecyclerAdapter extends RecyclerView.Adapter<getCoachScheduleRecyclerAdapter.ViewHolder> {
 

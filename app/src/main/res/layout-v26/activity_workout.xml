@@ -53,7 +53,7 @@
                 android:layout_width="60dp"
                 android:layout_height="61dp"
                 android:layout_marginEnd="8dp"
-                android:background="#d2d6dd"
+                android:background="#FAFAFA"
                 android:autofillHints="pick time"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </LinearLayout>
@@ -84,15 +84,22 @@
             android:layout_marginLeft="10dp"
             android:gravity="right"
             android:textColor="@android:color/black"
-            android:hint="@string/select_a_coach"
+            android:hint="@string/pick_a_coach_from_the_list"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/workout"
-        android:layout_width="351dp"
-        android:layout_height="wrap_content"
-        android:hint="Description" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <EditText
+            android:id="@+id/workout"
+            android:layout_width="351dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="@string/create_a_new_workout" />
+    </ScrollView>
+
 
     <Button
         android:id="@+id/submit"
@@ -101,7 +108,7 @@
         android:background="@android:drawable/dialog_holo_light_frame"
         android:backgroundTint="@android:color/black"
         android:onClick="submitWorkout"
-        android:text="Submit"
+        android:text="@string/submit"
         android:textColor="@android:color/white"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

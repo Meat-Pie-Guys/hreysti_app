@@ -1,14 +1,9 @@
 package fenrirmma.hreysti_app.Utils;
 
-import java.sql.Date;
 import java.util.Locale;
 
-/**
- * Created by arnar on 8.12.2017.
- */
 
 public class UserHelper {
-
 
     private String name;
     private String ssn;
@@ -25,7 +20,6 @@ public class UserHelper {
         this.startDate = startDate;
         this.expireDate = expireDate;
     }
-
 
 
     public String getName() {

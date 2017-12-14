@@ -120,7 +120,7 @@
             android:background="@android:drawable/dialog_holo_light_frame"
             android:backgroundTint="@android:color/black"
             android:onClick="exerciseOfTheDay"
-            android:text="@string/today_s_workouts_btn"
+            android:text="@string/workout_of_the_day"
             android:textColor="@android:color/white" />
 
 

@@ -5,45 +5,34 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
-
 import fenrirmma.hreysti_app.R;
-import fenrirmma.hreysti_app.Utils.DateConverter;
-import fenrirmma.hreysti_app.Utils.UserHelper;
 import fenrirmma.hreysti_app.Utils.WorkoutHelper;
 import fenrirmma.hreysti_app.Utils.SessionAccess;
-import fenrirmma.hreysti_app.user.Admin.AllUsersRecyclerAdapter;
+
 
 public class exerciseOfTheDay extends AppCompatActivity {
 
     private SessionAccess sa;
     private TextView todays_workout;
     private ListView workout_list;
-    private String role;
     private ArrayList<WorkoutHelper> list_workout;
     private String date;
     private Button btnDate;
-    private RecyclerView recyclerView;
-    //private AllUsersRecyclerAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +44,6 @@ public class exerciseOfTheDay extends AppCompatActivity {
         sa = SessionAccess.getInstance(this);
         btnDate = findViewById(R.id.btn_exercise_date);
 
-        //recyclerView = findViewById(R.id.recycle_view_exercise);
-        //LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-       //recyclerView.setLayoutManager(layoutManager);
         Calendar calendar = Calendar.getInstance();
 
         Date now = new Date();
@@ -82,7 +68,7 @@ public class exerciseOfTheDay extends AppCompatActivity {
                         displayWorkout(date + "-06-10");
                     }
                     else{
-                        Toast.makeText(this, "Can't attend workouts that are already started", Toast.LENGTH_SHORT);
+                        Toast.makeText(this, "Can't attend workouts that are already started", Toast.LENGTH_SHORT).show();
                     }
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -96,13 +82,9 @@ public class exerciseOfTheDay extends AppCompatActivity {
 
             }
         });
-
-
-        populateWorkoutList(currentDateTime +  "-06-10");
-        displayWorkout(currentDateTime +  "-06-10");
+        populateWorkoutList(currentDateTime + "-06-10");
+        displayWorkout(currentDateTime + "-06-10");
     }
-
-
 
     public void updateDate(View view) {
         String date = btnDate.getText().toString();
@@ -111,12 +93,11 @@ public class exerciseOfTheDay extends AppCompatActivity {
         String month = split[0];
         String year = split[0];
         String _date = year + "-" + month + "-" + day;
-        populateWorkoutList(_date +  "-06-10");
-        displayWorkout(_date +  "-06-10");
+        populateWorkoutList(_date + "-06-10");
+        displayWorkout(_date + "-06-10");
     }
 
     private void setExerciseDate() {
-
         btnDate.setOnClickListener(v -> {
             final Calendar c = Calendar.getInstance();
             int mYear = c.get(Calendar.YEAR); // current year
@@ -146,13 +127,15 @@ public class exerciseOfTheDay extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "ION ERROR cock", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        todays_workout.setError(null);
+                        todays_workout.setError("Cannot connect to database");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR penis", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            todays_workout.setError(null);
                         }
                         else{
+                            todays_workout.setError(null);
                             JsonArray users = result.getAsJsonArray("all_workouts");
                             for(int i = 0; i < users.size(); i++){
                                 JsonObject current = users.get(i).getAsJsonObject();
@@ -167,8 +150,6 @@ public class exerciseOfTheDay extends AppCompatActivity {
                             }
                         }
                         workout_list.setAdapter(new CustomAdapter(this, list_workout));
-                      //  exerciceAdapter = new exerciseOfTheDayRecyclerAdapter(this, list_workout);
-                        //recyclerView.setAdapter(exerciceAdapter);
                     }
                 });
         list_workout.clear();
@@ -186,13 +167,16 @@ public class exerciseOfTheDay extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "ION ERROR not cock", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        todays_workout.setError(null);
+                        todays_workout.setError("Cannot connect to database");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR cunt", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            todays_workout.setError(null);
+                            todays_workout.setError("Invalid date");
                         }
                         else{
+                            todays_workout.setError(null);
                             JsonObject user = result.get("workout").getAsJsonObject();
                             todays_workout.setText(user.get("description").getAsString());
                         }
@@ -211,14 +195,22 @@ public class exerciseOfTheDay extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "ION ERROR not cock", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        todays_workout.setError(null);
+                        todays_workout.setError("Cannot connect to database");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            if(code == 15){
+                                todays_workout.setError(null);
+                                todays_workout.setError("Workout is full");
+                            } else{
+                                todays_workout.setError(null);
+                                todays_workout.setError("No such workout exists");
+                            }
+
                         }
                         else{
-                            Toast.makeText(this, "ATTENDED WORKOUT", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            todays_workout.setError(null);
                         }
                     }
                 });

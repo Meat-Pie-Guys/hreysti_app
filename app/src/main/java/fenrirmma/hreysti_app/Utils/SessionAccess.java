@@ -3,9 +3,6 @@ package fenrirmma.hreysti_app.Utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * Created by Notandi on 7.12.2017.
- */
 
 public class SessionAccess {
     private static final String PREF_NAME = "TOKEN";

@@ -2,22 +2,16 @@ package fenrirmma.hreysti_app.workout;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.Utils.WorkoutHelper;
 
-/**
- * Created by Notandi on 11.12.2017.
- */
 
 public class CustomAdapter extends BaseAdapter{
 

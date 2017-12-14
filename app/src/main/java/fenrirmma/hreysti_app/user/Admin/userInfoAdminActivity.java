@@ -47,26 +47,26 @@ public class userInfoAdminActivity extends AppCompatActivity {
                 .setCallback((e, result) -> {
                     if(e != null){
                         clearError();
-                        confirm.setError("Can't connect to the database!");
+                        role.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
                             switch (code){
                                 case 11 :
                                     clearError();
-                                    confirm.setError("Missing data");
+                                    role.setError("Missing data");
                                     break;
                                 case 2 :
                                     clearError();
-                                    confirm.setError("There is no such user");
+                                    role.setError("There is no such user");
                                     break;
                                 case 5 :
                                     clearError();
-                                    confirm.setError("Field cannot be empty!");
+                                    role.setError("Field cannot be empty!");
                                     break;
                                 case 16 :
                                     clearError();
-                                    confirm.setError("That is an invalid role!");
+                                    role.setError("That is an invalid role!");
                                     break;
                             }
                         }
@@ -90,16 +90,16 @@ public class userInfoAdminActivity extends AppCompatActivity {
                 .setCallback((e, result) -> {
                     if(e != null){
                         clearError();
-                        remove.setError("Can't connect to the database!");
+                        role.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
                             if(code == 11) {
                                 clearError();
-                                remove.setError("Cannot delete admins!");
+                                role.setError("Cannot delete admins!");
                             } else{
                                 clearError();
-                                remove.setError("There is no such user");
+                                role.setError("There is no such user");
                             }
                         }
                         else{
@@ -110,9 +110,7 @@ public class userInfoAdminActivity extends AppCompatActivity {
                 });
     }
     private void clearError(){
-        confirm.setError(null);
-        remove.setError(null);
-
+        role.setError(null);
 
     }
     private void setFields() {
