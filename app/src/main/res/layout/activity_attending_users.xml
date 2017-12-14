@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="top|center">
+
+
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        tools:context="fenrirmma.hreysti_app.user.clientActivity">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="50dp"
+            android:id="@+id/recycle_view_attending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </FrameLayout>
+</LinearLayout>
