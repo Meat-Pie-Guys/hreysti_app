@@ -53,6 +53,13 @@ public class updateWorkoutActivity extends AppCompatActivity {
 
         setList();
         getList();
+        coachBool(false);
+
+    }
+
+    public boolean coachBool(boolean bool){
+        coach_changed = bool;
+        return coach_changed;
     }
 
     private void setList() {
@@ -96,8 +103,6 @@ public class updateWorkoutActivity extends AppCompatActivity {
                             recyclerView.setAdapter(adapter);
                         }
                     }
-
-
                 });
     }
 

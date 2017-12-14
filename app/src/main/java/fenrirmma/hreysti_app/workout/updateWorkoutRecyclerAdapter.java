@@ -22,10 +22,13 @@ public class updateWorkoutRecyclerAdapter extends RecyclerView.Adapter<updateWor
 
     ArrayList<UserHelper> list;
     private Activity activity;
+    private TextView coach_name;
+    private updateWorkoutActivity updateWorkoutActivity;
 
     public updateWorkoutRecyclerAdapter(Activity activity, ArrayList<UserHelper> list){
         this.activity = activity;
         this.list = list;
+        coach_name = activity.findViewById(R.id.coach_name);
     }
 
     @Override
@@ -42,6 +45,10 @@ public class updateWorkoutRecyclerAdapter extends RecyclerView.Adapter<updateWor
         viewHolder.name.setText(list.get(pos).getName());
         viewHolder.role.setText(list.get(pos).getUserRole());
         viewHolder.ssn.setText(list.get(pos).getSsn());
+
+        viewHolder.itemView.setOnClickListener(view -> {
+            coach_name.setText(list.get(pos).getName());
+        });
     }
 
     public int getItemCount(){return(null != list ? list.size() : 0);}
