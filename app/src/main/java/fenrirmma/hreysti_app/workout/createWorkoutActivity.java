@@ -1,6 +1,7 @@
 package fenrirmma.hreysti_app.workout;
 
 import android.app.DatePickerDialog;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,7 +32,7 @@ public class createWorkoutActivity extends AppCompatActivity {
     private SessionAccess sa;
     private EditText workout;
     private String _time;
-    private TextView coach_name;
+    private TextView coach_name, make_workout_msg;
     private DatePickerDialog datePickerDialog;
     private List<UserHelper> list;
     private UserHelper coach;
@@ -49,6 +50,7 @@ public class createWorkoutActivity extends AppCompatActivity {
         submit = findViewById(R.id.submit);
         coach_name = findViewById(R.id.coach_name);
         coachList = findViewById(R.id.listCoachView);
+        make_workout_msg = findViewById(R.id.make_workout_msg);
 
         setDate();
         setTime();
@@ -186,8 +188,10 @@ public class createWorkoutActivity extends AppCompatActivity {
                         }
                         else{
                             submit.setError(null);
-                            Toast.makeText(this, "Workout successfully created for" + _time + ". If you want to create another workout for this day then select a different time", Toast.LENGTH_LONG).show();
-
+                            //Toast.makeText(this, "Workout successfully created for" + _time + ". If you want to create another workout for this day then select a different time", Toast.LENGTH_LONG).show();
+                            make_workout_msg.setTextSize(20);
+                            make_workout_msg.setTextColor(Color.BLACK);
+                            make_workout_msg.setText("Workout successfully created. If you want to create another workout for this day then select a different time");
                         }
                     }
                 });
