@@ -1,6 +1,7 @@
 package fenrirmma.hreysti_app.user.Coach;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.Utils.WorkoutHelper;
+import fenrirmma.hreysti_app.workout.updateWorkoutActivity;
 
 /**
  * Created by magnu on 13/12/2017.
@@ -41,6 +43,17 @@ public class getCoachScheduleRecyclerAdapter extends RecyclerView.Adapter<getCoa
         viewHolder.workout_day.setText(list.get(pos).getDate());
         viewHolder.display_time.setText(list.get(pos).getTime());
         viewHolder.today_coach.setText(list.get(pos).getCoach_name());
+
+        viewHolder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), updateWorkoutActivity.class);
+            intent.putExtra("ID", list.get(pos).getOpen_id());
+            intent.putExtra("coach_name", list.get(pos).getCoach_name());
+            intent.putExtra("description", list.get(pos).getDescription());
+            intent.putExtra("date", list.get(pos).getDate());
+            intent.putExtra("time", list.get(pos).getTime());
+            view.getContext().startActivity(intent);
+            activity.finish();
+        });
     }
 
 
