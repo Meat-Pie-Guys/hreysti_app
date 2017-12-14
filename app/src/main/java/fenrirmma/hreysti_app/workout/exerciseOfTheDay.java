@@ -77,8 +77,6 @@ public class exerciseOfTheDay extends AppCompatActivity {
             if(Objects.equals(role, "Client")){
                 try {
                     Date dateGot = formatter.parse(curr.getDate());
-                    System.out.println(dateGot.toString());
-                    System.out.println(now.toString());
                     if(now.before(dateGot)){
                         participateInWorkout(curr.getOpen_id());
                         populateWorkoutList(date);
@@ -94,11 +92,12 @@ public class exerciseOfTheDay extends AppCompatActivity {
             }
             else{
                 Intent intent = new Intent(this, updateWorkoutActivity.class);
-                intent.putExtra("ID", curr.getOpen_id());
+                intent.putExtra("id", curr.getOpen_id());
                 intent.putExtra("coach_name", curr.getCoach_name());
                 intent.putExtra("description", curr.getDescription());
                 intent.putExtra("date", curr.getDate());
                 intent.putExtra("time", curr.getTime());
+                intent.putExtra("coach_id", curr.getCoach_id());
                 startActivity(intent);
             }
         });
@@ -165,7 +164,8 @@ public class exerciseOfTheDay extends AppCompatActivity {
                                         current.get("coach_name").getAsString(),
                                         current.get("description").getAsString(),
                                         current.get("date_time").getAsString(),
-                                        current.get("attending").getAsString()
+                                        current.get("attending").getAsString(),
+                                        current.get("coach_id").getAsString()
                                 ));
                             }
                         }
@@ -229,6 +229,12 @@ public class exerciseOfTheDay extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        populateWorkoutList(date);
     }
 
 }

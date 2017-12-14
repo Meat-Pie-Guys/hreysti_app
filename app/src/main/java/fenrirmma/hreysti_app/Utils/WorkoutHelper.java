@@ -13,16 +13,21 @@ public class WorkoutHelper {
     private String description;
     private String date;
     private String attending;
+    private String coach_id;
 
 
-    public WorkoutHelper(String open_id, String coach_name, String description, String date, String attending){
+    public WorkoutHelper(String open_id, String coach_name, String description, String date, String attending, String coach_id){
         this.open_id = open_id;
         this.coach_name = coach_name;
         this.description = description;
         this.date = date;
         this.attending = attending;
+        this.coach_id = coach_id;
     }
 
+    public String getCoach_id() {
+        return coach_id;
+    }
     public String getOpen_id() {
         return open_id;
     }
