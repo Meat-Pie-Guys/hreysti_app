@@ -50,7 +50,7 @@ public class getCoachScheduleActivity extends AppCompatActivity {
         coachList.setOnItemClickListener((parent, view, pos, id) -> {
             WorkoutHelper curr = (WorkoutHelper) parent.getItemAtPosition(pos);
             Intent intent = new Intent(this, updateWorkoutActivity.class);
-            intent.putExtra("ID", curr.getOpen_id());
+            intent.putExtra("id", curr.getOpen_id());
             intent.putExtra("coach_name", curr.getCoach_name());
             intent.putExtra("description", curr.getDescription());
             intent.putExtra("date", curr.getDate());
@@ -115,5 +115,11 @@ public class getCoachScheduleActivity extends AppCompatActivity {
                         recyclerView.setAdapter(adapter);
                     }
                 });
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        populateWorkoutList(date);
     }
 }

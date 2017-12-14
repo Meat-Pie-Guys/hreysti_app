@@ -46,13 +46,12 @@ public class getCoachScheduleRecyclerAdapter extends RecyclerView.Adapter<getCoa
 
         viewHolder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), updateWorkoutActivity.class);
-            intent.putExtra("ID", list.get(pos).getOpen_id());
+            intent.putExtra("id", list.get(pos).getOpen_id());
             intent.putExtra("coach_name", list.get(pos).getCoach_name());
             intent.putExtra("description", list.get(pos).getDescription());
             intent.putExtra("date", list.get(pos).getDate());
             intent.putExtra("time", list.get(pos).getTime());
             view.getContext().startActivity(intent);
-            activity.finish();
         });
     }
 
