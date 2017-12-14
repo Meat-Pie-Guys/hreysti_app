@@ -2,6 +2,7 @@ package fenrirmma.hreysti_app.workout;
 
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,9 +19,12 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Objects;
 
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.Utils.WorkoutHelper;
@@ -44,20 +48,19 @@ public class exerciseOfTheDay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_of_the_day);
-
         todays_workout = findViewById(R.id.workout_day);
-        //workout_list = findViewById(R.id.list_workouts);
+        workout_list = findViewById(R.id.list_workouts);
 
         sa = SessionAccess.getInstance(this);
         btnDate = findViewById(R.id.btn_exercise_date);
 
-        recyclerView = findViewById(R.id.recycle_view_exercise);
+        //recyclerView = findViewById(R.id.recycle_view_exercise);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        //recyclerView.setLayoutManager(layoutManager);
         role = getIntent().getStringExtra("ROLE");
         Calendar calendar = Calendar.getInstance();
 
-        //Date now = new Date();
+        Date now = new Date();
         setExerciseDate();
         SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
         String currentDateTime = calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.DAY_OF_MONTH);
@@ -67,7 +70,6 @@ public class exerciseOfTheDay extends AppCompatActivity {
 
 
 
-        /*
         workout_list.setOnItemClickListener((parent, view, pos, id) -> {
             // TODO if user is client then attending workout
             // TODO if user is coach/admin then they can update
@@ -100,7 +102,7 @@ public class exerciseOfTheDay extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        */
+
 
         populateWorkoutList(currentDateTime +  "-06-10");
         displayWorkout(currentDateTime +  "-06-10");
@@ -137,7 +139,7 @@ public class exerciseOfTheDay extends AppCompatActivity {
         });
     }
 
-    private void populateWorkoutList(String date) {
+    public void populateWorkoutList(String date) {
         list_workout = new ArrayList<>();
         Ion.with(this)
                 .load("GET", "http://10.0.2.2:5000/workout/all/" + date)
@@ -167,14 +169,16 @@ public class exerciseOfTheDay extends AppCompatActivity {
                                 ));
                             }
                         }
+                        workout_list.setAdapter(new CustomAdapter(this, list_workout));
 
-                        //workout_list.setAdapter(new CustomAdapter(this, list_workout));
-                        exerciceAdapter = new exerciseOfTheDayRecyclerAdapter(this, list_workout);
-                        recyclerView.setAdapter(exerciceAdapter);
+                      //  exerciceAdapter = new exerciseOfTheDayRecyclerAdapter(this, list_workout);
+                        //recyclerView.setAdapter(exerciceAdapter);
+
                     }
 
 
                 });
+        list_workout.clear();
 
     }
 
@@ -204,6 +208,27 @@ public class exerciseOfTheDay extends AppCompatActivity {
 
     }
 
-
+    private void participateInWorkout(String workoutId){
+        Ion.with(this)
+                .load("GET", "http://10.0.2.2:5000/workout/" + workoutId)
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Accept", "application/json")
+                .addHeader("fenrir-token", sa.getToken())
+                .setTimeout(1000)
+                .asJsonObject()
+                .setCallback((e, result) -> {
+                    if(e != null){
+                        Toast.makeText(this, "ION ERROR not cock", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                    }else {
+                        int code = result.get("error").getAsInt();
+                        if (code != 0) {
+                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        }
+                        else{
+                            Toast.makeText(this, "ATTENDED WORKOUT", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        }
+                    }
+                });
+    }
 
 }

@@ -28,8 +28,6 @@ public class CustomAdapter extends BaseAdapter{
         resources = context.getResources();
         workoutArrayList = results;
         mInflater = LayoutInflater.from(context);
-
-
     }
 
     public int getCount() {

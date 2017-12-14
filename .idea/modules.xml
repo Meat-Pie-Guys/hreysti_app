@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Hreysti_App.iml" filepath="$PROJECT_DIR$/Hreysti_App.iml" />
       <module fileurl="file://C:\Users\magnu\Desktop\verk\hreysti_app\Hreysti_App.iml" filepath="C:\Users\magnu\Desktop\verk\hreysti_app\Hreysti_App.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\Users\magnu\Desktop\verk\hreysti_app\app\app.iml" filepath="C:\Users\magnu\Desktop\verk\hreysti_app\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hreysti_app.iml" filepath="$PROJECT_DIR$/hreysti_app.iml" />
     </modules>
   </component>
 </project>

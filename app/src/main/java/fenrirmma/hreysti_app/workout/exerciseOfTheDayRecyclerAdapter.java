@@ -25,7 +25,7 @@ import fenrirmma.hreysti_app.Utils.WorkoutHelper;
  * Created by magnu on 13/12/2017.
  */
 
-public class exerciseOfTheDayRecyclerAdapter extends RecyclerView.Adapter<exerciseOfTheDayRecyclerAdapter.ViewHolder>{
+public class exerciseOfTheDayRecyclerAdapter extends RecyclerView.Adapter<exerciseOfTheDayRecyclerAdapter.ViewHolder> {
 
     private ArrayList<WorkoutHelper> exerciseList;
     private Activity activity;
@@ -87,7 +87,7 @@ public class exerciseOfTheDayRecyclerAdapter extends RecyclerView.Adapter<exerci
                                     }
                                 }
                             });
-                    notifyItemChanged(exerciseList.get(pos).getAttending());
+                    exerciseList.notify();
 
                 } else {
                     // TODO láta user vita að þetta var ekkihægt því þetta var gömul dagsetning?
