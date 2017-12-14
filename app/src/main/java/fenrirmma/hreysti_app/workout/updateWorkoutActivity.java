@@ -33,7 +33,6 @@ public class updateWorkoutActivity extends AppCompatActivity {
     private ListView list_coaches;
     private updateWorkoutRecyclerAdapter adapter;
     private RecyclerView recyclerView;
-    private boolean coach_changed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,20 +45,15 @@ public class updateWorkoutActivity extends AppCompatActivity {
         date = findViewById(R.id.date);
         coach_name = findViewById(R.id.coach_name);
         time = findViewById(R.id._time);
-        coach_changed = false;
+
         recyclerView = findViewById(R.id.edit_workout_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
         setList();
         getList();
-        coachBool(false);
 
-    }
 
-    public boolean coachBool(boolean bool){
-        coach_changed = bool;
-        return coach_changed;
     }
 
     private void setList() {
@@ -109,7 +103,7 @@ public class updateWorkoutActivity extends AppCompatActivity {
     public void submitWorkout(View view) {
         String workout_ID = getIntent().getStringExtra("ID");
         JsonObject json = new JsonObject();
-        if(coach_changed){json.addProperty("coach_id", coaches.getOpenId());}
+        json.addProperty("coach_id", coaches.getOpenId());
         json.addProperty("description", workout.getText().toString());
         Ion.with(this)
                 .load("PUT", "http://10.0.2.2:5000/admin/workout/update/" + workout_ID)

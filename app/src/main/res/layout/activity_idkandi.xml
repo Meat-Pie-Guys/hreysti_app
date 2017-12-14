@@ -86,7 +86,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@android:drawable/dialog_holo_light_frame"
                 android:backgroundTint="@android:color/black"
-                android:text="@string/change"
+                android:text="@string/change_name"
                 android:onClick="changeName"
                 android:layout_toEndOf="@+id/client_name"
                 android:textColor="@android:color/white" />

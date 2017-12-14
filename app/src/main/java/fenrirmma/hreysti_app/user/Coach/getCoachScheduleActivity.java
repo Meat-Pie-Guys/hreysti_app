@@ -39,9 +39,6 @@ public class getCoachScheduleActivity extends AppCompatActivity {
 
         setExerciseDate();
 
-
-        btnGetSched = findViewById(R.id.btn_coach_sched);
-
         recyclerView = findViewById(R.id.recycle_view_coach_schedule);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -91,13 +88,13 @@ public class getCoachScheduleActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        btnGetSched.setError(null);
-                        btnGetSched.setError("Can't connect to the database!");
+                        //btnGetSched.setError(null);
+                        //btnGetSched.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            btnGetSched.setError(null);
-                            btnGetSched.setError("Access denied!");
+                            //btnGetSched.setError(null);
+                            //btnGetSched.setError("Access denied!");
                         }
                         else{
                             JsonArray users = result.getAsJsonArray("all_workouts");
