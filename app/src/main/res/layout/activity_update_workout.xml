@@ -90,17 +90,8 @@
 
     </LinearLayout>
 
-
-    <ListView
-        android:id="@+id/listCoachView"
-        android:choiceMode="singleChoice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    </ListView>
-
-
-
-
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/edit_workout_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
