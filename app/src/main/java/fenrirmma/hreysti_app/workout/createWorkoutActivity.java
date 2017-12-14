@@ -36,7 +36,7 @@ public class createWorkoutActivity extends AppCompatActivity {
     private List<UserHelper> list;
     private UserHelper coach;
     private ListView coachList;
-    private Button date;
+    private Button date, submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +46,9 @@ public class createWorkoutActivity extends AppCompatActivity {
         sa = SessionAccess.getInstance(this);
         workout = findViewById(R.id.workout);
         date = findViewById(R.id.btn_pick_date);
+        submit = findViewById(R.id.submit);
         coach_name = findViewById(R.id.coach_name);
         coachList = findViewById(R.id.listCoachView);
-
 
         setDate();
         setTime();
@@ -58,7 +58,6 @@ public class createWorkoutActivity extends AppCompatActivity {
             coach_name.setText(coach.getName());
 
         });
-
 
     }
 
@@ -73,11 +72,13 @@ public class createWorkoutActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "ION ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        date.setError(null);
+                        date.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            date.setError(null);
+                            date.setError("Access denied!");
                         }
                         else{
                             JsonArray users = result.getAsJsonArray("all_users");
@@ -93,6 +94,7 @@ public class createWorkoutActivity extends AppCompatActivity {
                                 ));
                             }
                         }
+                        coach = list.get(0);
                         ArrayAdapter<UserHelper> adapter = new ArrayAdapter<>(this,
                                 android.R.layout.simple_list_item_1, list);
                         coachList.setAdapter(adapter);
@@ -121,6 +123,7 @@ public class createWorkoutActivity extends AppCompatActivity {
     }
 
     private void setTime() {
+        //The only times that workouts can occur
         String time[] = new String[]{"06:10", "10:30", "12:10", "17:15"};
         ArrayAdapter<String> aAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, time);
         Spinner spinner = findViewById(R.id.time_spinner);
@@ -130,6 +133,7 @@ public class createWorkoutActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 _time = parent.getItemAtPosition(position).toString();
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -156,15 +160,34 @@ public class createWorkoutActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        Toast.makeText(this, "ION ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                        submit.setError(null);
+                        submit.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show(); //TODO breyta í eitthvað meira hot
+                            switch (code){
+                                case 11 :
+                                    submit.setError(null);
+                                    submit.setError("Access denied");
+                                    break;
+                                case 10 :
+                                    submit.setError(null);
+                                    submit.setError("Missing data");
+                                    break;
+                                case 5 :
+                                    submit.setError(null);
+                                    submit.setError("Fields cannot be empty");
+                                    break;
+                                case 17 :
+                                    submit.setError(null);
+                                    submit.setError("Workout with that time already exists");
+                                    break;
+                            }
                         }
                         else{
-                            Toast.makeText(this, "SUCCESS", Toast.LENGTH_SHORT).show();
-                            // TODO Eitthvað success skilabð betra en Toastið
+                            submit.setError(null);
+                            Toast.makeText(this, "Workout successfully created for" + _time + ". If you want to create another workout for this day then select a different time", Toast.LENGTH_LONG).show();
+
                         }
                     }
                 });

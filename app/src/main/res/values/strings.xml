@@ -37,6 +37,7 @@
     <string name="pick_time">Pick Time</string>
     <string name="pick_date">Pick date</string>
     <string name="coach_assigned">Coach assigned:</string>
+    <string name="date_dash">-</string>
     <string-array name="user_roles">
         <item>Client</item>
         <item>Coach</item>
