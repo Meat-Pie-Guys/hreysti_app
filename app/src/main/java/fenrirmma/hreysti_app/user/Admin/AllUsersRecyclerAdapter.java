@@ -34,9 +34,6 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
         this.filterList = userList;
         this.activity = activity;
     }
-    /*public List<UserHelper> getUserList() { //ekki að nota þennan, væri betra að hafa userList private og nota þennan
-        return userList;
-    }*/
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType){
@@ -53,7 +50,6 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
         viewHolder.name.setText(userList.get(pos).getName());
         viewHolder.role.setText(userList.get(pos).getUserRole());
         viewHolder.ssn.setText(userList.get(pos).getSsn());
-        viewHolder.expiration.setText(userList.get(pos).getExpireDate());
 
         viewHolder.itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(view.getContext(), userInfoAdminActivity.class);
@@ -83,8 +79,7 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
         private ImageView image;
         private TextView name;
         private TextView role;
-        private TextView ssn;
-        private TextView expiration;
+        private TextView ssn;;
         private View container;
 
         public ViewHolder(View view){
@@ -93,7 +88,6 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
             name = view.findViewById(R.id.name);
             role = view.findViewById(R.id.role);
             ssn = view.findViewById(R.id.ssn);
-            expiration = view.findViewById(R.id.expiration);
             container = view.findViewById(R.id.card_view);
         }
 

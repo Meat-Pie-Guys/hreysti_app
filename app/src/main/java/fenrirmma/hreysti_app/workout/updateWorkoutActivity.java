@@ -2,6 +2,8 @@ package fenrirmma.hreysti_app.workout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -26,9 +28,11 @@ public class updateWorkoutActivity extends AppCompatActivity {
     private SessionAccess sa;
     private EditText workout;
     private TextView date, coach_name, time;
-    private List<UserHelper> myList;
+    private ArrayList<UserHelper> myList;
     private UserHelper coaches;
     private ListView list_coaches;
+    private updateWorkoutRecyclerAdapter adapter;
+    private RecyclerView recyclerView;
     private boolean coach_changed;
 
     @Override
@@ -43,15 +47,12 @@ public class updateWorkoutActivity extends AppCompatActivity {
         coach_name = findViewById(R.id.coach_name);
         time = findViewById(R.id._time);
         coach_changed = false;
+        recyclerView = findViewById(R.id.edit_workout_recycler);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
         setList();
-        getList();/*
-        list_coaches.setOnItemClickListener((parent, view, pos, id) -> {
-            coaches = (UserHelper)parent.getItemAtPosition(pos);
-            coach_name.setText(coaches.getName());
-            coach_changed = true;
-
-        });*/
+        getList();
     }
 
     private void setList() {
@@ -91,10 +92,9 @@ public class updateWorkoutActivity extends AppCompatActivity {
                                         DateConverter.convert(current.get("expire_date").getAsString())
                                 ));
                             }
-                        }/*
-                        ArrayAdapter<UserHelper> adapter = new ArrayAdapter<>(this,
-                                android.R.layout.simple_list_item_1, myList);
-                        list_coaches.setAdapter(adapter);*/
+                            adapter = new updateWorkoutRecyclerAdapter(this, myList);
+                            recyclerView.setAdapter(adapter);
+                        }
                     }
 
 

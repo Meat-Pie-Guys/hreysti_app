@@ -49,14 +49,6 @@
                 android:layout_below="@+id/role"
                 android:textStyle="bold"
                 android:text="@string/admin_user_ssn"/>
-            <TextView
-                android:id="@+id/expiration"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ssn"
-                android:textStyle="bold"
-                android:text="@string/admin_user_startdate"/>
-
 
         </RelativeLayout>
     </LinearLayout>
