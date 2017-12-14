@@ -76,8 +76,6 @@ public class coachActivity extends AppCompatActivity {
 
     public void exerciseOfTheDay(View view){
         Intent intent = new Intent(coachActivity.this, exerciseOfTheDay.class);
-        intent.putExtra("ROLE", role);
-        Toast.makeText(this, role, Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
 

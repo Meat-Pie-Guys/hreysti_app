@@ -27,22 +27,23 @@ import java.util.Date;
 import java.util.Objects;
 
 import fenrirmma.hreysti_app.R;
+import fenrirmma.hreysti_app.Utils.DateConverter;
+import fenrirmma.hreysti_app.Utils.UserHelper;
 import fenrirmma.hreysti_app.Utils.WorkoutHelper;
 import fenrirmma.hreysti_app.Utils.SessionAccess;
+import fenrirmma.hreysti_app.user.Admin.AllUsersRecyclerAdapter;
 
 public class exerciseOfTheDay extends AppCompatActivity {
 
     private SessionAccess sa;
     private TextView todays_workout;
     private ListView workout_list;
-    private DatePicker exercisePicker;
-    private String time, role;
+    private String role;
     private ArrayList<WorkoutHelper> list_workout;
-    private int day, month, year;
     private String date;
     private Button btnDate;
     private RecyclerView recyclerView;
-    private exerciseOfTheDayRecyclerAdapter exerciceAdapter;
+    //private AllUsersRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +56,8 @@ public class exerciseOfTheDay extends AppCompatActivity {
         btnDate = findViewById(R.id.btn_exercise_date);
 
         //recyclerView = findViewById(R.id.recycle_view_exercise);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        //recyclerView.setLayoutManager(layoutManager);
-        role = getIntent().getStringExtra("ROLE");
+        //LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+       //recyclerView.setLayoutManager(layoutManager);
         Calendar calendar = Calendar.getInstance();
 
         Date now = new Date();
@@ -71,21 +71,18 @@ public class exerciseOfTheDay extends AppCompatActivity {
 
 
         workout_list.setOnItemClickListener((parent, view, pos, id) -> {
-            // TODO if user is client then attending workout
-            // TODO if user is coach/admin then they can update
+
             WorkoutHelper curr = (WorkoutHelper) parent.getItemAtPosition(pos);
-            if(Objects.equals(role, "Client")){
+            if(Objects.equals(sa.getRole(), "Client")){
                 try {
                     Date dateGot = formatter.parse(curr.getDate());
-                    System.out.println(dateGot.toString());
-                    System.out.println(now.toString());
                     if(now.before(dateGot)){
                         participateInWorkout(curr.getOpen_id());
                         populateWorkoutList(date);
                         displayWorkout(date + "-06-10");
                     }
                     else{
-                        // TODO láta user vita að þetta var ekkihægt því þetta var gömul dagsetning?
+                        Toast.makeText(this, "Can't attend workouts that are already started", Toast.LENGTH_SHORT);
                     }
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -93,13 +90,10 @@ public class exerciseOfTheDay extends AppCompatActivity {
 
             }
             else{
-                Intent intent = new Intent(this, updateWorkoutActivity.class);
+                Intent intent = new Intent(this, attendingUsersActivity.class);
                 intent.putExtra("ID", curr.getOpen_id());
-                intent.putExtra("coach_name", curr.getCoach_name());
-                intent.putExtra("description", curr.getDescription());
-                intent.putExtra("date", curr.getDate());
-                intent.putExtra("time", curr.getTime());
                 startActivity(intent);
+
             }
         });
 
@@ -107,6 +101,8 @@ public class exerciseOfTheDay extends AppCompatActivity {
         populateWorkoutList(currentDateTime +  "-06-10");
         displayWorkout(currentDateTime +  "-06-10");
     }
+
+
 
     public void updateDate(View view) {
         String date = btnDate.getText().toString();
