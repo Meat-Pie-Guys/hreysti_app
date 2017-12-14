@@ -50,10 +50,12 @@ public class coachActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
+                        clearError();
                         coach_name.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
+                            clearError();
                             coach_name.setError("No such user");
                         }
                         else{
@@ -64,6 +66,12 @@ public class coachActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private void clearError() {
+        coach_name.setError(null);
+        new_name.setError(null);
+        change.setError(null);
     }
 
     public void exerciseOfTheDay(View view){
@@ -88,7 +96,10 @@ public class coachActivity extends AppCompatActivity {
     public void editName(View view) {
         JsonObject json = new JsonObject();
         String name = new_name.getText().toString();
-        if(name.trim().length() == 0){new_name.setError("Name cannot be only white space!");}
+        if(name.trim().length() == 0){
+            clearError();
+            new_name.setError("Name cannot be only white space!");
+        }
         json.addProperty("name", name);
         Ion.with(this)
                 .load("PUT", "http://10.0.2.2:5000/user/name/update")
@@ -100,11 +111,14 @@ public class coachActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
+                        clearError();
                         change.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
+                            clearError();
                             if(code == 5){change.setError("Name cannot be empty");}
+                            clearError();
                             change.setError("Name missing");
                         }
                         else{

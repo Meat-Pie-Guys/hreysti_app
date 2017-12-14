@@ -135,4 +135,5 @@ public class userInfoAdminActivity extends AppCompatActivity {
         startActivity(new Intent(this, allUsersAdminActivity.class));
         finish();
     }
+
 }
