@@ -38,6 +38,9 @@
     <string name="pick_date">Pick date</string>
     <string name="coach_assigned">Coach assigned:</string>
     <string name="date_dash">-</string>
+    <string name="change_name">change_name</string>
+    <string name="today_s_workouts_btn">today_workout</string>
+    <string name="hint_ssn">ssn_hint</string>
     <string-array name="user_roles">
         <item>Client</item>
         <item>Coach</item>

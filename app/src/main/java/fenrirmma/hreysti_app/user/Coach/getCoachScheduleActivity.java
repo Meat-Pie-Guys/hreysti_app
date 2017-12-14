@@ -1,16 +1,12 @@
 package fenrirmma.hreysti_app.user.Coach;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -21,9 +17,7 @@ import java.util.Calendar;
 
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.Utils.SessionAccess;
-import fenrirmma.hreysti_app.Utils.CustomAdapter;
 import fenrirmma.hreysti_app.Utils.WorkoutHelper;
-import fenrirmma.hreysti_app.workout.updateWorkoutActivity;
 
 public class getCoachScheduleActivity extends AppCompatActivity {
 
@@ -44,9 +38,6 @@ public class getCoachScheduleActivity extends AppCompatActivity {
         btnGetSched = findViewById(R.id.btn_coach_sched);
 
         setExerciseDate();
-
-
-        btnGetSched = findViewById(R.id.btn_coach_sched);
 
         recyclerView = findViewById(R.id.recycle_view_coach_schedule);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -97,13 +88,13 @@ public class getCoachScheduleActivity extends AppCompatActivity {
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     if(e != null){
-                        btnGetSched.setError(null);
-                        btnGetSched.setError("Can't connect to the database!");
+                        //btnGetSched.setError(null);
+                        //btnGetSched.setError("Can't connect to the database!");
                     }else {
                         int code = result.get("error").getAsInt();
                         if (code != 0) {
-                            btnGetSched.setError(null);
-                            btnGetSched.setError("Access denied!");
+                            //btnGetSched.setError(null);
+                            //btnGetSched.setError("Access denied!");
                         }
                         else{
                             JsonArray users = result.getAsJsonArray("all_workouts");
