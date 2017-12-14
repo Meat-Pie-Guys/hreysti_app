@@ -45,13 +45,13 @@ public class updateWorkoutActivity extends AppCompatActivity {
         coach_changed = false;
 
         setList();
-        getList();
+        getList();/*
         list_coaches.setOnItemClickListener((parent, view, pos, id) -> {
             coaches = (UserHelper)parent.getItemAtPosition(pos);
             coach_name.setText(coaches.getName());
             coach_changed = true;
 
-        });
+        });*/
     }
 
     private void setList() {
@@ -91,10 +91,10 @@ public class updateWorkoutActivity extends AppCompatActivity {
                                         DateConverter.convert(current.get("expire_date").getAsString())
                                 ));
                             }
-                        }
+                        }/*
                         ArrayAdapter<UserHelper> adapter = new ArrayAdapter<>(this,
                                 android.R.layout.simple_list_item_1, myList);
-                        list_coaches.setAdapter(adapter);
+                        list_coaches.setAdapter(adapter);*/
                     }
 
 

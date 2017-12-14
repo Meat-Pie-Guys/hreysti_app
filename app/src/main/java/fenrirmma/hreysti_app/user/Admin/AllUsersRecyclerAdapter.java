@@ -55,9 +55,7 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
         viewHolder.ssn.setText(userList.get(pos).getSsn());
         viewHolder.expiration.setText(userList.get(pos).getExpireDate());
 
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+        viewHolder.itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(view.getContext(), userInfoAdminActivity.class);
                 intent.putExtra("NAME", userList.get(pos).getName());
                 intent.putExtra("SSN", userList.get(pos).getSsn());
@@ -67,8 +65,7 @@ public class AllUsersRecyclerAdapter extends RecyclerView.Adapter<AllUsersRecycl
                 intent.putExtra("EXPIREDATE", userList.get(pos).getExpireDate());
                 view.getContext().startActivity(intent);
                 activity.finish();
-            }
-    });
+            });
     }
 
     public int getItemCount(){return(null != userList ? userList.size() : 0);}
