@@ -52,13 +52,13 @@ pip install Flask-SQLAlchemy
 ```
 pip install uuid
 ```
--JSON Web Token library for Python 3.
+-JSON Web Token implementation in Python
 ```
-pip install jwt
+pip install PyJWT
 ```
--Werkzeug is a WSGI utility library for Python. It's widely used and BSD licensed.
+-Dateparser provides modules to easily parse localized dates in almost any string formats commonly found on web pages.
 ```
-pip install Werkzeug
+ pip install dateparser
 ```
 
 The API itself can be run on a shell or in an IDE framwork for python, we recommend Pycharm from JetBrains (*https://www.jetbrains.com/pycharm/specials/pycharm/pycharm.html?gclid=Cj0KCQiAgs7RBRDoARIsANOo-Hg0tOk4-l10909CqqzPQFeVnWBDMT621rWsLwTNpek1clshnANSXnUaAhK-EALw_wcB&gclsrc=aw.ds.ds&dclid=CIX07_SjjNgCFdO6GwodImUInA*)
