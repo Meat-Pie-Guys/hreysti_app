@@ -29,6 +29,11 @@ public class newSignUp extends AppCompatActivity {
     private EditText ssn;
     private EditText password;
 
+    private static String URL = "http://10.0.2.2:5000/user";
+    public static void setPath(String newUrl){
+        URL = newUrl;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +70,7 @@ public class newSignUp extends AppCompatActivity {
         json.addProperty("ssn", _ssn);
         json.addProperty("password", _pw);
         Ion.with(this)
-                .load("POST", "http://10.0.2.2:5000/user")
+                .load("POST", URL)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "application/json")
                 .setTimeout(1000)

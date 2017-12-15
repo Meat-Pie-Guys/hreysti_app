@@ -23,7 +23,10 @@ public class MainActivity extends AppCompatActivity {
     private EditText ssn;
     private EditText password;
     private RelativeLayout load;
-
+    private static String URL = "http://10.0.2.2:5000/login";
+    public static void setPath(String newUrl){
+        URL = newUrl;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private void getToken(String ssn, String pw) {
         String credentials = new String(Base64.encode(String.format("%s:%s", ssn, pw).getBytes(), Base64.DEFAULT));
         Ion.with(this)
-                .load("GET", "http://10.0.2.2:5000/login")
+                .load("GET", URL)
                 .addHeader("Authorization", String.format("Basic %s", credentials))
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "application/json")
