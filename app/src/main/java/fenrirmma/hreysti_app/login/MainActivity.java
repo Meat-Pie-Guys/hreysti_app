@@ -7,10 +7,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
-
 import com.koushikdutta.ion.Ion;
-
 import fenrirmma.hreysti_app.R;
 import fenrirmma.hreysti_app.Utils.SessionAccess;
 import fenrirmma.hreysti_app.user.Admin.adminActivity;
