@@ -23,7 +23,7 @@ In this project we develop an application that is aimed for practitioner and coa
 
 
 # Development
-The project was programmed in Android Studio using:
+The project was programmed in Android Studio and used the following software:
 
 1. Github
 2. Postman

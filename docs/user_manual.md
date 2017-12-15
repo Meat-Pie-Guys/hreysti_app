@@ -11,23 +11,22 @@ git clone https://github.com/Meat-Pie-Guys/hreysti_app.git
 ```
 The API.
 ```
-git@github.com:Meat-Pie-Guys/hreysti_api.git
+git clone git@github.com:Meat-Pie-Guys/hreysti_api.git
 ```
 
 The following things are needed to run the app on a local machine.  
 * Git 
 * Android studio 
-* Gradle 
 * Flask
 * Python 
 
 ## **Setting up the environment**  
 
 * Install and set up Git, go to *https://help.github.com/articles/set-up-git*  
-* Install and set up Android studio, go to *https://developer.android.com/studio/index.html*  
+* Install and set up Android studio with an emulator, go to *https://developer.android.com/studio/index.html*  
 
 
-## **Running the project**
+## **Running up the project**
 
 Clone this project to your computer, run this command in bash.  
 ```
